@@ -6,15 +6,16 @@ function Tache (game,position,type) {
 
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.sprite.inputEnabled = true;
+	this.sprite.input.enableDrag();
 
 	for(var attribute in game.config.taches[type]) 
 		this[attribute] = game.config.taches[type][attribute];
 }
 Tache.prototype.update = function(game) {
-	this.sprite.x += 3;
-	if (this.sprite.x > 1000) {
+	if (this.sprite.input.isDragged == false)
+		this.sprite.x += 1;
+	if (this.sprite.x > 1000) 
 		this.die(game);
-	};
 }
 Tache.prototype.die = function(game) {
 	this.sprite.kill()
