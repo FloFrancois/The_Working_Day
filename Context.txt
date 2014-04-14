@@ -1,0 +1,33 @@
+
+Context et actions de base :
+
+directeur 
+
+employé avec prédisposition et archétype
+(secrétaire, stagiaire et sédentaire)
+
+un chrono de 8 heure détermine la durée d'une journée
+
+les taches défilent sur un tapis, un style de taches possede sa ligne et un employé peux etre sur toutes.
+
+les taches joue sur trois critères, fatigue, stress, concentration.
+
+chaque employé possède ses critères, si l'un d'eux est plein l'employé quitte son poste
+
+des bonus viendront sur une ligne spécial permettant de réduire les critères précédant entre autres
+
+pour réussir a finir le niveau, il faudra finir la semaine avec au moins un employé
+
+les taches doivent etre distribué par le joueur avec un drag&drop à un employé
+
+si une tache passe la fin du tapis, la jauge dev reduira d'un pourcentage
+
+pour empecher de laisser tomber une tache, le joueur peux replacer une tache plus haut sur le tapis
+
+
+
+Evenements possibles :
+
+café renversé - le joueur doit nettoyer l'espace de travail de l'employé en frottant la souris
+
+tas de papiers - le joueur doit 
