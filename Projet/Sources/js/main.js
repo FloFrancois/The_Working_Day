@@ -29,10 +29,7 @@ WD_game.prototype = {
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
-				// variable provisoire juste pour poper aléatoirement des taches
-		typetaches = ["ordinateur","dossier","telephone"];
-
-
+		
 		game.time.events.loop(1000, popTache, this, game);
 
 
@@ -45,7 +42,10 @@ WD_game.prototype = {
 
 	update : function (game) {
 
-	
+		for (var i = game.taches.length - 1; i >= 0; i--) {
+			game.taches[i].update(game)
+		};
+
 	},
 
 
@@ -71,6 +71,8 @@ WD_game.prototype = {
 */
 function popTache (game) {
 	var tacheAvaible = Object.keys(game.config.taches);
-	tache = tacheAvaible[(Math.random()*tacheAvaible.length)|0];
-	game.taches.push(new Tache(game,[Math.random()*game.width,Math.random()*game.height],tache));
+	var tache = tacheAvaible[(Math.random()*tacheAvaible.length)|0];
+	var possiblePosition = [[50,550],[50,600],[50,650]]
+	var pos = possiblePosition[(Math.random()*possiblePosition.length)|0];
+	game.taches.push(new Tache(game,pos,tache));
 }

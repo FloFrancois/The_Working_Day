@@ -1,4 +1,4 @@
-- affichages des taches
+- affichages des taches // done
 
 - generation aléatoire de tache et defillement continue des taches
 

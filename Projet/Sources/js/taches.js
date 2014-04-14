@@ -7,6 +7,9 @@ function Tache (game,position,type) {
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.sprite.inputEnabled = true;
 
-	// for(var attribute in game.config.taches[type])  			pour le json
-	// this[attribute] = game.config.taches[type][attribute];
+	for(var attribute in game.config.taches[type]) 
+		this[attribute] = game.config.taches[type][attribute];
+}
+Tache.prototype.update = function(game) {
+	this.sprite.x += 1;
 }
