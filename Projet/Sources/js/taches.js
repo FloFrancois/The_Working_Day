@@ -11,5 +11,12 @@ function Tache (game,position,type) {
 		this[attribute] = game.config.taches[type][attribute];
 }
 Tache.prototype.update = function(game) {
-	this.sprite.x += 1;
+	this.sprite.x += 3;
+	if (this.sprite.x > 1000) {
+		this.die(game);
+	};
+}
+Tache.prototype.die = function(game) {
+	this.sprite.kill()
+	game.taches.splice(game.taches.indexOf(this),1)
 }

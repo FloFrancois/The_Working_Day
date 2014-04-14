@@ -1,6 +1,6 @@
 - affichages des taches // done
 
-- generation aléatoire de tache et defillement continue des taches
+- generation aléatoire de tache et defillement continue des taches // done
 
 - assignation des taches a des cases speciales (employés)
 
