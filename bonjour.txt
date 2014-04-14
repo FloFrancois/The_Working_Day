@@ -1,0 +1,13 @@
+evenements spontanes
+
+
+gameplay on a un tapis roulant avec des taches de couleurs a attibuer aux employes des memes couleurs
+a chaque attribution l'employe gagne en fatigue/stress/-concentration en fonction du type de la tache
+si l'employe est surcharge il peux peter un cable et va aller prendre l'air, laissant le joueur avec des tache qu'il ne pourra pas attribuer
+le joueur peux neanmoins "jongler" avec les taches en les remettant au debut du tapis grace a un drag and drop
+après un certain temps les employes reviennent quand meme.
+il peux y avoir des evennements spontanes 
+
+
+
+vous etes votre pire enemy
