@@ -16,7 +16,9 @@ var WD_game = function (game) {	}
 WD_game.prototype = {
 
 	preload : function(game) {
-		//game.load.image('enemy_normal', 'Projet/Sources/assets/turret-2-cannon.gif');
+		game.load.image('tache_ordinateur', 'Projet/Sources/assets/turret-1-cannon.gif');
+		game.load.image('tache_dossier', 'Projet/Sources/assets/turret-2-cannon.gif');
+		game.load.image('tache_telephone', 'Projet/Sources/assets/turret-6-cannon.gif');
 		//game.load.spritesheet('effect_dot', 'Projet/Sources/assets/effect_dot.png',40,40);
 	},
 
@@ -26,7 +28,12 @@ WD_game.prototype = {
 
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
-		
+		game.taches = [];
+// variable provisoire juste pour poper aléatoirement des taches
+		typetaches = ["ordinateur","dossier","telephone"];
+		for (var i = 5 - 1; i >= 0; i--) {
+			popTache(game,[Math.random()*game.width-50,Math.random()*game.height-50],typetaches[(Math.random()*typetaches.length)|0])
+		};
 
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
@@ -57,3 +64,9 @@ WD_game.prototype = {
 //__________________________________________MISC____________________________________________________________________________________
 
 
+/*
+	plus tard on fera que ca pop un tache aléatoirement
+*/
+function popTache (game,position,type) {
+	game.taches.push(new Tache(game,position,type))
+}
