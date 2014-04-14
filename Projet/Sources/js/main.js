@@ -16,8 +16,8 @@ var WD_game = function (game) {	}
 WD_game.prototype = {
 
 	preload : function(game) {
-		game.load.image('enemy_normal', 'Projet/Sources/assets/turret-2-cannon.gif');
-		game.load.spritesheet('effect_dot', 'Projet/Sources/assets/effect_dot.png',40,40);
+		//game.load.image('enemy_normal', 'Projet/Sources/assets/turret-2-cannon.gif');
+		//game.load.spritesheet('effect_dot', 'Projet/Sources/assets/effect_dot.png',40,40);
 	},
 
 	//__________________________________________CREATE____________________________________________________________________________________
