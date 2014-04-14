@@ -29,11 +29,13 @@ WD_game.prototype = {
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
-// variable provisoire juste pour poper aléatoirement des taches
+				// variable provisoire juste pour poper aléatoirement des taches
 		typetaches = ["ordinateur","dossier","telephone"];
-		for (var i = 5 - 1; i >= 0; i--) {
-			popTache(game,[Math.random()*game.width-50,Math.random()*game.height-50],typetaches[(Math.random()*typetaches.length)|0])
-		};
+
+
+		game.time.events.loop(1000, popTache, this, game);
+
+
 
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
@@ -67,6 +69,8 @@ WD_game.prototype = {
 /*
 	plus tard on fera que ca pop un tache aléatoirement
 */
-function popTache (game,position,type) {
-	game.taches.push(new Tache(game,position,type))
+function popTache (game) {
+	var tacheAvaible = Object.keys(game.config.taches);
+	tache = tacheAvaible[(Math.random()*tacheAvaible.length)|0];
+	game.taches.push(new Tache(game,[Math.random()*game.width,Math.random()*game.height],tache));
 }

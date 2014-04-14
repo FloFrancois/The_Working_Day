@@ -1,7 +1,20 @@
 {
-	"exemple": {
-		"pouet" : 1,
-		"prout" : [0,1,2,3]
+	"taches": {
+		"ordinateur":{
+			"effect_stress" : -10,
+			"effect_fatigue" : 20,
+			"effect_concentration": 100
+			},
+			"dossier":{
+				"effect_stress" : 20,
+				"effect_fatigue" : 100,
+				"effect_concentration": -10
+				},
+				"telephone":{
+					"effect_stress" : 100,
+					"effect_fatigue" : -10,
+					"effect_concentration": 20
+				}
 	}
 
 }
