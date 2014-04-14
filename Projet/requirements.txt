@@ -1,0 +1,23 @@
+- affichages des taches
+
+- generation aléatoire de tache et defillement continue des taches
+
+- assignation des taches a des cases speciales (employés)
+
+- jauge des cases (employés) (stress,fatigue,concentration)
+
+- jauge de dev / scoring
+
+- caracs speciales des employés
+
+- passage des levels
+
+- hud
+
+- menu
+
+- equilibrage
+
+
+
+
