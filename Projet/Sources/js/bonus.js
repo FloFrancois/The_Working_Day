@@ -4,6 +4,8 @@ function Bonus (game,position,type) {
 	this.sprite = game.add.sprite(position[0],position[1],this.type);
 	this.sprite.bringToTop();
 	this.sprite.anchor.setTo(0.5,0.5);
+	this.sprite.scale.setTo(0.8,0.8);
+	
 
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.sprite.inputEnabled = true;

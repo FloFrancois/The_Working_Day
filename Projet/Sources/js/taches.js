@@ -4,6 +4,7 @@ function Tache (game,position,type,color) {
 	this.sprite = game.add.sprite(position[0],position[1],this.type);
 	this.sprite.bringToTop();
 	this.sprite.anchor.setTo(0.5,0.5);
+	this.sprite.scale.setTo(0.8,0.8);
 
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.sprite.inputEnabled = true;
@@ -43,14 +44,9 @@ Tache.prototype.die = function(game,type) {
 	if (typeof type === "number")
 		game.tachesDone++;
 	if (typeof type === "string"){
-		if (game.tachesDone)
-			game.tachesDone--;
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){
-				if (game.employees[i][caract] + 5 < game.config.maxCaract)
-					game.employees[i][caract]+=5;
-				else
-					game.employees[i][caract] = game.config.maxCaract;
+				game.employees[i][caract]+=5;
 				if (game.employees[i][caract] < 0) 
 					game.employees[i][caract] = 0;
 		}
