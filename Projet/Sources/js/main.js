@@ -88,18 +88,16 @@ function popTache (game) {
 }
 
 function showJauges (game) {
-	var j = 0
-	var i = 0
-	for(employee in game.config.employees)
-	{
-		for (caract in game.config.employees[employee]) {
+	var i =0
+	for (caract in game.config.employees.secretary) {
+		for (var k = game.employees.length - 1; k >= 0; k--) {
 			game.context.fillStyle = '#F22'
-			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
+			game.context.fillRect(150+k*350,475+i*20,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#2F2'
-			game.context.fillRect(150+j*350,475+i*20, game.config.employees[employee][caract]*2,5)
-			i++
+			game.context.fillRect(150+k*350,475+i*20, game.employees[k][caract]*2,5)
+			
 		};
-		j++;
-		i = 0;
-	}	
+	i++	
+	}
 }
+

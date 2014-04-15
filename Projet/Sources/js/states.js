@@ -41,7 +41,7 @@ WD_load.prototype = {
 	create : function (game) {
   		setTimeout(function () {
 			game.state.start('menu');
-		},1000);
+		},100);
 	}
 }
 
