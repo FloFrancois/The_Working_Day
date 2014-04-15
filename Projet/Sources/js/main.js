@@ -40,6 +40,10 @@ WD_game.prototype = {
 
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
+
+		line1 = new Phaser.Line(50, 550, 1000, 550);
+	    line2 = new Phaser.Line(50, 600, 1000, 600);
+	    line3 = new Phaser.Line(50, 650, 1000, 650);
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
@@ -63,7 +67,9 @@ WD_game.prototype = {
 	//__________________________________________RENDER____________________________________________________________________________________
 
 	render: function  (game) { 
-
+		game.debug.geom(line1);
+		game.debug.geom(line2);
+		game.debug.geom(line3);
 	}
 
 }
