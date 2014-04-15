@@ -16,11 +16,16 @@ Employee.prototype.update = function(game) {
 			this[attribute] = game.config.maxCaract
 	}
 	for (var i = game.taches.length - 1; i >= 0; i--) {
-		if (game.taches[i].sprite.input.isDragged == false && game.taches[i].color == this.color) {
+		if (game.taches[i].sprite.input.isDragged == false) {
 			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite)) {
-				for(effect in game.taches[i].effects)
-					this[effect] += game.taches[i].effects[effect]
-				game.taches[i].die(game,1);
+				if (game.taches[i].color == this.color) 
+					var penalty = 1;
+				else
+					var penalty = 2;
+					for(effect in game.taches[i].effects)
+						this[effect] += game.taches[i].effects[effect]*penalty;
+					game.taches[i].die(game,1);
+
 			};
 		};
 	};

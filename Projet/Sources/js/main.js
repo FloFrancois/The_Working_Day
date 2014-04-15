@@ -18,7 +18,7 @@ var WD_game = function (game) {	}
 WD_game.prototype = {
 
 	preload : function(game) {
-		
+
 	},
 
 	//__________________________________________CREATE____________________________________________________________________________________
@@ -28,12 +28,14 @@ WD_game.prototype = {
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
+		game.bonus = [];
 		game.employees = [];
 		game.devJauge = 0;
 		game.tachesDone = 0;
 
 		game.time.events.loop(1000, popTache, this, game);
 		game.time.events.loop(10000, popBonus, this, game);
+		game.time.events.loop(750, reduceCaract, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
@@ -59,8 +61,14 @@ WD_game.prototype = {
 	update : function (game) {
 		if (game.devJauge > game.config.maxDevJauge)
 			game.devJauge = game.config.maxDevJauge;
-
 		game.devJauge = game.tachesDone * game.config.valeurTache;
+
+		for (var i = game.employees.length - 1; i >= 0; i--) {
+			for(caract in game.config.employees.trainee){
+				if (game.employees[i][caract] < 0) 
+					game.employees[i][caract] = 0;
+			}
+		};
 
 		for (var i = game.taches.length - 1; i >= 0; i--) {
 			game.taches[i].update(game)
@@ -105,9 +113,9 @@ function showJauges (game) {
 	var i = 0;
 	for (caract in game.config.employees.secretary) {
 		for (var j = game.employees.length - 1; j >= 0; j--) {
-			game.context.fillStyle = '#F22';
-			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#2F2';
+			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
+			game.context.fillStyle = '#F22';
 			game.context.fillRect(150+j*350,475+i*20, game.employees[j][caract]*2,5);
 		};
 	i++	
@@ -130,3 +138,12 @@ function showDevJauge (game) {
 	game.context.fillRect(50,25,game.devJauge,10);
 }
 
+function reduceCaract (game) {	
+	for (var i = game.employees.length - 1; i >= 0; i--) {
+		for(caract in game.config.employees.trainee){
+			game.employees[i][caract]--;
+			if (game.employees[i][caract] < 0) 
+				game.employees[i][caract] = 0;
+		}
+	};
+}
