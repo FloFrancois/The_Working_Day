@@ -60,7 +60,7 @@ WD_menu.prototype = {
 	},
 
 	startGame: function(game){
-		this.salopard =1;
+		this.salopard = 1;
 	}
 }
 

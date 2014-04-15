@@ -2,17 +2,17 @@
 	"taches": {
 		"bonus":{
 			"effects" :{
-				"stress" : 0,
-				"fatigue" : 0,
-				"concentration": 0
+				"stress" : -5,
+				"fatigue" : -5,
+				"concentration": -5
 			},
-			"reward": 1000,
+			"reward": 100,
 			"activateAnimation":"joie"
 		},
 		"ordinateur":{
 			"effects" :{
-				"stress" : -3,
-				"fatigue" : 3,
+				"stress" : 0,
+				"fatigue" : 0,
 				"concentration": 5
 			},
 			"reward": 100,
@@ -20,9 +20,9 @@
 		},
 		"dossier":{
 			"effects" :{
-				"stress" : 3,
+				"stress" : 0,
 				"fatigue" : 5,
-				"concentration": -3
+				"concentration": 0
 			},
 			"reward": 100,
 			"activateAnimation":"fatigue"
@@ -30,8 +30,8 @@
 		"telephone":{
 			"effects" :{
 				"stress" : 5,
-				"fatigue" : -3,
-				"concentration": 3
+				"fatigue" : 0,
+				"concentration": 0
 			},
 			"reward": 100,
 			"activateAnimation":"stress"

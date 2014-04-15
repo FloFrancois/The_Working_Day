@@ -15,6 +15,8 @@ Employee.prototype.update = function(game) {
 		if (game.taches[i].sprite.input.isDragged == false && game.taches[i].color == this.color) {
 			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite)) {
 				console.log("effet actives :",game.taches[i].effects)
+				for(effect in game.taches[i].effects)
+					this[effect] += game.taches[i].effects[effect]
 				game.taches[i].die(game);
 			};
 		};
