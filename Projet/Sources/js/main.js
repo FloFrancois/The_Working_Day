@@ -29,7 +29,8 @@ WD_game.prototype = {
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
 		game.employees = [];
-		game.bonus = [];
+		game.devJauge = 0;
+		game.tachesDone = 0;
 
 		game.time.events.loop(1000, popTache, this, game);
 		game.time.events.loop(10000, popBonus, this, game);
@@ -56,6 +57,11 @@ WD_game.prototype = {
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+		if (game.devJauge > game.config.maxDevJauge)
+			game.devJauge = game.config.maxDevJauge;
+
+		game.devJauge = game.tachesDone * game.config.valeurTache;
+
 		for (var i = game.taches.length - 1; i >= 0; i--) {
 			game.taches[i].update(game)
 		};
@@ -73,7 +79,8 @@ WD_game.prototype = {
 		game.debug.geom(line3);
 		game.debug.geom(line4);
 
-		showJauges(game)
+		showJauges(game);
+		showDevJauge(game);
 	}
 
 }
@@ -86,21 +93,22 @@ WD_game.prototype = {
 function popTache (game) {
 	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches);
 	this.possiblePosition = this.possiblePosition || [[50,600],[50,650],[50,700]];
+	this.colors = this.colors || ["red","blue","yellow"];
+	var color = this.colors[(Math.random()*3)|0]
 	var rand = (Math.random()*this.tacheAvaible.length)|0;
 	var tache = this.tacheAvaible[rand];
 	var pos = this.possiblePosition[rand];
-	game.taches.push(new Tache(game,pos,tache,"red"));
+	game.taches.push(new Tache(game,pos,tache,color));
 }
 
 function showJauges (game) {
 	var i = 0;
 	for (caract in game.config.employees.secretary) {
-		for (var k = game.employees.length - 1; k >= 0; k--) {
+		for (var j = game.employees.length - 1; j >= 0; j--) {
 			game.context.fillStyle = '#F22';
-			game.context.fillRect(150+k*350,475+i*20,game.config.maxCaract*2,5);
+			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#2F2';
-			game.context.fillRect(150+k*350,475+i*20, game.employees[k][caract]*2,5);
-			
+			game.context.fillRect(150+j*350,475+i*20, game.employees[j][caract]*2,5);
 		};
 	i++	
 	}
@@ -114,3 +122,11 @@ function popBonus (game) {
 	var pos = this.rail;
 	game.taches.push(new Bonus(game,pos,bonus));
 }
+
+function showDevJauge (game) {
+	game.context.fillStyle = '#F22';
+	game.context.fillRect(50,25,game.config.maxDevJauge,10);
+	game.context.fillStyle = '#2F2';
+	game.context.fillRect(50,25,game.devJauge,10);
+}
+

@@ -20,7 +20,7 @@ Employee.prototype.update = function(game) {
 			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite)) {
 				for(effect in game.taches[i].effects)
 					this[effect] += game.taches[i].effects[effect]
-				game.taches[i].die(game);
+				game.taches[i].die(game,1);
 			};
 		};
 	};

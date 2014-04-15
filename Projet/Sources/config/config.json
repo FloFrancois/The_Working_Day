@@ -74,6 +74,8 @@
 			"concentration": 30
 		}
 	},
-	"maxCaract":100
+	"maxCaract":100,
+	"maxDevJauge":1000,
+	"valeurTache":50
 
 }

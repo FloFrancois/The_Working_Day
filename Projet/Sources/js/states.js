@@ -10,7 +10,7 @@ WD_begin.prototype = {
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/turret-2-base.gif');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/turret-3-base.gif');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/turret-4-base.gif');
-		
+				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
 		game.load.image('employee_secretary', 'Projet/Sources/assets/employee_secretary.png');
 		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');

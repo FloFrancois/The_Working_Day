@@ -39,7 +39,10 @@ Tache.prototype.update = function(game) {
 	if (this.sprite.x > 1000) 
 		this.die(game);
 }
-Tache.prototype.die = function(game) {
+Tache.prototype.die = function(game,type) {
+	if (type)
+		game.tachesDone++;
+	
 	this.sprite.kill()
 	game.taches.splice(game.taches.indexOf(this),1)
 }
