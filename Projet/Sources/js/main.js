@@ -34,10 +34,12 @@ WD_game.prototype = {
 		game.time.events.loop(1000, popTache, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
-		for (var i = nbEmployees.length - 1; i >= 0; i--) {
-			game.employees.push(new Employee(game,[200+i*200,200],nbEmployees[i], "red"));
-		};
+			
+		game.employees.push(new Employee(game,[100,50],nbEmployees[2], "red"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "red"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,50],nbEmployees[0], "red"));
 
+  		game.employees[1].sprite.bringToTop();
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
 
@@ -64,6 +66,8 @@ WD_game.prototype = {
 		game.debug.geom(line1);
 		game.debug.geom(line2);
 		game.debug.geom(line3);
+
+		showJauges(game)
 	}
 
 }
@@ -75,9 +79,28 @@ WD_game.prototype = {
 */
 function popTache (game) {
 	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches)
-	this.possiblePosition = this.possiblePosition ||  [[50,550],[50,600],[50,650]];
-	var rand = (Math.random()*tacheAvaible.length)|0;
-	var tache = tacheAvaible[rand];
-	var pos = possiblePosition[rand];
+	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650]];
+	var rand = (Math.random()*this.tacheAvaible.length)|0;
+	var tache = this.tacheAvaible[rand];
+	var pos = this.possiblePosition[rand];
 	game.taches.push(new Tache(game,pos,tache,"red"));
+}
+
+function showJauges (game) {
+	var j = 0
+	var i = 0
+	for(employee in game.config.employees)
+	{
+		for (caract in game.config.employees[employee]) {
+			game.context.fillStyle = '#F22'
+			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
+			game.context.fillStyle = '#2F2'
+			game.context.fillRect(150+j*350,475+i*20, game.config.employees[employee][caract]*2,5)
+			i++
+		};
+		j++;
+		i = 0;
+	}
+		
+		
 }

@@ -25,8 +25,8 @@ var WD_load = function (game) {}
 WD_load.prototype = {
 
 	preload : function(game) {
-		var w = 1280;
-		var h = 720;
+		var w = game.width;
+		var h = game.height;
 		label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)-20, 'The Working Day',
 			{ font: '30px Arial', fill: '#fff' });
 		label2 = game.add.text(Math.floor(w/2)+0.5, Math.floor(h/2)+20+0.5, 'loading...',
@@ -40,7 +40,7 @@ WD_load.prototype = {
 	create : function (game) {
   		setTimeout(function () {
 			game.state.start('menu');
-		},1000);
+		},100);
 	}
 }
 
