@@ -8,12 +8,27 @@ function Tache (game,position,type) {
 	this.sprite.inputEnabled = true;
 	this.sprite.input.enableDrag();
 
+	this.savePos={};
+	this.savePos.x = this.sprite.x;
+	this.savePos.y = this.sprite.y
+
+
 	for(var attribute in game.config.taches[type]) 
 		this[attribute] = game.config.taches[type][attribute];
 }
 Tache.prototype.update = function(game) {
-	if (this.sprite.input.isDragged == false)
+	if (this.sprite.input.isDragged == false){
+		this.sprite.x = this.savePos.x;
+		this.sprite.y = this.savePos.y;
 		this.sprite.x += 1;
+		this.savePos.x = this.sprite.x;
+		this.savePos.y = this.sprite.y
+	}
+	else {
+		this.savePos.x += 1;
+		
+	}
+		
 	if (this.sprite.x > 1000) 
 		this.die(game);
 }
