@@ -25,8 +25,6 @@ WD_game.prototype = {
 
 	create : function (game) {
 
-		game.add.sprite(0, 0, "arriere_plan");
-
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
@@ -61,9 +59,10 @@ WD_game.prototype = {
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+		
+		game.devJauge = game.tachesDone * game.config.valeurTache;
 		if (game.devJauge > game.config.maxDevJauge)
 			game.devJauge = game.config.maxDevJauge;
-		game.devJauge = game.tachesDone * game.config.valeurTache;
 
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){

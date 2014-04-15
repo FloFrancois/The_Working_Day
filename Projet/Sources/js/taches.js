@@ -43,9 +43,14 @@ Tache.prototype.die = function(game,type) {
 	if (typeof type === "number")
 		game.tachesDone++;
 	if (typeof type === "string"){
+		if (game.tachesDone)
+			game.tachesDone--;
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){
-				game.employees[i][caract]+=5;
+				if (game.employees[i][caract] + 5 < game.config.maxCaract)
+					game.employees[i][caract]+=5;
+				else
+					game.employees[i][caract] = game.config.maxCaract;
 				if (game.employees[i][caract] < 0) 
 					game.employees[i][caract] = 0;
 		}

@@ -23,26 +23,15 @@ Employee.prototype.update = function(game) {
 				else
 					var penalty = 2;
 					for(effect in game.taches[i].effects)
-						this[effect] += game.taches[i].effects[effect]*penalty;
+					{
+						if (this[effect] + game.taches[i].effects[effect]*penalty <= game.config.maxCaract)
+							this[effect] += game.taches[i].effects[effect]*penalty;
+						else
+							this[effect] = game.config.maxCaract;
+					}
 					game.taches[i].die(game,1);
 
 			};
 		};
 	};
-	//for(attribute in game.config.employees[this.type.substr(9)]){
-	// 	if (this[attribute] < game.config.minCaract)
-	// 		this[attribute] = game.config.minCaract;
-	// }
-	// for (var i = game.bonus.length - 1; i >= 0; i--){
-	// 	if (game.bonus[i].sprite.input.isDragged == false){
-	// 		console.log("loglog")
-	// 		if (game.physics.arcade.overlap(game.bonus[i].sprite, this.sprite)){
-	// 			console.log("flasflas")
-	// 			for(effect in game.bonus[i].effects)
-	// 				console.log("uioujio")
-	// 				this[effect] += game.bonus[i].effects[effect];
-	// 			game.bonus[i].die(game);
-	// 		}
-	// 	}
-	// }
 }
