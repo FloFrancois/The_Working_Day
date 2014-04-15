@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+Projet/Sources/libs/phaser.js
+Projet/Sources/libs/phaser.min.js
