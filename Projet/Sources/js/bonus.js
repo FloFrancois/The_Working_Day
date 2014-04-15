@@ -14,8 +14,8 @@ function Bonus (game,position,type) {
 	this.savePos.y = this.sprite.y
 
 
-	for(var attribute in game.config.taches[type]) 
-		this[attribute] = game.config.taches[type][attribute];
+	for(var attribute in game.config.bonus[type]) 
+		this[attribute] = game.config.bonus[type][attribute];
 }
 Bonus.prototype.update = function(game) {
 	if (this.sprite.input.isDragged == false){
@@ -40,6 +40,6 @@ Bonus.prototype.update = function(game) {
 		this.die(game);
 }
 Bonus.prototype.die = function(game) {
-	this.sprite.kill()
-	game.taches.splice(game.taches.indexOf(this),1)
+	this.sprite.kill();
+	game.bonus.splice(game.bonus.indexOf(this),1);
 }

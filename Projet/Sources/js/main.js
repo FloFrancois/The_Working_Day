@@ -25,6 +25,8 @@ WD_game.prototype = {
 
 	create : function (game) {
 
+		game.add.sprite(0, 0, "arriere_plan");
+
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
