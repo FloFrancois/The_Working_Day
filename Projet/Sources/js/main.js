@@ -29,8 +29,10 @@ WD_game.prototype = {
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
 		game.employees = [];
+		game.bonus = [];
 
 		game.time.events.loop(1000, popTache, this, game);
+		game.time.events.loop(10000, popBonus, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
@@ -83,7 +85,7 @@ WD_game.prototype = {
 */
 function popTache (game) {
 	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches);
-	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650],[50,700]];
+	this.possiblePosition = this.possiblePosition || [[50,600],[50,650],[50,700]];
 	var rand = (Math.random()*this.tacheAvaible.length)|0;
 	var tache = this.tacheAvaible[rand];
 	var pos = this.possiblePosition[rand];
@@ -104,3 +106,11 @@ function showJauges (game) {
 	}
 }
 
+function popBonus (game) {
+	this.bonusAvaible = this.bonusAvaible || Object.keys(game.config.bonus)
+	this.rail = this.rail || [50,550];
+	var rand = (Math.random()*this.bonusAvaible.length)|0;
+	var bonus = this.bonusAvaible[rand];
+	var pos = this.rail;
+	game.taches.push(new Bonus(game,pos,bonus));
+}

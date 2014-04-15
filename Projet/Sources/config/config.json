@@ -1,14 +1,5 @@
 {
 	"taches": {
-		"bonus":{
-			"effects" :{
-				"stress" : -5,
-				"fatigue" : -5,
-				"concentration": -5
-			},
-			"reward": 100,
-			"activateAnimation":"joie"
-		},
 		"ordinateur":{
 			"effects" :{
 				"stress" : 0,
@@ -35,6 +26,35 @@
 			},
 			"reward": 100,
 			"activateAnimation":"stress"
+		}
+	},
+	"bonus": {
+		"cafe":{
+			"effects" :{
+				"stress" : -5,
+				"fatigue" : -50,
+				"concentration": -5
+			},
+			"reward": 100,
+			"activateAnimation":"bois"
+		},
+		"clope":{
+			"effects" :{
+				"stress" : -50,
+				"fatigue" : -5,
+				"concentration": -5
+			},
+			"reward": 100,
+			"activateAnimation":"fume"
+		},
+		"pillule":{
+			"effects" :{
+				"stress" : -5,
+				"fatigue" : -5,
+				"concentration": -50
+			},
+			"reward": 100,
+			"activateAnimation":"snif"
 		}
 	},
 	"employees":{
