@@ -7,7 +7,10 @@ WD_begin.prototype = {
 		game.load.image('tache_dossier', 'Projet/Sources/assets/turret-2-cannon.gif');
 		game.load.image('tache_telephone', 'Projet/Sources/assets/turret-6-cannon.gif');
 		
-		game.load.image('employee_red', 'Projet/Sources/assets/employee_red.png');
+		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
+		game.load.image('employee_secretary', 'Projet/Sources/assets/employee_secretary.png');
+		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');
+
 		game.load.image('button', 'Projet/Sources/assets/turret-3-cannon.gif');
 	},
 

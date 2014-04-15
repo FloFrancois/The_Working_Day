@@ -1,11 +1,11 @@
-function Employee (game,pos,color) {
-	this.type = "employee_"+color;
+function Employee (game,pos,type,color) {
+	this.type = "employee_"+type;
 	this.color = color;
 	this.sprite = game.add.sprite(pos[0],pos[1],this.type,0);
 	this.sprite.anchor.setTo(0.5,0.5);
 
-	for(var attribute in game.config.employees[color]) 
-		this[attribute] = game.config.employees[color][attribute];
+	for(var attribute in game.config.employees[type]) 
+		this[attribute] = game.config.employees[type][attribute];
 	
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
