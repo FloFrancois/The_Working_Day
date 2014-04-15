@@ -18,15 +18,21 @@ function Tache (game,position,type) {
 }
 Tache.prototype.update = function(game) {
 	if (this.sprite.input.isDragged == false){
-		this.sprite.x = this.savePos.x;
-		this.sprite.y = this.savePos.y;
-		this.sprite.x += 1;
-		this.savePos.x = this.sprite.x;
-		this.savePos.y = this.sprite.y
+		if(this.sprite.y < 500){
+			this.sprite.x = this.savePos.x;
+			this.sprite.y = this.savePos.y;
+			this.sprite.x += 1;
+			this.savePos.x = this.sprite.x;
+			this.savePos.y = this.sprite.y;
+		}
+		else {
+			this.sprite.x += 1;
+			this.savePos.x = this.sprite.x;
+			this.sprite.y = this.savePos.y;
+		}	
 	}
 	else {
 		this.savePos.x += 1;
-		
 	}
 		
 	if (this.sprite.x > 1000) 
