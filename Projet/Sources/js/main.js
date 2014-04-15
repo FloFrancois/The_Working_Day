@@ -33,11 +33,14 @@ WD_game.prototype = {
 		game.time.events.loop(1000, popTache, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
-			
-		game.employees.push(new Employee(game,[100,61],nbEmployees[2], "red"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "blue"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,54],nbEmployees[0], "yellow"));
+		nbColors = ["yellow","blue","red"];
 
+		for (var i = 3 - 1; i >= 0; i--) {
+			game.employees.push(new Employee(game,[100,50],nbEmployees[i], nbColors[i]));
+		};
+		for (var i = game.employees.length - 1; i >= 0; i--) {
+			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27)
+		};
   		game.employees[1].sprite.bringToTop();
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
@@ -79,7 +82,7 @@ WD_game.prototype = {
 	plus tard on fera que ca pop un tache aléatoirement
 */
 function popTache (game) {
-	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches)
+	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches);
 	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650],[50,700]];
 	var rand = (Math.random()*this.tacheAvaible.length)|0;
 	var tache = this.tacheAvaible[rand];
@@ -88,13 +91,13 @@ function popTache (game) {
 }
 
 function showJauges (game) {
-	var i =0
+	var i = 0;
 	for (caract in game.config.employees.secretary) {
 		for (var k = game.employees.length - 1; k >= 0; k--) {
-			game.context.fillStyle = '#F22'
+			game.context.fillStyle = '#F22';
 			game.context.fillRect(150+k*350,475+i*20,game.config.maxCaract*2,5);
-			game.context.fillStyle = '#2F2'
-			game.context.fillRect(150+k*350,475+i*20, game.employees[k][caract]*2,5)
+			game.context.fillStyle = '#2F2';
+			game.context.fillRect(150+k*350,475+i*20, game.employees[k][caract]*2,5);
 			
 		};
 	i++	

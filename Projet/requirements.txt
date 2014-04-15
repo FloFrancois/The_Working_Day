@@ -2,9 +2,9 @@
 
 - generation aléatoire de tache et defillement continue des taches // done
 
-- assignation des taches a des cases speciales (employés) (drag and drop)
+- assignation des taches a des cases speciales (employés) (drag and drop) // done
 
-- jauge des cases (employés) (stress,fatigue,concentration)
+- jauge des cases (employés) (stress,fatigue,concentration)// done
 
 - jauge de dev / scoring
 
