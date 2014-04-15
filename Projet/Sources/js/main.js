@@ -1,4 +1,3 @@
-
 window.addEventListener("load",init);
 
 
@@ -35,9 +34,9 @@ WD_game.prototype = {
 
 		nbEmployees = Object.keys(game.config.employees);
 			
-		game.employees.push(new Employee(game,[100,50],nbEmployees[2], "red"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "red"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,50],nbEmployees[0], "red"));
+		game.employees.push(new Employee(game,[100,61],nbEmployees[2], "red"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "blue"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,54],nbEmployees[0], "yellow"));
 
   		game.employees[1].sprite.bringToTop();
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
@@ -46,6 +45,7 @@ WD_game.prototype = {
 		line1 = new Phaser.Line(50, 550, 1000, 550);
 	    line2 = new Phaser.Line(50, 600, 1000, 600);
 	    line3 = new Phaser.Line(50, 650, 1000, 650);
+	    line4 = new Phaser.Line(50, 700, 1000, 700);
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
@@ -66,6 +66,7 @@ WD_game.prototype = {
 		game.debug.geom(line1);
 		game.debug.geom(line2);
 		game.debug.geom(line3);
+		game.debug.geom(line4);
 
 		showJauges(game)
 	}
@@ -79,7 +80,7 @@ WD_game.prototype = {
 */
 function popTache (game) {
 	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches)
-	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650]];
+	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650],[50,700]];
 	var rand = (Math.random()*this.tacheAvaible.length)|0;
 	var tache = this.tacheAvaible[rand];
 	var pos = this.possiblePosition[rand];
@@ -100,7 +101,5 @@ function showJauges (game) {
 		};
 		j++;
 		i = 0;
-	}
-		
-		
+	}	
 }
