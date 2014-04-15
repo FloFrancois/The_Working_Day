@@ -1,6 +1,6 @@
 function Tache (game,position,type,color) {
 	this.color = color;
-	this.type = "tache_"+type;
+	this.type = "tache_"+type+"_"+color;
 	this.sprite = game.add.sprite(position[0],position[1],this.type);
 	this.sprite.bringToTop();
 	this.sprite.anchor.setTo(0.5,0.5);
@@ -27,6 +27,8 @@ Tache.prototype.update = function(game) {
 			this.savePos.y = this.sprite.y;
 		}
 		else {
+			if (this.sprite.x > 1000) 
+				this.die(game);
 			this.sprite.x += 1;
 			this.savePos.x = this.sprite.x;
 			this.sprite.y = this.savePos.y;
@@ -35,10 +37,9 @@ Tache.prototype.update = function(game) {
 	else {
 		this.savePos.x += 1;
 	}
-		
-	if (this.sprite.x > 1000) 
-		this.die(game);
 }
+		
+	
 Tache.prototype.die = function(game,type) {
 	if (type)
 		game.tachesDone++;

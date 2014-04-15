@@ -3,13 +3,19 @@ WD_begin.prototype = {
 
 	preload : function(game) {
 		game.stage.backgroundColor = '#222';
-		game.load.image('tache_ordinateur', 'Projet/Sources/assets/turret-1-cannon.gif');
-		game.load.image('tache_dossier', 'Projet/Sources/assets/turret-2-cannon.gif');
-		game.load.image('tache_telephone', 'Projet/Sources/assets/turret-6-cannon.gif');
+		game.load.image('tache_ordinateur_red', 'Projet/Sources/assets/concentration_rouge.png');
+		game.load.image('tache_ordinateur_blue', 'Projet/Sources/assets/concentration_bleu.png');
+		game.load.image('tache_ordinateur_yellow', 'Projet/Sources/assets/concentration_jaune.png');
+		game.load.image('tache_dossier_red', 'Projet/Sources/assets/sommeil_rouge.png');
+		game.load.image('tache_dossier_blue', 'Projet/Sources/assets/sommeil_bleu.png');
+		game.load.image('tache_dossier_yellow', 'Projet/Sources/assets/sommeil_jaune.png');
+		game.load.image('tache_telephone_red', 'Projet/Sources/assets/stress_rouge.png');
+		game.load.image('tache_telephone_blue', 'Projet/Sources/assets/stress_bleu.png');
+		game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
 		
-		game.load.image('bonus_cafe', 'Projet/Sources/assets/turret-2-base.gif');
-		game.load.image('bonus_clope', 'Projet/Sources/assets/turret-3-base.gif');
-		game.load.image('bonus_pillule', 'Projet/Sources/assets/turret-4-base.gif');
+		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
+		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
+		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
 				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
 		game.load.image('employee_secretary', 'Projet/Sources/assets/employee_secretary.png');
