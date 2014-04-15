@@ -30,8 +30,13 @@ WD_game.prototype = {
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
 		game.taches = [];
-		
+		game.employees = [];
+
 		game.time.events.loop(1000, popTache, this, game);
+
+		for (var i = 3 - 1; i >= 0; i--) {
+			game.employees.push(new Employee(game,[200+i*200,200],"red"))
+		};
 
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
@@ -42,6 +47,9 @@ WD_game.prototype = {
 	update : function (game) {
 		for (var i = game.taches.length - 1; i >= 0; i--) {
 			game.taches[i].update(game)
+		};
+		for (var i = game.employees.length - 1; i >= 0; i--) {
+			game.employees[i].update(game)
 		};
 	
 	},
@@ -72,5 +80,5 @@ function popTache (game) {
 	var tache = tacheAvaible[(Math.random()*tacheAvaible.length)|0];
 	var possiblePosition = [[50,550],[50,600],[50,650]]
 	var pos = possiblePosition[(Math.random()*possiblePosition.length)|0];
-	game.taches.push(new Tache(game,pos,tache));
+	game.taches.push(new Tache(game,pos,tache,"red"));
 }

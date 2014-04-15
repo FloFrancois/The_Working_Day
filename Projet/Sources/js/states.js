@@ -2,10 +2,12 @@ var WD_begin = function (game) { }
 WD_begin.prototype = {
 
 	preload : function(game) {
-		game.stage.backgroundColor = '#333';
+		game.stage.backgroundColor = '#222';
 		game.load.image('tache_ordinateur', 'Projet/Sources/assets/turret-1-cannon.gif');
 		game.load.image('tache_dossier', 'Projet/Sources/assets/turret-2-cannon.gif');
 		game.load.image('tache_telephone', 'Projet/Sources/assets/turret-6-cannon.gif');
+		
+		game.load.image('employee_red', 'Projet/Sources/assets/employee_red.png');
 		game.load.image('button', 'Projet/Sources/assets/turret-3-cannon.gif');
 	},
 

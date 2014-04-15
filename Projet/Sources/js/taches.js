@@ -1,4 +1,5 @@
-function Tache (game,position,type) {
+function Tache (game,position,type,color) {
+	this.color = color;
 	this.type = "tache_"+type;
 	this.sprite = game.add.sprite(position[0],position[1],this.type);
 	this.sprite.bringToTop();

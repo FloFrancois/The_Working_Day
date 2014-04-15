@@ -1,19 +1,49 @@
 {
 	"taches": {
 		"ordinateur":{
-			"effect_stress" : -10,
-			"effect_fatigue" : 20,
-			"effect_concentration": 100
+			"effects" :{
+				"stress" : -10,
+				"fatigue" : 20,
+				"concentration": 100
+			},
+			"reward": 100,
+			"activateAnimation":"concentration"
+			
 			},
 			"dossier":{
-				"effect_stress" : 20,
-				"effect_fatigue" : 100,
-				"effect_concentration": -10
+				"effects" :{
+					"stress" : 20,
+					"fatigue" : 100,
+					"concentration": -10
+				},
+				"reward": 100,
+				"activateAnimation":"fatigue"
 				},
 				"telephone":{
-					"effect_stress" : 100,
-					"effect_fatigue" : -10,
-					"effect_concentration": 20
+					"effects" :{
+						"stress" : 100,
+						"fatigue" : -10,
+						"concentration": 20
+				},
+				"reward": 100,
+				"activateAnimation":"stress"
+				}
+	},
+	"employees":{
+		"trainee":{
+				"stress": 10,
+				"fatigue":300,
+				"concentration": 300
+			},
+			"secretary":{
+				"stress": 300,
+				"fatigue":300,
+				"concentration": 10
+				},
+				"sedentary":{
+				"stress": 300,
+				"fatigue":10,
+				"concentration": 300
 				}
 	}
 
