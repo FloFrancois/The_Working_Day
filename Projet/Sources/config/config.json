@@ -1,5 +1,14 @@
 {
 	"taches": {
+		"bonus":{
+			"effects" :{
+				"stress" : 0,
+				"fatigue" : 0,
+				"concentration": 0
+			},
+			"reward": 1000,
+			"activateAnimation":"joie"
+		},
 		"ordinateur":{
 			"effects" :{
 				"stress" : -3,
