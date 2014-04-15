@@ -28,7 +28,7 @@ Tache.prototype.update = function(game) {
 			this.savePos.y = this.sprite.y;
 		}
 		else {
-			if (this.sprite.x > 1000) 
+			if (this.sprite.x > 1100) 
 				this.die(game,"hehe t'es mort salope biatch");
 			this.sprite.x += 1;
 			this.sprite.y = this.savePos.y;

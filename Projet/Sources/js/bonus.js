@@ -38,7 +38,7 @@ Bonus.prototype.update = function(game) {
 		this.savePos.x += 1;
 	}
 		
-	if (this.sprite.x > 1000) 
+	if (this.sprite.x > 1100) 
 		this.die(game);
 }
 Bonus.prototype.die = function(game) {

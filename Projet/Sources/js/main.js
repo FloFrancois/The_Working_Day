@@ -67,9 +67,9 @@ WD_game.prototype = {
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+		game.devJauge = game.tachesDone * game.config.valeurTache;
 		if (game.devJauge > game.config.maxDevJauge)
 			game.devJauge = game.config.maxDevJauge;
-		game.devJauge = game.tachesDone * game.config.valeurTache;
 
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){
@@ -117,9 +117,9 @@ function showJauges (game) {
 	for (caract in game.config.employees.secretary) {
 		for (var j = game.employees.length - 1; j >= 0; j--) {
 			game.context.fillStyle = '#2F2';
-			game.context.fillRect(150+j*320,75+i*15,game.config.maxCaract*2,5);
+			game.context.fillRect(150+j*320,95+i*15,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#F22';
-			game.context.fillRect(150+j*320,75+i*15, game.employees[j][caract]*2,5);
+			game.context.fillRect(150+j*320,95+i*15, game.employees[j][caract]*2,5);
 		};
 	i++	
 	}

@@ -99,9 +99,11 @@ WD_menu.prototype = {
 	},
 	update: function(game){
 		if(this.ouvert){
+			this.ouvert = 0
 			game.state.start('jeu');
 		}
 		if(this.merci){
+			this.merci = 0
 			game.state.start('fin');
 		}
 	},
