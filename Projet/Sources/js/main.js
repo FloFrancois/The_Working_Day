@@ -1,3 +1,4 @@
+
 window.addEventListener("load",init);
 
 
@@ -34,10 +35,9 @@ WD_game.prototype = {
 
 		nbEmployees = Object.keys(game.config.employees);
 			
-		game.employees.push(new Employee(game,[100,61],nbEmployees[2], "red"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "blue"));
-		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,54],nbEmployees[0], "yellow"));
-
+		game.employees.push(new Employee(game,[100,50],nbEmployees[2], "red"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+70,50],nbEmployees[1], "red"));
+		game.employees.push(new Employee(game,[game.employees[0].sprite.width+game.employees[1].sprite.width+65,50],nbEmployees[0], "red"));
   		game.employees[1].sprite.bringToTop();
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
@@ -45,7 +45,6 @@ WD_game.prototype = {
 		line1 = new Phaser.Line(50, 550, 1000, 550);
 	    line2 = new Phaser.Line(50, 600, 1000, 600);
 	    line3 = new Phaser.Line(50, 650, 1000, 650);
-	    line4 = new Phaser.Line(50, 700, 1000, 700);
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
@@ -66,7 +65,6 @@ WD_game.prototype = {
 		game.debug.geom(line1);
 		game.debug.geom(line2);
 		game.debug.geom(line3);
-		game.debug.geom(line4);
 
 		showJauges(game)
 	}
@@ -80,7 +78,7 @@ WD_game.prototype = {
 */
 function popTache (game) {
 	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches)
-	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650],[50,700]];
+	this.possiblePosition = this.possiblePosition || [[50,550],[50,600],[50,650]];
 	var rand = (Math.random()*this.tacheAvaible.length)|0;
 	var tache = this.tacheAvaible[rand];
 	var pos = this.possiblePosition[rand];
@@ -88,18 +86,15 @@ function popTache (game) {
 }
 
 function showJauges (game) {
-	var j = 0
-	var i = 0
-	for(employee in game.config.employees)
-	{
-		for (caract in game.config.employees[employee]) {
+	var i =0
+	for (caract in game.config.employees.secretary) {
+		for (var k = game.employees.length - 1; k >= 0; k--) {
 			game.context.fillStyle = '#F22'
-			game.context.fillRect(150+j*350,475+i*20,game.config.maxCaract*2,5);
+			game.context.fillRect(150+k*350,475+i*20,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#2F2'
-			game.context.fillRect(150+j*350,475+i*20, game.config.employees[employee][caract]*2,5)
-			i++
+			game.context.fillRect(150+k*350,475+i*20, game.employees[k][caract]*2,5)
+			
 		};
-		j++;
-		i = 0;
-	}	
+	i++	
+	}
 }
