@@ -33,12 +33,9 @@ WD_game.prototype = {
 
 		game.time.events.loop(1000, popTache, this, game);
 
-		lol = Object.keys(game.config.employees);
-		console.log(lol)
-		for (var i = lol.length - 1; i >= 0; i--) {
-			// game.employees.push(new Employee(game,[200,200],lol[i]));
-			game.employees.push(new Employee(game,[200+i*200,200],lol[i], "red"));
-			// game.employees.push(new Employee(game,[200+i*200,200],"sedentary"));
+		nbEmployees = Object.keys(game.config.employees);
+		for (var i = nbEmployees.length - 1; i >= 0; i--) {
+			game.employees.push(new Employee(game,[200+i*200,200],nbEmployees[i], "red"));
 		};
 
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
@@ -77,12 +74,10 @@ WD_game.prototype = {
 	plus tard on fera que ca pop un tache aléatoirement
 */
 function popTache (game) {
-	var tacheAvaible = Object.keys(game.config.taches);
-	var possiblePosition = [[50,550],[50,600],[50,650]];
+	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches)
+	this.possiblePosition = this.possiblePosition ||  [[50,550],[50,600],[50,650]];
 	var rand = (Math.random()*tacheAvaible.length)|0;
-
 	var tache = tacheAvaible[rand];
-	
 	var pos = possiblePosition[rand];
 	game.taches.push(new Tache(game,pos,tache,"red"));
 }
