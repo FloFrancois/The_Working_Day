@@ -2,6 +2,7 @@ var WD_begin = function (game) { }
 WD_begin.prototype = {
 
 	preload : function(game) {
+		game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		game.stage.backgroundColor = '#222';
 
 		game.load.image('arriere_plan', 'Projet/Sources/assets/Fond.png');
@@ -123,14 +124,15 @@ var WD_end = function (game) {}
 WD_end.prototype = {
 
 	create : function(game) {
-		var w = 1280;
-		var h = 720;
-		label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)+0.5, 'The End',
-			{ font: '16px Arial', fill: '#fff' });
+		
+		game.add.text(10, 10, "HAHA ON EST TROP BO", game.style);
+
+
+
+		label1 = game.add.text(game.width*0.8, game.height*0.8+0.5, 'The End',game.style);
 		label1.anchor.setTo(0.5, 0.5);
 
-		this.boutonJouer = this.add.button(this.world.width / 2, this.world.height / 2 + 50,
-			'sortie', this.goMenu, this, 2, 0, 1);
+		this.boutonJouer = this.add.button(game.width *0.8, game.height *0.8 + 50,'sortie', this.goMenu, this, 2, 0, 1);
 		this.boutonJouer.anchor.setTo(0.5, 0.5);
 	},
 

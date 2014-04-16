@@ -81,8 +81,7 @@ WD_game.prototype = {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
 		};
   		game.employees[1].sprite.bringToTop();
-  		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
-		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
+  		
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
