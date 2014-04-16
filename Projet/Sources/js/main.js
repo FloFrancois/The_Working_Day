@@ -69,7 +69,7 @@ WD_game.prototype = {
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
-
+ 
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
 

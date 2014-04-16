@@ -36,8 +36,23 @@ WD_begin.prototype = {
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
 				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
-		game.load.image('employee_secretary', 'Projet/Sources/assets/employee_secretary.png');
+
+		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
+		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
+		game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');
+		game.load.image('employee_secretary4', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
+		game.load.image('employee_secretaryOverlay', 'Projet/Sources/assets/employee_secretary/overlay_bureau0001.png');
+		game.load.image('employee_secretaryFront1', 'Projet/Sources/assets/employee_secretary/premier_plan0001.png');
+		game.load.image('employee_secretaryFront2', 'Projet/Sources/assets/employee_secretary/premier_plan0002.png');
+		game.load.image('employee_secretaryFront3', 'Projet/Sources/assets/employee_secretary/premier_plan0003.png');
+		game.load.image('employee_secretaryFront4', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
+		game.load.spritesheet('employee_secretaryPerso1', 'Projet/Sources/assets/employee_secretary/Fille/fille1.png',126,232,24);
+		game.load.spritesheet('employee_secretaryPerso2', 'Projet/Sources/assets/employee_secretary/Fille/fille2.png',120,221,24);
+		game.load.spritesheet('employee_secretaryPerso3', 'Projet/Sources/assets/employee_secretary/Fille/fille3.png',118,228,9,0,-2);
+		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',116,227,8,0,-1);
+
 		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');
+
 
 		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
 		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
