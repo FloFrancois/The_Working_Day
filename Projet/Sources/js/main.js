@@ -32,11 +32,21 @@ WD_game.prototype = {
 		game.add.sprite(30, 620, "rail_sommeil");
 		game.add.sprite(30, 670, "rail_stress");
 
-		game.add.sprite(1105, 200, "calendrier");
-		game.add.sprite(1113, 220, "croix");
-		game.add.sprite(1125, 35, "horloge");
-		game.add.sprite(1125, 35, "horloge_petite");
-		game.add.sprite(1125, 35, "horloge_grande");
+		game.add.sprite(1125, 145, "horloge");
+		game.add.sprite(1125, 145, "horloge_petite");
+		game.add.sprite(1125, 145, "horloge_grande");
+		game.add.sprite(1105, 300, "calendrier");
+		game.add.sprite(1113, 320, "croix");
+
+		this.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 1, 1, 1);
+		this.boutonSound.anchor.setTo(0.5, 0.5);
+		this.boutonSound.scale.setTo(0.8,0.8);
+		this.boutonReset = this.add.button(1205, 620, 'reset', resetGame, this, 2, 0, 1);
+		this.boutonReset.anchor.setTo(0.5, 0.5);
+		this.boutonReset.scale.setTo(0.8,0.8);
+		this.boutonSortie = this.add.button(1205, 680, 'sortie', goMenu, this, 2, 0, 1);
+		this.boutonSortie.anchor.setTo(0.5, 0.5);
+		this.boutonSortie.scale.setTo(0.8,0.8);
 
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
@@ -46,9 +56,9 @@ WD_game.prototype = {
 		game.devJauge = 0;
 		game.tachesDone = 0;
 
-		game.time.events.loop(1000, popTache, this, game);
-		game.time.events.loop(10000, popBonus, this, game);
-		game.time.events.loop(750, reduceCaract, this, game);
+		game.time.events.loop(2000, popTache, this, game);
+		game.time.events.loop(7500, popBonus, this, game);
+		game.time.events.loop(1000, reduceCaract, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
@@ -57,7 +67,7 @@ WD_game.prototype = {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
-			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27)
+			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
 		};
   		game.employees[1].sprite.bringToTop();
   		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
@@ -84,6 +94,11 @@ WD_game.prototype = {
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].update(game)
 		};
+
+		if(this.retour){
+			game.state.start('menu');
+			this.retour = 0;
+		}
 	
 	},
 
@@ -149,4 +164,28 @@ function reduceCaract (game) {
 				game.employees[i][caract] = 0;
 		}
 	};
+}
+
+function goMenu(game){
+	this.retour = 1;
+}
+
+function cutSound(game){
+	if (this.ecoute) {
+		console.log("SON");
+		this.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 1, 1, 1);
+		this.boutonSound.anchor.setTo(0.5, 0.5);
+		this.boutonSound.scale.setTo(0.8,0.8);
+	}
+	else{
+		console.log("MUTE");
+		this.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 1, 1, 1);
+		this.boutonSound.anchor.setTo(0.5, 0.5);
+		this.boutonSound.scale.setTo(0.8,0.8);
+	}
+	this.ecoute = !this.ecoute;
+}
+
+function resetGame(game){
+	this.retour = 1;
 }

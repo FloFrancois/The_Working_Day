@@ -38,6 +38,8 @@ WD_begin.prototype = {
 		game.load.image('employee_secretary', 'Projet/Sources/assets/employee_secretary.png');
 		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');
 
+		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
+		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
 		game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);
 		game.load.spritesheet('reset', 'Projet/Sources/assets/reset_button.png',70,70);
 		game.load.spritesheet('sortie', 'Projet/Sources/assets/sortie_button.png',70,70);

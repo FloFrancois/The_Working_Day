@@ -57,7 +57,7 @@
 			"activateAnimation":"snif"
 		}
 	},
-	"employees":{
+		"employees":{
 		"trainee":{
 			"stress": 10,
 			"fatigue":30,
