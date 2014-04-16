@@ -245,6 +245,7 @@ function reduceCaract (game) {
 }
 
 function goMenu(game){
+	game.mainTheme.stop();
 	this.retour = 1;
 }
 
@@ -273,18 +274,3 @@ function addSec (game) {
 function addMin (game) {
 	game.grandeAiguille.rotation += Math.PI*0.01
 }
-
-// function changeMusic (game) {
-// 	var coco=0;
-// 	for (caract in game.config.employees.secretary) {
-// 		for (var i = game.employees.length - 1; i >= 0; i--) {
-// 			coco += game.employees[i][caract];
-// 		};
-// 	}
-// 	if(coco >= 50){
-// 		game.mainTheme1.onLoop.add(function (){
-// 			game.mainTheme1.stop();
-// 		});
-// 		game.mainTheme2.play('', 0, 1, true);
-// 	}
-// }
