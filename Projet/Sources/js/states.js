@@ -81,11 +81,11 @@ WD_menu.prototype = {
 	create: function (game){
 		var w = 1280;
 		var h = 720;
-		label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)-200, 'The Working Day',
+		label1 = game.add.text(this.world.width / 2, this.world.height / 2 - 200, 'The Working Day',
 			{ font: '80px Arial', fill: '#fff' });
-		label2 = game.add.text(Math.floor(w/2)-200, Math.floor(h/2)+120+0.5, 'Jouer',
+		label2 = game.add.text(this.world.width / 2 - 200, this.world.height / 2 + 120 + 0.5, 'Jouer',
 			{ font: '16px Arial', fill: '#fff' });
-		label3 = game.add.text(Math.floor(w/2)+200, Math.floor(h/2)+120+0.5, 'Credits',
+		label3 = game.add.text(this.world.width / 2 + 200, this.world.height / 2 + 120 + 0.5, 'Credits',
 			{ font: '16px Arial', fill: '#fff' });
 		label1.anchor.setTo(0.5, 0.5);
 		label2.anchor.setTo(0.5, 0.5);
