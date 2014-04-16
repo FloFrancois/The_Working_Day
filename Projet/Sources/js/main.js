@@ -54,7 +54,7 @@ WD_game.prototype = {
 		nbColors = ["yellow","blue","red"];
 
 		for (var i = 3 - 1; i >= 0; i--) {
-			game.employees.push(new Employee(game,[20,50],nbEmployees[i], nbColors[i]));
+			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27)
@@ -117,9 +117,9 @@ function showJauges (game) {
 	for (caract in game.config.employees.secretary) {
 		for (var j = game.employees.length - 1; j >= 0; j--) {
 			game.context.fillStyle = '#2F2';
-			game.context.fillRect(150+j*320,95+i*15,game.config.maxCaract*2,5);
+			game.context.fillRect(150+j*320,480+i*15,game.config.maxCaract*2,5);
 			game.context.fillStyle = '#F22';
-			game.context.fillRect(150+j*320,95+i*15, game.employees[j][caract]*2,5);
+			game.context.fillRect(150+j*320,480+i*15, game.employees[j][caract]*2,5);
 		};
 	i++	
 	}

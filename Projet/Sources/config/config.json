@@ -2,27 +2,27 @@
 	"taches": {
 		"ordinateur":{
 			"effects" :{
-				"concentration" : 20,
+				"stress" : 5,
 				"fatigue" : 5,
-				"stress": 5
+				"concentration": 20
 			},
 			"reward": 100,
 			"activateAnimation":"concentration"
 		},
 		"dossier":{
 			"effects" :{
-				"concentration" : 5,
+				"stress" : 5,
 				"fatigue" : 20,
-				"stress": 5
+				"concentration": 5
 			},
 			"reward": 100,
 			"activateAnimation":"fatigue"
 		},
 		"telephone":{
 			"effects" :{
-				"concentration" : 5,
+				"stress" : 20,
 				"fatigue" : 5,
-				"stress": 20
+				"concentration": 5
 			},
 			"reward": 100,
 			"activateAnimation":"stress"
@@ -31,27 +31,27 @@
 	"bonus": {
 		"cafe":{
 			"effects" :{
-				"concentration" : -5,
+				"stress" : -5,
 				"fatigue" : -50,
-				"stress": -5
+				"concentration": -5
 			},
 			"reward": 100,
 			"activateAnimation":"bois"
 		},
 		"clope":{
 			"effects" :{
-				"concentration" : -5,
+				"stress" : -50,
 				"fatigue" : -5,
-				"stress": -50
+				"concentration": -5
 			},
 			"reward": 100,
 			"activateAnimation":"fume"
 		},
 		"pillule":{
 			"effects" :{
-				"concentration" : -50,
+				"stress" : -5,
 				"fatigue" : -5,
-				"stress": -5
+				"concentration": -50
 			},
 			"reward": 100,
 			"activateAnimation":"snif"
@@ -59,19 +59,19 @@
 	},
 	"employees":{
 		"secretary":{
-			"concentration": 10,
+			"stress": 30,
 			"fatigue":30,
-			"stress": 30
+			"concentration": 10
 		},
 		"sedentary":{
-			"concentration": 30,
+			"stress": 30,
 			"fatigue":10,
-			"stress": 30
+			"concentration": 30
 		},
 		"trainee":{
-			"concentration": 30,
+			"stress": 10,
 			"fatigue":30,
-			"stress": 10
+			"concentration": 30
 		}
 	},
 	"maxCaract":100,
