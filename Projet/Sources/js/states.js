@@ -41,15 +41,30 @@ WD_begin.prototype = {
 		game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
 
 		game.load.image('picto_concentration', 'Projet/Sources/assets/picto_focus.png');
-		game.load.image('picto_dodo', 'Projet/Sources/assets/picto_dodo.png');
+		game.load.image('picto_sommeil', 'Projet/Sources/assets/picto_dodo.png');
 		game.load.image('picto_stress', 'Projet/Sources/assets/picto_stress.png');
 		
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
+
+		game.load.image('jauge_secretary_concentration', 'Projet/Sources/assets/jauge_fille_focus_01.png');
+		game.load.image('jauge_secretary_sommeil', 'Projet/Sources/assets/jauge_fille_dodo_02.png');
+		game.load.image('jauge_secretary_stress', 'Projet/Sources/assets/jauge_fille_stress_03.png');
+
+		game.load.image('jauge_trainee_concentration', 'Projet/Sources/assets/jauge_stagiaire_focus_01.png');
+		game.load.image('jauge_trainee_sommeil', 'Projet/Sources/assets/jauge_stagiaire_dodo_02.png');
+		game.load.image('jauge_trainee_stress', 'Projet/Sources/assets/jauge_stagiaire_stress_03.png');
+
+		game.load.image('jauge_sedentary_concentration', 'Projet/Sources/assets/jauge_quadra_focus_01.png');
+		game.load.image('jauge_sedentary_sommeil', 'Projet/Sources/assets/jauge_quadra_dodo_02.png');
+		game.load.image('jauge_sedentary_stress', 'Projet/Sources/assets/jauge_quadra_stress_03.png');
+
+		game.load.image('jauge_boss_production', 'Projet/Sources/assets/jauge_boss_production.png');
+		game.load.image('jauge_boss_stress', 'Projet/Sources/assets/jauge_boss_stress.png');
 				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
-		
+
 		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
 		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
 		game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');

@@ -29,7 +29,6 @@ WD_game.prototype = {
 
 		game.add.sprite(0, 0, "arriere_plan");
 
-		
 		game.Theme1 = game.add.audio('m1');
 		game.Theme2 = game.add.audio('m2');
 		game.Theme3 = game.add.audio('m3');
@@ -39,6 +38,7 @@ WD_game.prototype = {
 		game.pillule = game.add.audio('m7');
 		game.baillementF = game.add.audio('m8');
 		game.baillementM = game.add.audio('m9');
+		
 		game.mainTheme = game.Theme1;
 		game.mainTheme.play('', 0, 1, true);
 
@@ -47,11 +47,26 @@ WD_game.prototype = {
 		game.add.sprite(30, 620, "rail_sommeil");
 		game.add.sprite(30, 670, "rail_stress");
 
-		game.add.sprite(1200, 200, "horloge").anchor.setTo(0.5, 0.5);
-		game.petiteAiguille = game.add.sprite(1200, 200, "horloge_petite_aiguille");
+		game.add.sprite(50, 10, "jauge_boss_production");
+		game.add.sprite(50, 30, "jauge_boss_stress");
+
+		game.add.sprite(150, 480, "jauge_secretary_concentration");
+		game.add.sprite(150, 495, "jauge_secretary_sommeil");
+		game.add.sprite(150, 510, "jauge_secretary_stress");
+
+		game.add.sprite(470, 480, "jauge_sedentary_concentration");
+		game.add.sprite(470, 495, "jauge_sedentary_sommeil");
+		game.add.sprite(470, 510, "jauge_sedentary_stress");
+
+		game.add.sprite(790, 480, "jauge_trainee_concentration");
+		game.add.sprite(790, 495, "jauge_trainee_sommeil");
+		game.add.sprite(790, 510, "jauge_trainee_stress");
+
+		game.add.sprite(1185, 200, "horloge").anchor.setTo(0.5, 0.5);
+		game.petiteAiguille = game.add.sprite(1185, 200, "horloge_petite_aiguille");
 		game.petiteAiguille.anchor.setTo(0.5, 0.5);
 
-		game.grandeAiguille = game.add.sprite(1200, 200, "horloge_grande_aiguille");
+		game.grandeAiguille = game.add.sprite(1185, 200, "horloge_grande_aiguille");
 		game.grandeAiguille.anchor.setTo(0.5, 0.5);
 
 		game.add.sprite(1105, 300, "calendrier");
@@ -87,9 +102,9 @@ WD_game.prototype = {
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
 
-			game.add.sprite(130+i*320, 480, "rail_concentration").scale.setTo(0.2,0.2);
-			game.add.sprite(130+i*320, 495, "rail_sommeil").scale.setTo(0.2,0.2);
-			game.add.sprite(130+i*320, 510, "rail_stress").scale.setTo(0.2,0.2);
+			game.add.sprite(130+i*320, 472, "picto_concentration");
+			game.add.sprite(130+i*320, 488, "picto_sommeil");
+			game.add.sprite(130+i*320, 502, "picto_stress");
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
@@ -123,15 +138,21 @@ WD_game.prototype = {
 
 		if(this.retour){
 			this.retour = 0;
+			game.mainTheme.stop();
 			game.state.start('menu');
 		}
-		var coco=0;
+
+		if(this.ecoute){
+			game.mainTheme.stop();
+		}
+
+		var totalStress=0;
 		for (caract in game.config.employees.secretary) {
 			for (var i = game.employees.length - 1; i >= 0; i--) {
-				coco += game.employees[i][caract];
+				totalStress += game.employees[i][caract];
 			};
 		}
-		if(coco < 300){
+		if(totalStress < 300){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zip){
 					game.mainTheme.stop();
@@ -140,10 +161,9 @@ WD_game.prototype = {
 					game.zip = true;
 					game.zup = game.zap = game.zop = false;
 				}
-				
 			});
 		}
-		else if(coco >= 300 && coco < 500){
+		else if(totalStress >= 300 && totalStress < 500){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zup){
 					game.mainTheme.stop();
@@ -152,10 +172,9 @@ WD_game.prototype = {
 					game.zup = true;
 					game.zip = game.zap = game.zop = false;
 				}
-				
 			});
 		}
-		else if(coco >= 500 && coco < 600){
+		else if(totalStress >= 500 && totalStress < 600){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zap){
 					game.mainTheme.stop();
@@ -164,10 +183,9 @@ WD_game.prototype = {
 					game.zap = true;
 					game.zip = game.zup = game.zop = false;
 				}
-
 			});
 		}
-		else if(coco >= 600){
+		else if(totalStress >= 600){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zop){
 					game.mainTheme.stop();
@@ -183,8 +201,8 @@ WD_game.prototype = {
 	//__________________________________________RENDER____________________________________________________________________________________
 
 	render: function  (game) {
-		showJauges(game);
-		showDevJauge(game);
+		// showJauges(game);
+		// showDevJauge(game);
 	}
 
 }
@@ -245,7 +263,6 @@ function reduceCaract (game) {
 }
 
 function goMenu(game){
-	game.mainTheme.stop();
 	this.retour = 1;
 }
 
@@ -264,13 +281,13 @@ function cutSound(game){
 }
 
 function resetGame(game){
-	this.retour = 1;
+	this.restart = 1;
 }
 
 function addSec (game) {
-	game.petiteAiguille.rotation += Math.PI*0.01
+	game.petiteAiguille.rotation += Math.PI*0.01;
 }
 
 function addMin (game) {
-	game.grandeAiguille.rotation += Math.PI*0.01
+	game.grandeAiguille.rotation += Math.PI*0.01;
 }
