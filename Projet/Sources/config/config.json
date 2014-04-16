@@ -58,20 +58,20 @@
 		}
 	},
 	"employees":{
-		"secretary":{
-			"stress": 30,
+		"trainee":{
+			"stress": 10,
 			"fatigue":30,
-			"concentration": 10
+			"concentration": 30
 		},
 		"sedentary":{
 			"stress": 30,
 			"fatigue":10,
 			"concentration": 30
 		},
-		"trainee":{
-			"stress": 10,
+		"secretary":{
+			"stress": 30,
 			"fatigue":30,
-			"concentration": 30
+			"concentration": 10
 		}
 	},
 	"maxCaract":100,

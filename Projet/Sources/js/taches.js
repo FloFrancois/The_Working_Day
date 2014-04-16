@@ -1,7 +1,8 @@
 function Tache (game,position,type,color) {
 	this.color = color;
-	this.type = "tache_"+type+"_"+color;
-	this.sprite = game.add.sprite(position[0],position[1],this.type);
+	this.typeSprite = "tache_"+type+"_"+color;
+	this.type = type;
+	this.sprite = game.add.sprite(position[0],position[1],this.typeSprite);
 	this.sprite.bringToTop();
 	this.sprite.anchor.setTo(0.5,0.5);
 	this.sprite.scale.setTo(0.8,0.8);
