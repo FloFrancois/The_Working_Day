@@ -33,13 +33,6 @@ WD_game.prototype = {
 		game.add.sprite(30, 620, "rail_sommeil");
 		game.add.sprite(30, 670, "rail_stress");
 
-		uno = game.add.sprite(130, 480, "rail_concentration");
-		uno.scale.setTo(0.2,0.2);
-		duo = game.add.sprite(130, 495, "rail_sommeil");
-		duo.scale.setTo(0.2,0.2);
-		trio = game.add.sprite(130, 510, "rail_stress");
-		trio.scale.setTo(0.2,0.2);
-
 		game.add.sprite(1200, 200, "horloge").anchor.setTo(0.5, 0.5);
 		game.petiteAiguille = game.add.sprite(1200, 200, "horloge_petite_aiguille");
 		game.petiteAiguille.anchor.setTo(0.5, 0.5);
@@ -79,6 +72,10 @@ WD_game.prototype = {
 
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
+
+			game.add.sprite(130+i*320, 480, "rail_concentration").scale.setTo(0.2,0.2);
+			game.add.sprite(130+i*320, 495, "rail_sommeil").scale.setTo(0.2,0.2);
+			game.add.sprite(130+i*320, 510, "rail_stress").scale.setTo(0.2,0.2);
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
@@ -187,12 +184,12 @@ function goMenu(game){
 function cutSound(game){
 	if (this.ecoute) {
 		console.log("SON");
-		game.boutonSound = game.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
+		game.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
 	}
 	else{
 		console.log("MUTE");
-		game.boutonSound = game.add.button(1205, 560, 'son_off', cutSound, this, 0, 1, 1);
+		game.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
 	}
 	this.ecoute = !this.ecoute;
