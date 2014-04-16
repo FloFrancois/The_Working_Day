@@ -10,8 +10,8 @@ WD_begin.prototype = {
 		game.load.image('croix', 'Projet/Sources/assets/calendrier_croix.png');
 
 		game.load.image('horloge', 'Projet/Sources/assets/horlorge.png');
-		game.load.image('horloge_grande', 'Projet/Sources/assets/horlorge__aiguille_grande.png');
-		game.load.image('horloge_petite', 'Projet/Sources/assets/horlorge__aiguille_petite.png');
+		game.load.image('horloge_grande_aiguille', 'Projet/Sources/assets/horlorge__aiguille_grande.png');
+		game.load.image('horloge_petite_aiguille', 'Projet/Sources/assets/horlorge__aiguille_petite.png');
 
 		game.load.image('rail_power_up', 'Projet/Sources/assets/rail_power_up.png');
 		game.load.image('rail_concentration', 'Projet/Sources/assets/rail_concentration.png');
@@ -136,6 +136,7 @@ WD_end.prototype = {
 
 	update: function(game){
 		if(this.retour){
+			this.retour = 0;
 			game.state.start('menu');
 		}
 	},

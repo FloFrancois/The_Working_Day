@@ -32,21 +32,22 @@ WD_game.prototype = {
 		game.add.sprite(30, 620, "rail_sommeil");
 		game.add.sprite(30, 670, "rail_stress");
 
-		game.add.sprite(1125, 145, "horloge");
-		game.add.sprite(1125, 145, "horloge_petite");
-		game.add.sprite(1125, 145, "horloge_grande");
+		game.add.sprite(1200, 200, "horloge").anchor.setTo(0.5, 0.5);
+		game.petiteAiguille = game.add.sprite(1200, 200, "horloge_petite_aiguille");
+		game.petiteAiguille.anchor.setTo(0.5, 0.5);
+
+		game.grandeAiguille = game.add.sprite(1200, 200, "horloge_grande_aiguille");
+		game.grandeAiguille.anchor.setTo(0.5, 0.5);
+
 		game.add.sprite(1105, 300, "calendrier");
 		game.add.sprite(1113, 320, "croix");
 
-		this.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 1, 1, 1);
-		this.boutonSound.anchor.setTo(0.5, 0.5);
-		this.boutonSound.scale.setTo(0.8,0.8);
-		this.boutonReset = this.add.button(1205, 620, 'reset', resetGame, this, 2, 0, 1);
-		this.boutonReset.anchor.setTo(0.5, 0.5);
-		this.boutonReset.scale.setTo(0.8,0.8);
-		this.boutonSortie = this.add.button(1205, 680, 'sortie', goMenu, this, 2, 0, 1);
-		this.boutonSortie.anchor.setTo(0.5, 0.5);
-		this.boutonSortie.scale.setTo(0.8,0.8);
+		game.boutonSound = game.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
+		game.boutonSound.anchor.setTo(0.5, 0.5);
+		game.boutonReset = game.add.button(1205, 620, 'reset', resetGame, this, 2, 0, 1);
+		game.boutonReset.anchor.setTo(0.5, 0.5);
+		game.boutonSortie = game.add.button(1205, 680, 'sortie', goMenu, this, 2, 0, 1);
+		game.boutonSortie.anchor.setTo(0.5, 0.5);
 
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
@@ -59,6 +60,8 @@ WD_game.prototype = {
 		game.time.events.loop(2000, popTache, this, game);
 		game.time.events.loop(7500, popBonus, this, game);
 		game.time.events.loop(1000, reduceCaract, this, game);
+		game.time.events.loop(100, addSec, this, game);
+		game.time.events.loop(10, addMin, this, game);
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
@@ -173,13 +176,13 @@ function goMenu(game){
 function cutSound(game){
 	if (this.ecoute) {
 		console.log("SON");
-		this.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 1, 1, 1);
+		this.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
 		this.boutonSound.anchor.setTo(0.5, 0.5);
 		this.boutonSound.scale.setTo(0.8,0.8);
 	}
 	else{
 		console.log("MUTE");
-		this.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 1, 1, 1);
+		this.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 0, 1, 1);
 		this.boutonSound.anchor.setTo(0.5, 0.5);
 		this.boutonSound.scale.setTo(0.8,0.8);
 	}
@@ -188,4 +191,12 @@ function cutSound(game){
 
 function resetGame(game){
 	this.retour = 1;
+}
+
+function addSec (game) {
+	game.petiteAiguille.rotation += Math.PI*0.01
+}
+
+function addMin (game) {
+	game.grandeAiguille.rotation += Math.PI*0.01
 }
