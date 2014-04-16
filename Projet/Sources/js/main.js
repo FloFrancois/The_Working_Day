@@ -2,8 +2,9 @@ window.addEventListener("load",init);
 
 
 function init(){
-	if (!game) {
-		var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
+	// if (!game) {
+	// 	var 
+		game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
 		game.state.add('debut' , WD_begin);
 		game.state.add('charger' , WD_load);
 		game.state.add('menu' , WD_menu);
@@ -11,7 +12,7 @@ function init(){
 		game.state.add('jeu' , WD_game);
 		game.state.add('fin' , WD_end);
 		game.state.start('debut');
-	};
+	// };
 }
 
 
@@ -27,6 +28,18 @@ WD_game.prototype = {
 	create : function (game) {
 
 		game.add.sprite(0, 0, "arriere_plan");
+
+		game.mainTheme1 = game.add.audio('m1');
+		game.mainTheme2 = game.add.audio('m2');
+		game.mainTheme3 = game.add.audio('m3');
+		game.mainTheme4 = game.add.audio('m4');
+		game.clavier = game.add.audio('m5');
+		game.cafe = game.add.audio('m6');
+		game.pillule = game.add.audio('m7');
+		game.baillementF = game.add.audio('m8');
+		game.baillementM = game.add.audio('m9');
+		
+		game.mainTheme1.play('', 0, 1, true);
 
 		game.add.sprite(30, 520, "rail_power_up");
 		game.add.sprite(30, 570, "rail_concentration");
@@ -69,7 +82,7 @@ WD_game.prototype = {
 
 		nbEmployees = Object.keys(game.config.employees);
 		nbColors = ["yellow","blue","red"];
- 
+
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
 
@@ -81,12 +94,14 @@ WD_game.prototype = {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
 		};
   		game.employees[1].sprite.bringToTop();
-  		
+  		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
+		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+
 		game.devJauge = game.tachesDone * game.config.valeurTache;
 		if (game.devJauge > game.config.maxDevJauge)
 			game.devJauge = game.config.maxDevJauge;
@@ -109,7 +124,40 @@ WD_game.prototype = {
 			this.retour = 0;
 			game.state.start('menu');
 		}
-	
+
+		var coco=0;
+		for (caract in game.config.employees.secretary) {
+			for (var i = game.employees.length - 1; i >= 0; i--) {
+				coco += game.employees[i][caract];
+			};
+		}
+		if(coco >= 210){
+			game.mainTheme1.onLoop.add(function (){
+				game.mainTheme1.stop();
+				if(!game.zap){
+					game.mainTheme2.play('', 0, 1, true);
+					game.zap = 1;
+				}
+			});
+		}
+		if(coco >= 300){
+			game.mainTheme2.onLoop.add(function (){
+				game.mainTheme2.stop();
+				if(!game.zip){
+					game.mainTheme3.play('', 0, 1, true);
+					game.zip = 1;
+				}
+			});
+		}
+		if(coco >= 500){
+			game.mainTheme3.onLoop.add(function (){
+				game.mainTheme3.stop();
+				if(!game.zup){
+					game.mainTheme4.play('', 0, 1, true);
+					game.zup = 1;
+				}
+			});
+		}
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________
@@ -205,3 +253,18 @@ function addSec (game) {
 function addMin (game) {
 	game.grandeAiguille.rotation += Math.PI*0.01
 }
+
+// function changeMusic (game) {
+// 	var coco=0;
+// 	for (caract in game.config.employees.secretary) {
+// 		for (var i = game.employees.length - 1; i >= 0; i--) {
+// 			coco += game.employees[i][caract];
+// 		};
+// 	}
+// 	if(coco >= 50){
+// 		game.mainTheme1.onLoop.add(function (){
+// 			game.mainTheme1.stop();
+// 		});
+// 		game.mainTheme2.play('', 0, 1, true);
+// 	}
+// }

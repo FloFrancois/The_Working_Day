@@ -2,8 +2,17 @@ var WD_begin = function (game) { }
 WD_begin.prototype = {
 
 	preload : function(game) {
-		game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
 		game.stage.backgroundColor = '#222';
+
+		game.load.audio('m1', [ 'Projet/Sources/sounds/musique.ogg']);
+		game.load.audio('m2', [ 'Projet/Sources/sounds/musique2.ogg']);
+		game.load.audio('m3', [ 'Projet/Sources/sounds/musique3.ogg']);
+		game.load.audio('m4', [ 'Projet/Sources/sounds/musique4.ogg']);
+		game.load.audio('m5', 'Projet/Sources/sounds/Clavier.mp3');
+		game.load.audio('m6', 'Projet/Sources/sounds/CAFE.mp3');
+		game.load.audio('m7', 'Projet/Sources/sounds/PILLULE.mp3');
+		game.load.audio('m8', 'Projet/Sources/sounds/Baillement fille.mp3');
+		game.load.audio('m9', 'Projet/Sources/sounds/Baillement homme.mp3');
 
 		game.load.image('arriere_plan', 'Projet/Sources/assets/Fond.png');
 
@@ -30,13 +39,17 @@ WD_begin.prototype = {
 		game.load.image('tache_telephone_red', 'Projet/Sources/assets/stress_rouge.png');
 		game.load.image('tache_telephone_blue', 'Projet/Sources/assets/stress_bleu.png');
 		game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
+
+		game.load.image('picto_concentration', 'Projet/Sources/assets/picto_focus.png');
+		game.load.image('picto_dodo', 'Projet/Sources/assets/picto_dodo.png');
+		game.load.image('picto_stress', 'Projet/Sources/assets/picto_stress.png');
 		
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
 				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
-
+		
 		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
 		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
 		game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');
@@ -52,7 +65,6 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',116,227,8,0,-1);
 
 		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');
-
 
 		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
 		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
@@ -139,12 +151,10 @@ var WD_end = function (game) {}
 WD_end.prototype = {
 
 	create : function(game) {
-		
-		game.add.text(10, 10, "HAHA ON EST TROP BO", game.style);
-
-
-
-		label1 = game.add.text(game.width*0.8, game.height*0.8+0.5, 'The End',game.style);
+		var w = 1280;
+		var h = 720;
+		label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)+0.5, 'The End',
+			{ font: '16px Arial', fill: '#fff' });
 		label1.anchor.setTo(0.5, 0.5);
 
 		this.boutonJouer = this.add.button(game.width *0.8, game.height *0.8 + 50,'sortie', this.goMenu, this, 2, 0, 1);
