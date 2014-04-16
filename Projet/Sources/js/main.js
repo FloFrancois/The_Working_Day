@@ -29,17 +29,18 @@ WD_game.prototype = {
 
 		game.add.sprite(0, 0, "arriere_plan");
 
-		game.mainTheme1 = game.add.audio('m1');
-		game.mainTheme2 = game.add.audio('m2');
-		game.mainTheme3 = game.add.audio('m3');
-		game.mainTheme4 = game.add.audio('m4');
+		
+		game.Theme1 = game.add.audio('m1');
+		game.Theme2 = game.add.audio('m2');
+		game.Theme3 = game.add.audio('m3');
+		game.Theme4 = game.add.audio('m4');
 		game.clavier = game.add.audio('m5');
 		game.cafe = game.add.audio('m6');
 		game.pillule = game.add.audio('m7');
 		game.baillementF = game.add.audio('m8');
 		game.baillementM = game.add.audio('m9');
-		
-		game.mainTheme1.play('', 0, 1, true);
+		game.mainTheme = game.Theme1;
+		game.mainTheme.play('', 0, 1, true);
 
 		game.add.sprite(30, 520, "rail_power_up");
 		game.add.sprite(30, 570, "rail_concentration");
@@ -124,37 +125,56 @@ WD_game.prototype = {
 			this.retour = 0;
 			game.state.start('menu');
 		}
-
 		var coco=0;
 		for (caract in game.config.employees.secretary) {
 			for (var i = game.employees.length - 1; i >= 0; i--) {
 				coco += game.employees[i][caract];
 			};
 		}
-		if(coco >= 210){
-			game.mainTheme1.onLoop.add(function (){
-				game.mainTheme1.stop();
-				if(!game.zap){
-					game.mainTheme2.play('', 0, 1, true);
-					game.zap = 1;
-				}
-			});
-		}
-		if(coco >= 300){
-			game.mainTheme2.onLoop.add(function (){
-				game.mainTheme2.stop();
+		if(coco < 300){
+			game.mainTheme.onLoop.add(function (){
 				if(!game.zip){
-					game.mainTheme3.play('', 0, 1, true);
-					game.zip = 1;
+					game.mainTheme.stop();
+					game.mainTheme = game.Theme1;
+					game.mainTheme.play('',0,1,true);
+					game.zip = true;
+					game.zup = game.zap = game.zop = false;
 				}
+				
 			});
 		}
-		if(coco >= 500){
-			game.mainTheme3.onLoop.add(function (){
-				game.mainTheme3.stop();
+		else if(coco >= 300 && coco < 500){
+			game.mainTheme.onLoop.add(function (){
 				if(!game.zup){
-					game.mainTheme4.play('', 0, 1, true);
-					game.zup = 1;
+					game.mainTheme.stop();
+					game.mainTheme = game.Theme2;
+					game.mainTheme.play('',0,1,true);
+					game.zup = true;
+					game.zip = game.zap = game.zop = false;
+				}
+				
+			});
+		}
+		else if(coco >= 500 && coco < 600){
+			game.mainTheme.onLoop.add(function (){
+				if(!game.zap){
+					game.mainTheme.stop();
+					game.mainTheme = game.Theme3;
+					game.mainTheme.play('',0,1,true);
+					game.zap = true;
+					game.zip = game.zup = game.zop = false;
+				}
+
+			});
+		}
+		else if(coco >= 600){
+			game.mainTheme.onLoop.add(function (){
+				if(!game.zop){
+					game.mainTheme.stop();
+					game.mainTheme = game.Theme4;
+					game.mainTheme.play('',0,1,true);
+					game.zop = true;
+					game.zip = game.zup = game.zap = false;
 				}
 			});
 		}
