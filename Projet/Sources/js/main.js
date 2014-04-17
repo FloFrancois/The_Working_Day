@@ -11,6 +11,7 @@ function init(){
 		game.state.add('tuto' , WD_tuto);
 		game.state.add('jeu' , WD_game);
 		game.state.add('fin' , WD_end);
+		game.state.add('credits' , WD_credits);
 		game.state.start('debut');
 	// };
 }
@@ -132,7 +133,7 @@ WD_game.prototype = {
 			game.days++;
 			game.tachesDone = 0
 		}
-
+		
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){
 				if (game.employees[i][caract] < 0) 
@@ -156,11 +157,10 @@ WD_game.prototype = {
 
 		if(this.retour){
 			this.retour = 0;
-			game.state.start('menu');
+			this.ecoute = 0;
 			game.mainTheme.stop();
 			game.state.start('menu');
 		}
-
 
 		game.totalStress=0;
 		for (caract in game.config.employees.secretary) {
@@ -226,6 +226,11 @@ WD_game.prototype = {
 			game.mainTheme.stop();
 			game.state.start('fin');
 		};
+		if(this.restart){
+			this.restart = 0;
+			game.mainTheme.stop();
+			game.state.start('jeu');
+		}
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________
