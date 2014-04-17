@@ -8,7 +8,7 @@ function init(){
 		game.state.add('debut' , WD_begin);
 		game.state.add('charger' , WD_load);
 		game.state.add('menu' , WD_menu);
-		// game.state.add('option' , WD_option);
+		game.state.add('tuto' , WD_tuto);
 		game.state.add('jeu' , WD_game);
 		game.state.add('fin' , WD_end);
 		game.state.start('debut');
@@ -60,7 +60,6 @@ WD_game.prototype = {
 		game.grandeAiguille.anchor.setTo(0.5, 0.5);
 
 		game.add.sprite(1105, 300, "calendrier");
-		game.add.sprite(1113, 320, "croix");
 
 		game.boutonSound = game.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
@@ -79,7 +78,7 @@ WD_game.prototype = {
 		game.devJauge = 0;
 		game.tachesDone = 0;
 
-		game.time.events.loop(2000, popTache, this, game);
+		game.timerTache = game.time.events.loop(2000, popTache, this, game);
 		game.time.events.loop(7500, popBonus, this, game);
 		game.time.events.loop(100, reduceCaract, this, game);
 		game.time.events.loop(100, addSec, this, game);
@@ -98,15 +97,41 @@ WD_game.prototype = {
   		game.employees[1].sprite.bringToTop();
 		game.employees[1].persoSprite.bringToTop();
 		game.employees[1].frontSprite.bringToTop();
+		game.crosses = [];
+		game.crosses.push(game.add.sprite(1113, 320, "croix"));
+		game.speed = 1;
+		game.days = 0;
+		game.saveDays = 0;
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+		if (game.days != game.saveDays) {
+			game.crosses.push(game.add.sprite(1113+(game.crosses[game.crosses.length-1].width*( game.crosses.length % 6)+2), 320+(game.crosses[game.crosses.length-1].height*Math.floor(game.crosses.length/6)), "croix"))
+			for (var i = game.crosses.length - 1; i >= 0; i--) {
+				game.crosses[i].alpha = 0;
+				game.crosses[i].oldX = game.crosses[i].x;
+				game.crosses[i].oldY = game.crosses[i].y;
+				game.crosses[i].x -= 50;
+				game.crosses[i].y -= 50;
+				game.crosses[i].scale.setTo(5,5);
+
+				game.add.tween(game.crosses[i]).to({x:game.crosses[i].oldX,y:game.crosses[i].oldY},500,Phaser.Easing.Exponential.In(),true,100*i)
+				game.add.tween(game.crosses[i]).to({alpha:1},500,Phaser.Easing.Exponential.In(),true,100*i)
+				game.add.tween(game.crosses[i].scale).to({x:1,y:1},500,Phaser.Easing.Exponential.In(),true,100*i)
+			};
+			game.time.events.remove(game.timerTache);
+			game.timerTache = game.time.events.loop(2000/(game.days), popTache, this, game);
+			game.saveDays = game.days;
+			game.speed+= 0.5;
+		};
 
 		game.devJauge = game.tachesDone * game.config.valeurTache;
-		if (game.devJauge > game.config.maxDevJauge)
-			game.devJauge = game.config.maxDevJauge;
+		if (game.devJauge >= game.config.maxDevJauge){
+			game.days++;
+			game.tachesDone = 0
+		}
 
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			for(caract in game.config.employees.trainee){
@@ -122,11 +147,20 @@ WD_game.prototype = {
 			game.employees[i].update(game)
 		};
 
+		if(this.ecoute && game.mainTheme.isPlaying){
+			game.mainTheme.stop();
+		}
+		if(!this.ecoute && !game.mainTheme.isPlaying){
+			game.mainTheme.play();
+		}
+
 		if(this.retour){
 			this.retour = 0;
+			game.state.start('menu');
 			game.mainTheme.stop();
 			game.state.start('menu');
 		}
+
 
 		game.totalStress=0;
 		for (caract in game.config.employees.secretary) {

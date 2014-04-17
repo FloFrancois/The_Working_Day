@@ -112,12 +112,28 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
 		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
 		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
+		
+		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
+		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
+		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
+		game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
+		game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
+
+		game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
+		game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
+		game.load.image('tuto_03', 'Projet/Sources/assets/tuto/tuto_03.png');
+		game.load.image('tuto_04', 'Projet/Sources/assets/tuto/tuto_04.png');
+		game.load.image('tuto_05', 'Projet/Sources/assets/tuto/tuto_05.png');
+		game.load.image('tuto_06', 'Projet/Sources/assets/tuto/tuto_06.png');
 
 		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
 		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
 		game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);
 		game.load.spritesheet('reset', 'Projet/Sources/assets/reset_button.png',70,70);
 		game.load.spritesheet('sortie', 'Projet/Sources/assets/sortie_button.png',70,70);
+		
+		game.load.spritesheet('flecheD', 'Projet/Sources/assets/tuto/fleche_droite.png',70,70);
+		game.load.spritesheet('flecheG', 'Projet/Sources/assets/tuto/fleche_gauche.png',70,70);
 	},
 
 	//__________________________________________CREATE____________________________________________________________________________________
@@ -133,9 +149,9 @@ WD_load.prototype = {
 	preload : function(game) {
 		var w = 1280;
 		var h = 720;
-		label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)-20, 'The Working Day',
+		label1 = game.add.text(game.width * 0.5, game.height *0.5-20, 'The Working Day',
 			{ font: '30px Arial', fill: '#fff' });
-		label2 = game.add.text(Math.floor(w/2)+0.5, Math.floor(h/2)+20+0.5, 'loading...',
+		label2 = game.add.text(game.width * 0.5+0.5, game.height *0.5+20+0.5, 'loading...',
 			{ font: '16px Arial', fill: '#fff' });
 		label1.anchor.setTo(0.5, 0.5);
 		label2.anchor.setTo(0.5, 0.5);
@@ -154,35 +170,41 @@ var WD_menu = function (game) {}
 WD_menu.prototype = {
 
 	create: function (game){
-		var w = 1280;
-		var h = 720;
-		label1 = game.add.text(this.world.width / 2, this.world.height / 2 - 200, 'The Working Day',
-			{ font: '80px Arial', fill: '#fff' });
-		label2 = game.add.text(this.world.width / 2 - 200, this.world.height / 2 + 120 + 0.5, 'Jouer',
-			{ font: '16px Arial', fill: '#fff' });
-		label3 = game.add.text(this.world.width / 2 + 200, this.world.height / 2 + 120 + 0.5, 'Credits',
-			{ font: '16px Arial', fill: '#fff' });
-		label1.anchor.setTo(0.5, 0.5);
-		label2.anchor.setTo(0.5, 0.5);
-		label3.anchor.setTo(0.5, 0.5);
+			game.add.sprite(0, 0, 'menu_fond');
+			titre = game.add.sprite(275, 95, 'menu_titre');
+			titre.scale.setTo(0.9, 0.9);
 
-		this.boutonJouer = this.add.button(this.world.width / 2 - 200, this.world.height / 2 + 200,
-			'sortie', this.startGame, this, 2, 0, 1);
-		this.boutonJouer.anchor.setTo(0.5, 0.5);
 
-		this.boutonCredits = this.add.button(this.world.width / 2 + 200, this.world.height / 2 + 200,
-			'option', this.goCredits, this, 2, 0, 1);
-		this.boutonCredits.anchor.setTo(0.5, 0.5);
+			this.boutonJouer = this.add.button(game.width * 0.5 - 50, game.height *0.3 + 225,
+			'play', this.startGame, this, 2, 0, 1);
+			this.boutonJouer.anchor.setTo(0.5,0.5)
+			this.boutonJouer.scale.setTo(0.9, 0.9);
+			this.boutonJouer.useHandCursor = true;
+
+			this.boutonCredits = this.add.button(game.width * 0.8 + 275, game.height *0.3 + 100,
+			'exit', this.goCredits, this, 2, 0, 1);
+			this.boutonCredits.anchor.setTo(0.5,0.5);
+			this.boutonCredits.useHandCursor = true;
+
+			this.boutonTuto = this.add.button(game.width * 0.5, game.height *0.6 + 225,
+			'stylo', this.goTuto, this, 2, 0, 1);
+			this.boutonTuto.anchor.setTo(0.5, 0.5);
+
 	},
 	update: function(game){
 		if(this.ouvert){
-			this.ouvert = 0
+			this.ouvert = 0;
 			game.state.start('jeu');
 		}
 		if(this.merci){
-			this.merci = 0
+			this.merci = 0;
 			game.state.start('fin');
 		}
+		if(this.learn){
+			this.learn = 0;
+			game.state.start('tuto');
+		}
+
 	},
 
 	startGame: function(game){
@@ -191,7 +213,93 @@ WD_menu.prototype = {
 
 	goCredits: function(game){
 		this.merci = 1;
+	},
+	goTuto: function(game){
+		this.learn = 1;
 	}
+}
+
+var WD_tuto = function (game) {}
+WD_tuto.prototype = {
+
+	create: function(game) {
+		this.pages = 1
+		pictureOld = game.add.sprite(game.world.centerX, game.world.centerY, 'tuto_01');
+		pictureOld.anchor.setTo(0.5, 0.5);
+
+		pictureNext = game.add.sprite(game.world.centerX, game.world.centerY, 'tuto_02');
+		pictureNext.anchor.setTo(0.5, 0.5);
+		pictureNext.alpha = 0;
+		this.boutonDroite = this.add.button(game.width *0.95, game.height *0.5 + 50,
+				'flecheD', this.tutoPlus, this, 2, 0, 1);
+			this.boutonDroite.anchor.setTo(0.5, 0.5);
+		this.boutonMenu = this.add.button(game.width *0.92, game.height *0.8 + 50,
+			'sortie', this.goMenu, this, 2, 0, 1);
+		this.boutonMenu.anchor.setTo(0.5, 0.5);
+	},
+
+	update: function(game){
+			
+		if(this.retour){
+			this.retour = 0;
+			game.state.start('menu');
+		}
+		if (this.pages == 7 && this.boutonDroite) {
+			this.boutonDroite.destroy();
+			this.prout = false;
+		};
+		if(this.jouer){
+			this.jouer = 0;
+			game.state.start('jeu');
+		}
+		if(this.changD){
+			this.fadePictures(game);
+			this.changD = 0;
+		}
+		if(this.changG){
+			this.fadePictures(game);
+			this.changG = 0;
+		}
+
+		
+	},
+
+	fadePictures: function(game){
+	if (pictureOld.alpha === 1){
+		tween = game.add.tween(pictureOld).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
+		game.add.tween(pictureNext).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+	}
+	else{
+		game.add.tween(pictureOld).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+		tween = game.add.tween(pictureNext).to( { alpha: 0 }, 500, Phaser.Easing.Linear.None, true);
+	}
+	tween.onComplete.add(this.changePicture, this);
+	},
+
+	changePicture: function(game) {
+		if (pictureOld.alpha === 0){
+			pictureOld.loadTexture('tuto_0' + this.pages);
+		}
+		else{
+			pictureNext.loadTexture('tuto_0' + this.pages);
+		}
+		
+	},
+
+	goMenu: function(game){
+		this.retour = 1;
+	},
+
+	goPlay: function(game){
+		this.jouer = 1;
+	},
+
+	tutoPlus: function(game){
+		this.changD = 1;
+		this.pages ++;
+	},
+
+
 }
 
 var WD_end = function (game) {}

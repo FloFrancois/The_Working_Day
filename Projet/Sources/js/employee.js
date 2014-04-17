@@ -95,12 +95,12 @@ Employee.prototype.update = function(game) {
 			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite)) {
 					switch(this.type){
 					case "employee_trainee":
-						if (game.taches[i].type == "telephone") 
+						if (game.taches[i].type == "ordinateur") 
 							this.penalty = 0.5;
 					break;
 
 					case "employee_secretary":
-						if (game.taches[i].type == "ordinateur") 
+						if (game.taches[i].type == "telephone") 
 							this.penalty = 0.5;
 					break;
 
