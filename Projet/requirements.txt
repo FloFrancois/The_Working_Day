@@ -18,6 +18,9 @@
 
 - equilibrage
 
+- si une des jauges est pleine on la possibilité de lancer un mini jeu, si on le reussi on reprend le perso avec une jauge a moitié pleine sinon on a perdu le perso
+
+
 
 
 
