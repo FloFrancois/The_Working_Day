@@ -143,16 +143,16 @@ WD_game.prototype = {
 		}
 
 		if(this.ecoute){
-			game.mainTheme.stop();
+			game.mainTheme.mute = true;
 		}
 
-		var totalStress=0;
+		game.totalStress=0;
 		for (caract in game.config.employees.secretary) {
 			for (var i = game.employees.length - 1; i >= 0; i--) {
-				totalStress += game.employees[i][caract];
+				game.totalStress += game.employees[i][caract];
 			};
 		}
-		if(totalStress < 300){
+		if(game.totalStress < 300){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zip){
 					game.mainTheme.stop();
@@ -163,7 +163,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(totalStress >= 300 && totalStress < 500){
+		else if(game.totalStress >= 300 && game.totalStress < 500){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zup){
 					game.mainTheme.stop();
@@ -174,7 +174,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(totalStress >= 500 && totalStress < 600){
+		else if(game.totalStress >= 500 && game.totalStress < 600){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zap){
 					game.mainTheme.stop();
@@ -185,7 +185,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(totalStress >= 600){
+		else if(game.totalStress >= 600){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zop){
 					game.mainTheme.stop();
@@ -269,11 +269,13 @@ function goMenu(game){
 function cutSound(game){
 	if (this.ecoute) {
 		console.log("SON");
+		game.musique
 		game.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
 	}
 	else{
 		console.log("MUTE");
+		game.musique
 		game.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
 	}
@@ -285,9 +287,9 @@ function resetGame(game){
 }
 
 function addSec (game) {
-	game.petiteAiguille.rotation += Math.PI*0.01;
+	game.petiteAiguille.rotation += (Math.PI*0.01) + game.totalStress / 1800;
 }
 
 function addMin (game) {
-	game.grandeAiguille.rotation += Math.PI*0.01;
+	game.grandeAiguille.rotation += (Math.PI*0.01) + game.totalStress / 1800;
 }
