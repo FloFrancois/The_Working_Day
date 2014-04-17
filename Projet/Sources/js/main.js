@@ -128,7 +128,7 @@ WD_game.prototype = {
 
 		if(this.retour){
 			this.retour = 0;
-			game.state.start('fin');
+			game.state.start('menu');
 			game.mainTheme.stop();
 		}
 

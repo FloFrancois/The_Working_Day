@@ -92,9 +92,6 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
 		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
 
-
-		game.load.image('flecheD', 'Projet/Sources/assets/tuto/fleche_droite.png');
-		game.load.image('flecheG', 'Projet/Sources/assets/tuto/fleche_gauche.png');
 		game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
 		game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
 		game.load.image('tuto_03', 'Projet/Sources/assets/tuto/tuto_03.png');
@@ -107,6 +104,8 @@ WD_begin.prototype = {
 		game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);
 		game.load.spritesheet('reset', 'Projet/Sources/assets/reset_button.png',70,70);
 		game.load.spritesheet('sortie', 'Projet/Sources/assets/sortie_button.png',70,70);
+		game.load.spritesheet('flecheD', 'Projet/Sources/assets/tuto/fleche_droite.png',70,70);
+		game.load.spritesheet('flecheG', 'Projet/Sources/assets/tuto/fleche_gauche.png',70,70);
 	},
 
 	//__________________________________________CREATE____________________________________________________________________________________
@@ -194,21 +193,31 @@ WD_menu.prototype = {
 	}
 }
 
-var WD_tuto = function (game) {}
+var WD_tuto = function (game) {this.pages = 3;}
 WD_tuto.prototype = {
 
 	create: function(game) {
-		game.add.image(0,0,'tuto_01');
-		label1 = game.add.text(game.width * 0.5, game.height *0.5, 'The Tutoriel',
-			{ font: '16px Arial', fill: '#fff' });
-		label1.anchor.setTo(0.5, 0.5);
+		
 
-		this.boutonJouer = this.add.button(game.width *0.2, game.height *0.8 + 50,
-			'sortie', this.goPlay, this, 2, 0, 1);
-		this.boutonJouer.anchor.setTo(0.5, 0.5);
+		pictureA = game.add.sprite(game.world.centerX, game.world.centerY, 'tuto_01');
+		pictureA.anchor.setTo(0.5, 0.5);
 
-		this.boutonMenu = this.add.button(game.width *0.8, game.height *0.8 + 50,
-			'option', this.goMenu, this, 2, 0, 1);
+		pictureB = game.add.sprite(game.world.centerX, game.world.centerY, 'tuto_02');
+		pictureB.anchor.setTo(0.5, 0.5);
+		pictureB.alpha = 0;
+
+		this.boutonGauche = this.add.button(game.width *0.08, game.height *0.5 + 50,
+			'flecheG', this.tutoMoins, this, 2, 0, 1);
+		this.boutonGauche.anchor.setTo(0.5, 0.5);
+		this.boutonGauche.scale.setTo(1, 1);
+
+		this.boutonDroite = this.add.button(game.width *0.92, game.height *0.5 + 50,
+			'flecheD', this.tutoPlus, this, 2, 0, 1);
+		this.boutonDroite.anchor.setTo(0.5, 0.5);
+		this.boutonDroite.scale.setTo(1, 1);
+
+		this.boutonMenu = this.add.button(game.width *0.92, game.height *0.8 + 50,
+			'sortie', this.goMenu, this, 2, 0, 1);
 		this.boutonMenu.anchor.setTo(0.5, 0.5);
 	},
 
@@ -222,6 +231,46 @@ WD_tuto.prototype = {
 			this.jouer = 0;
 			game.state.start('jeu');
 		}
+
+		if(this.changD){
+		console.log('salut', this.pages);
+			this.fadePictures(game);
+			this.changD = 0;
+		}
+
+		if(this.changG){
+		console.log('bye',this.pages);
+			this.fadePictures(game);
+			this.changG = 0;
+		}
+	},
+
+	fadePictures: function(game){
+	var tween;
+	if (pictureA.alpha === 1){
+		tween = game.add.tween(pictureA).to( { alpha: 0 }, 700, Phaser.Easing.Linear.None, true);
+		game.add.tween(pictureB).to( { alpha: 1 }, 700, Phaser.Easing.Linear.None, true);
+	}
+	else{
+		game.add.tween(pictureA).to( { alpha: 1 }, 700, Phaser.Easing.Linear.None, true);
+		tween = game.add.tween(pictureB).to( { alpha: 0 }, 700, Phaser.Easing.Linear.None, true);
+	}
+	tween.onComplete.add(this.changePicture, this);
+	},
+
+	changePicture: function(game) {
+		if (pictureA.alpha === 0){
+			pictureA.loadTexture('tuto_0' + this.pages);
+		}
+		else{
+			pictureB.loadTexture('tuto_0' + this.pages);
+		}
+		if (this.pages > 6){
+			this.pages = 1;
+		}
+		if (this.pages < 1){
+			this.pages = 6;
+		}
 	},
 
 	goMenu: function(game){
@@ -230,6 +279,16 @@ WD_tuto.prototype = {
 
 	goPlay: function(game){
 		this.jouer = 1;
+	},
+
+	tutoPlus: function(game){
+		this.changD = 1;
+		this.pages ++;
+	},
+
+	tutoMoins: function(game){
+		this.changG = 1;
+		this.pages --;
 	}
 }
 
