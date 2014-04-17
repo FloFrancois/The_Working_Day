@@ -41,13 +41,15 @@ WD_begin.prototype = {
 		game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
 
 		game.load.image('picto_concentration', 'Projet/Sources/assets/picto_focus.png');
-		game.load.image('picto_sommeil', 'Projet/Sources/assets/picto_dodo.png');
+		game.load.image('picto_dodo', 'Projet/Sources/assets/picto_dodo.png');
 		game.load.image('picto_stress', 'Projet/Sources/assets/picto_stress.png');
 		
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
-
+				
+		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
+		
 		game.load.image('jauge_secretary_concentration', 'Projet/Sources/assets/jauge_fille_focus_01.png');
 		game.load.image('jauge_secretary_sommeil', 'Projet/Sources/assets/jauge_fille_dodo_02.png');
 		game.load.image('jauge_secretary_stress', 'Projet/Sources/assets/jauge_fille_stress_03.png');
@@ -62,8 +64,6 @@ WD_begin.prototype = {
 
 		game.load.image('jauge_boss_production', 'Projet/Sources/assets/jauge_boss_production.png');
 		game.load.image('jauge_boss_stress', 'Projet/Sources/assets/jauge_boss_stress.png');
-				
-		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
 
 		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
 		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
@@ -79,9 +79,19 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_secretaryPerso3', 'Projet/Sources/assets/employee_secretary/Fille/fille3.png',136,249,9,0,3);
 		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',136,249,8,0,3);
 
-
-		game.load.image('employee_sedentary', 'Projet/Sources/assets/employee_sedentary.png');
-
+		game.load.image('employee_sedentary1', 'Projet/Sources/assets/employee_sedentary/blue0001.png');
+		game.load.image('employee_sedentary2', 'Projet/Sources/assets/employee_sedentary/blue0002.png');
+		game.load.image('employee_sedentary3', 'Projet/Sources/assets/employee_sedentary/blue0003.png');
+		game.load.image('employee_sedentary4', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
+		game.load.image('employee_sedentaryFront1', 'Projet/Sources/assets/employee_sedentary/overlay0001.png');
+		game.load.image('employee_sedentaryFront2', 'Projet/Sources/assets/employee_sedentary/overlay0002.png');
+		game.load.image('employee_sedentaryFront3', 'Projet/Sources/assets/employee_sedentary/overlay0003.png');
+		game.load.image('employee_sedentaryFront4', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
+		game.load.spritesheet('employee_sedentaryPerso1', 'Projet/Sources/assets/employee_sedentary/stress/stress1.png',175,258,28,0,4);
+		game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
+		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
+		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
+		
 		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
 		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
 		game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);

@@ -6,7 +6,6 @@ function Tache (game,position,type,color) {
 
 	this.sprite.bringToTop();
 	this.sprite.anchor.setTo(0.5,0.5);
-	this.sprite.scale.setTo(0.8,0.8);
 
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.sprite.inputEnabled = true;
