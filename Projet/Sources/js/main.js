@@ -50,6 +50,18 @@ WD_game.prototype = {
 		game.add.sprite(50, 10, "jauge_boss_production");
 		game.add.sprite(50, 30, "jauge_boss_stress");
 
+		game.add.sprite(150, 480, "jauge_secretary_concentration");
+		game.add.sprite(150, 495, "jauge_secretary_sommeil");
+		game.add.sprite(150, 510, "jauge_secretary_stress");
+
+		game.add.sprite(470, 480, "jauge_sedentary_concentration");
+		game.add.sprite(470, 495, "jauge_sedentary_sommeil");
+		game.add.sprite(470, 510, "jauge_sedentary_stress");
+
+		game.add.sprite(790, 480, "jauge_trainee_concentration");
+		game.add.sprite(790, 495, "jauge_trainee_sommeil");
+		game.add.sprite(790, 510, "jauge_trainee_stress");
+
 		game.add.sprite(1185, 200, "horloge").anchor.setTo(0.5, 0.5);
 		game.petiteAiguille = game.add.sprite(1185, 200, "horloge_petite_aiguille");
 		game.petiteAiguille.anchor.setTo(0.5, 0.5);
@@ -89,6 +101,10 @@ WD_game.prototype = {
 
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
+
+			game.add.sprite(130+i*320, 472, "picto_concentration");
+			game.add.sprite(130+i*320, 488, "picto_sommeil");
+			game.add.sprite(130+i*320, 502, "picto_stress");
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);

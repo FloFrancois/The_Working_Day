@@ -15,10 +15,6 @@ function Employee (game,pos,type,color) {
 	else
 		this.sprite = game.add.sprite(pos[0],pos[1],this.type,0);
 
-	this.jauge_concentration = game.add.sprite(-1000, 480, "jauge_"+type+"_concentration");
-	this.jauge_fatigue = game.add.sprite(-1000, 495, "jauge_"+type+"_sommeil");
-	this.jauge_stress = game.add.sprite(-1000, 510, "jauge_"+type+"_stress");
-
 
 	for(var attribute in game.config.employees[type]) 
 		this[attribute] = game.config.employees[type][attribute];
@@ -40,22 +36,11 @@ Employee.prototype.update = function(game) {
 		};
 		totalAttributes = 0
 
-	if (!this.sucetteALaViande) { // MANGE TON EASTER EGG !
-		this.sucetteALaViande = true;
-		this.jauge_concentration.x = this.sprite.x+this.sprite.width*0.25 ;
-		this.jauge_fatigue.x = this.sprite.x+this.sprite.width*0.25;
-		this.jauge_stress.x = this.sprite.x+this.sprite.width*0.25;
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 472+7, "picto_concentration");
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 488+7, "picto_dodo");
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 502+7, "picto_stress");
-	};
-
 	for(attribute in game.config.employees[this.type.substr(9)]){
 		if (this[attribute] > game.config.maxCaract)
 			this[attribute] = game.config.maxCaract
-			totalAttributes += this[attribute];
-			this["jauge_"+attribute].scale.x = this[attribute]/game.config.maxCaract;
-		};
+		totalAttributes += this[attribute];
+	}
 	if (totalAttributes <= 100)
 		this.levelStress = 1;
 	if (totalAttributes > 100) 
@@ -64,11 +49,6 @@ Employee.prototype.update = function(game) {
 		this.levelStress = 3;
 	if (totalAttributes > 200)
 		this.levelStress = 4;
-
-	
-
-
-
 
 	for (var i = game.taches.length - 1; i >= 0; i--) {
 		if (game.taches[i].sprite.input.isDragged == false) {
