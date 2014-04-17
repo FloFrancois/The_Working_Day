@@ -2,17 +2,16 @@ window.addEventListener("load",init);
 
 
 function init(){
-	// if (!game) {
-	// 	var 
-		game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
+	if (!game) {
+		var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
 		game.state.add('debut' , WD_begin);
 		game.state.add('charger' , WD_load);
 		game.state.add('menu' , WD_menu);
-		// game.state.add('option' , WD_option);
+		// game.state.add('tuto' , WD_tuto);
 		game.state.add('jeu' , WD_game);
 		game.state.add('fin' , WD_end);
 		game.state.start('debut');
-	// };
+	};
 }
 
 
@@ -89,6 +88,10 @@ WD_game.prototype = {
 
 		for (var i = 3 - 1; i >= 0; i--) {
 			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
+
+			// game.add.sprite(130+i*320, 472, "picto_concentration");
+			// game.add.sprite(130+i*320, 488, "picto_sommeil");
+			// game.add.sprite(130+i*320, 502, "picto_stress");
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
@@ -126,8 +129,11 @@ WD_game.prototype = {
 			game.state.start('menu');
 		}
 
-		if(this.ecoute){
-			game.mainTheme.mute = true;
+		if(this.ecoute && game.mainTheme.isPlaying){
+			game.mainTheme.pause();
+		}
+		else if(!this.ecoute && !game.mainTheme.isPlaying){
+			game.mainTheme.play();
 		}
 
 		game.totalStress=0;
@@ -185,8 +191,7 @@ WD_game.prototype = {
 	//__________________________________________RENDER____________________________________________________________________________________
 
 	render: function  (game) {
-		// showJauges(game);
-		// showDevJauge(game);
+
 	}
 
 }
@@ -207,19 +212,6 @@ function popTache (game) {
 	game.taches.push(new Tache(game,pos,tache,color));
 }
 
-function showJauges (game) {
-	var i = 0;
-	for (caract in game.config.employees.secretary) {
-		for (var j = game.employees.length - 1; j >= 0; j--) {
-			game.context.fillStyle = '#2F2';
-			game.context.fillRect(150+j*320,480+i*15,game.config.maxCaract*2,5);
-			game.context.fillStyle = '#F22';
-			game.context.fillRect(150+j*320,480+i*15, game.employees[j][caract]*2,5);
-		};
-	i++	
-	}
-}
-
 function popBonus (game) {
 	this.bonusAvaible = this.bonusAvaible || Object.keys(game.config.bonus)
 	this.rail = this.rail || [50,540];
@@ -227,13 +219,6 @@ function popBonus (game) {
 	var bonus = this.bonusAvaible[rand];
 	var pos = this.rail;
 	game.taches.push(new Bonus(game,pos,bonus));
-}
-
-function showDevJauge (game) {
-	game.context.fillStyle = '#F22';
-	game.context.fillRect(50,25,game.config.maxDevJauge,10);
-	game.context.fillStyle = '#2F2';
-	game.context.fillRect(50,25,game.devJauge,10);
 }
 
 function reduceCaract (game) {	
@@ -251,17 +236,17 @@ function goMenu(game){
 }
 
 function cutSound(game){
-	if (this.ecoute) {
-		console.log("SON");
-		game.musique
+	if (this.ecoute) {;
+		this.muted = 0;
 		game.boutonSound = this.add.button(1205, 560, 'son_on', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
+		console.log("SON", this.muted);
 	}
 	else{
-		console.log("MUTE");
-		game.musique
+		this.muted = 1;
 		game.boutonSound = this.add.button(1205, 560, 'son_off', cutSound, this, 0, 1, 1);
 		game.boutonSound.anchor.setTo(0.5, 0.5);
+		console.log("MUTE", this.muted);
 	}
 	this.ecoute = !this.ecoute;
 }
