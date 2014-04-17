@@ -2,16 +2,17 @@ window.addEventListener("load",init);
 
 
 function init(){
-	if (!game) {
-		var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
+	// if (!game) {
+	// 	var 
+		game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
 		game.state.add('debut' , WD_begin);
 		game.state.add('charger' , WD_load);
 		game.state.add('menu' , WD_menu);
-		game.state.add('tuto' , WD_tuto);
+		// game.state.add('option' , WD_option);
 		game.state.add('jeu' , WD_game);
 		game.state.add('fin' , WD_end);
 		game.state.start('debut');
-	};
+	// };
 }
 
 
@@ -40,15 +41,16 @@ WD_game.prototype = {
 		
 		game.mainTheme = game.Theme1;
 		game.mainTheme.play('', 0, 1, true);
+		game.add.sprite(0,0,"arriere_plan_bureau").scale.setTo(0.970,1);
+		game.add.sprite(10, 520, "rail_power_up");
+		game.add.sprite(10, 570, "rail_concentration");
+		game.add.sprite(10, 620, "rail_sommeil");
+		game.add.sprite(10, 670, "rail_stress");
 
-		game.add.sprite(30, 520, "rail_power_up");
-		game.add.sprite(30, 570, "rail_concentration");
-		game.add.sprite(30, 620, "rail_sommeil");
-		game.add.sprite(30, 670, "rail_stress");
-
+		game.add.sprite(50,10,"conteneur_boss_production");
+		game.add.sprite(50,40,"conteneur_boss_stress");
 		game.jaugeBossProd = game.add.sprite(50, 10, "jauge_boss_production");
-		game.jaugeBossStress = game.add.sprite(50, 30, "jauge_boss_stress");
-
+		game.jaugeBossStress = game.add.sprite(50, 40, "jauge_boss_stress");
 
 		game.add.sprite(1185, 200, "horloge").anchor.setTo(0.5, 0.5);
 		game.petiteAiguille = game.add.sprite(1185, 200, "horloge_petite_aiguille");
@@ -88,13 +90,14 @@ WD_game.prototype = {
 		nbColors = ["yellow","blue","red"];
 
 		for (var i = 3 - 1; i >= 0; i--) {
-			game.employees.push(new Employee(game,[20,75],nbEmployees[i], nbColors[i]));
+			game.employees.push(new Employee(game,[-18,45],nbEmployees[i], nbColors[i]));
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			game.employees[i].sprite.x += i*(game.employees[i].sprite.width-27);
 		};
-  		//game.style = {font: "bold 15pt Arial", fill: "#ffffff", align: "center", stroke: "#258acc", strokeThickness: 3};
-		//game.hud.life =  game.add.text(10, 10, "Life: "+ game.player.health, game.style);
+  		game.employees[1].sprite.bringToTop();
+		game.employees[1].persoSprite.bringToTop();
+		game.employees[1].frontSprite.bringToTop();
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
@@ -119,17 +122,10 @@ WD_game.prototype = {
 			game.employees[i].update(game)
 		};
 
-		if(this.ecoute && game.mainTheme.isPlaying){
-			game.mainTheme.stop();
-		}
-		if(!this.ecoute && !game.mainTheme.isPlaying){
-			game.mainTheme.play();
-		}
-
 		if(this.retour){
 			this.retour = 0;
-			game.state.start('menu');
 			game.mainTheme.stop();
+			game.state.start('menu');
 		}
 
 		game.totalStress=0;
@@ -139,7 +135,7 @@ WD_game.prototype = {
 			};
 		}
 		game.jaugeBossProd.scale.x = game.devJauge/game.config.maxDevJauge;
-		game.jaugeBossStress.scale.x = game.totalStress/900;
+		game.jaugeBossStress.scale.x = game.totalStress/700;
 		if(game.totalStress < 300){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zip){
@@ -173,7 +169,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(game.totalStress >= 600){
+		else if(game.totalStress >= 600 && game.totalStress < 700){
 			game.mainTheme.onLoop.add(function (){
 				if(!game.zop){
 					game.mainTheme.stop();
@@ -184,6 +180,18 @@ WD_game.prototype = {
 				}
 			});
 		}
+		else if(game.totalStress >= 700 && !game.gameOverSprite){
+			game.gameOverSprite = game.add.sprite(0,0,'gameOver')
+			game.gameOverSprite.alpha = 0;
+			game.gameOverSprite.bringToTop();
+			game.add.tween(game.gameOverSprite).to({alpha:1},3000,null,true).onComplete.add(function(){gameOver = true})
+			game.dying = true;
+		}
+		if (typeof gameOver !== "undefined") {
+			game.dying = false;
+			game.mainTheme.stop();
+			game.state.start('fin');
+		};
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________
@@ -200,24 +208,29 @@ WD_game.prototype = {
 	plus tard on fera que ca pop un tache aléatoirement
 */
 function popTache (game) {
-	this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches);
-	this.possiblePosition = this.possiblePosition || [[50,590],[50,640],[50,690]];
-	this.colors = this.colors || ["red","blue","yellow"];
-	var color = this.colors[(Math.random()*3)|0]
-	var rand = (Math.random()*this.tacheAvaible.length)|0;
-	var tache = this.tacheAvaible[rand];
-	var pos = this.possiblePosition[rand];
-	game.taches.push(new Tache(game,pos,tache,color));
+	if (!game.dying) {
+		this.tacheAvaible = this.tacheAvaible || Object.keys(game.config.taches);
+		this.possiblePosition = this.possiblePosition || [[50,590],[50,640],[50,690]];
+		this.colors = this.colors || ["red","blue","yellow"];
+		var color = this.colors[(Math.random()*3)|0]
+		var rand = (Math.random()*this.tacheAvaible.length)|0;
+		var tache = this.tacheAvaible[rand];
+		var pos = this.possiblePosition[rand];
+		game.taches.push(new Tache(game,pos,tache,color));
+	}
 }
 
 function popBonus (game) {
-	this.bonusAvaible = this.bonusAvaible || Object.keys(game.config.bonus)
-	this.rail = this.rail || [50,540];
-	var rand = (Math.random()*this.bonusAvaible.length)|0;
-	var bonus = this.bonusAvaible[rand];
-	var pos = this.rail;
-	game.taches.push(new Bonus(game,pos,bonus));
+	if (!game.dying) {
+		this.bonusAvaible = this.bonusAvaible || Object.keys(game.config.bonus)
+		this.rail = this.rail || [50,540];
+		var rand = (Math.random()*this.bonusAvaible.length)|0;
+		var bonus = this.bonusAvaible[rand];
+		var pos = this.rail;
+		game.taches.push(new Bonus(game,pos,bonus));
+	};
 }
+
 
 function reduceCaract (game) {	
 	for (var i = game.employees.length - 1; i >= 0; i--) {
@@ -250,9 +263,9 @@ function resetGame(game){
 }
 
 function addSec (game) {
-	game.petiteAiguille.rotation += Math.PI*(0.2 * (game.totalStress / 900));
+	game.petiteAiguille.rotation += Math.PI*0.001 +Math.PI*(0.1 * (game.totalStress / 900));
 }
 
 function addMin (game) {
-	game.grandeAiguille.rotation += Math.PI*(0.2 * (game.totalStress / 900));
+	game.grandeAiguille.rotation += Math.PI*(0.1 * (game.totalStress / 900));
 }
