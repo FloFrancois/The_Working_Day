@@ -92,6 +92,12 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
 		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
 
+		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
+		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
+		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
+		game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
+		game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
+
 		game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
 		game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
 		game.load.image('tuto_03', 'Projet/Sources/assets/tuto/tuto_03.png');
@@ -140,29 +146,22 @@ var WD_menu = function (game) {}
 WD_menu.prototype = {
 
 	create: function (game){
-		label1 = game.add.text(game.width * 0.5, game.height *0.5 - 200, 'The Working Day',
-			{ font: '80px Arial', fill: '#fff' });
-		label2 = game.add.text(game.width * 0.5 - 200, game.height *0.5 + 120 + 0.5, 'Jouer',
-			{ font: '16px Arial', fill: '#fff' });
-		label3 = game.add.text(game.width * 0.5 + 200, game.height *0.5 + 120 + 0.5, 'Credits',
-			{ font: '16px Arial', fill: '#fff' });
-		label4 = game.add.text(game.width * 0.5, game.height *0.5 + 120 + 0.5, 'Tutoriel',
-			{ font: '16px Arial', fill: '#fff' });
-		label1.anchor.setTo(0.5, 0.5);
-		label2.anchor.setTo(0.5, 0.5);
-		label3.anchor.setTo(0.5, 0.5);
-		label4.anchor.setTo(0.5, 0.5);
+		game.add.sprite(0, 0, 'menu_fond');
+		titre = game.add.sprite(275, 95, 'menu_titre');
+		titre.scale.setTo(0.9, 0.9);
 
-		this.boutonJouer = this.add.button(game.width * 0.5 - 200, game.height *0.5 + 200,
-			'sortie', this.startGame, this, 2, 0, 1);
+		this.boutonJouer = this.add.button(game.width * 0.5 - 50, game.height *0.3 + 225,
+			'play', this.startGame, this, 2, 0, 1);
 		this.boutonJouer.anchor.setTo(0.5, 0.5);
+		this.boutonJouer.scale.setTo(0.9, 0.9);
 
-		this.boutonCredits = this.add.button(game.width * 0.5 + 200, game.height *0.5 + 200,
-			'option', this.goCredits, this, 2, 0, 1);
+		this.boutonCredits = this.add.button(game.width * 0.8 + 275, game.height *0.3 + 100,
+			'exit', this.goCredits, this, 2, 0, 1);
 		this.boutonCredits.anchor.setTo(0.5, 0.5);
+		// this.boutonCredits.scale.setTo(0.9, 0.9);
 
-		this.boutonTuto = this.add.button(game.width * 0.5, game.height *0.5 + 200,
-			'reset', this.goTuto, this, 2, 0, 1);
+		this.boutonTuto = this.add.button(game.width * 0.5, game.height *0.6 + 225,
+			'stylo', this.goTuto, this, 2, 0, 1);
 		this.boutonTuto.anchor.setTo(0.5, 0.5);
 	},
 	update: function(game){
@@ -198,7 +197,6 @@ WD_tuto.prototype = {
 
 	create: function(game) {
 		
-
 		pictureA = game.add.sprite(game.world.centerX, game.world.centerY, 'tuto_01');
 		pictureA.anchor.setTo(0.5, 0.5);
 
