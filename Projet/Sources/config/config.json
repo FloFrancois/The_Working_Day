@@ -35,8 +35,7 @@
 				"fatigue" : -50,
 				"concentration": -10
 			},
-			"reward": 100,
-			"activateAnimation":"bois"
+			"reward": 100
 		},
 		"clope":{
 			"effects" :{
@@ -44,8 +43,7 @@
 				"fatigue" : -10,
 				"concentration": -10
 			},
-			"reward": 100,
-			"activateAnimation":"fume"
+			"reward": 100
 		},
 		"pillule":{
 			"effects" :{
@@ -53,11 +51,40 @@
 				"fatigue" : -10,
 				"concentration": -50
 			},
-			"reward": 100,
-			"activateAnimation":"snif"
+			"reward": 100
 		}
 	},
-		"employees":{
+	"superBonus":
+	{
+		"musique":{
+			"effects" :{
+				"stress" : -10,
+				"fatigue" : -10,
+				"concentration": -10
+			},
+			"resistance":0,
+			"reward": 100
+		},
+		"sudoku":{
+			"effects" :{
+				"stress" : -10,
+				"fatigue" : -10,
+				"concentration": -10
+			},
+			"resistance":0,
+			"reward": 100
+		},
+		"lipStick":{
+			"effects" :{
+				"stress" : -10,
+				"fatigue" : -10,
+				"concentration": -10
+			},
+			"resistance":0,
+			"reward": 100
+		}
+	},
+	"employees":{
 		"trainee":{
 			"stress": 10,
 			"fatigue":30,

@@ -14,6 +14,7 @@ function Tache (game,position,type,color) {
 	this.savePos={};
 	this.savePos.x = this.sprite.x;
 	this.savePos.y = this.sprite.y
+	this.resistance = 1
 
 	for(var attribute in game.config.taches[type]) 
 		this[attribute] = game.config.taches[type][attribute];

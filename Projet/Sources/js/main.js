@@ -141,10 +141,12 @@ WD_game.prototype = {
 		};
 
 		for (var i = game.taches.length - 1; i >= 0; i--) {
-			game.taches[i].update(game)
+			if (game.taches[i])
+				game.taches[i].update(game)
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
-			game.employees[i].update(game)
+			if (game.employees[i])
+				game.employees[i].update(game)
 		};
 
 		if(this.ecoute && game.mainTheme.isPlaying){
@@ -214,7 +216,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(game.totalStress >= 700 && !game.gameOverSprite){
+		else if(game.totalStress >= 800 && !game.gameOverSprite){
 			game.gameOverSprite = game.add.sprite(0,0,'gameOver')
 			game.gameOverSprite.alpha = 0;
 			game.gameOverSprite.bringToTop();
@@ -257,22 +259,22 @@ function popTache (game) {
 function popBonus (game) {
 	if (!game.dying) {
 		this.bonusAvaible = this.bonusAvaible || Object.keys(game.config.bonus)
-		this.rail = this.rail || [50,540];
-		var rand = (Math.random()*this.bonusAvaible.length)|0;
-		var bonus = this.bonusAvaible[rand];
-		var pos = this.rail;
-		game.taches.push(new Bonus(game,pos,bonus));
+		if (((Math.random()*9)|0) == 0) 
+			this.bonusAvaible = Object.keys(game.config.superBonus);
+		game.taches.push(new Bonus(game, [50,540], this.bonusAvaible[(Math.random()*this.bonusAvaible.length)|0]));
 	};
 }
 
 
 function reduceCaract (game) {	
 	for (var i = game.employees.length - 1; i >= 0; i--) {
-		for(caract in game.config.employees.trainee){
-			game.employees[i][caract]-=0.1;
-			if (game.employees[i][caract] < 0) 
-				game.employees[i][caract] = 0;
-		}
+		if (game.employees[i].levelStress < 5) {
+			for(caract in game.config.employees.trainee){
+				game.employees[i][caract]-=0.1;
+				if (game.employees[i][caract] < 0) 
+					game.employees[i][caract] = 0;
+			}
+		};
 	};
 }
 

@@ -27,6 +27,7 @@ function Employee (game,pos,type,color) {
 	
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.penalty = 1;
+	this.resistance = 1;
 }
 
 Employee.prototype.update = function(game) {
@@ -38,8 +39,24 @@ Employee.prototype.update = function(game) {
 			if (this.type != "employee_sedentary")
 				this.overlaySprite.loadTexture(this.type+"Overlay",0);
 			this.frontSprite.loadTexture(this.type+"Front"+this.levelStress,0);
-			this.persoSprite.animations.add("go");
-			this.persoSprite.animations.play("go",20,true);
+			if (this.levelStress < 5) {
+				this.persoSprite.animations.add("go");
+				this.persoSprite.animations.play("go",20,true);
+			}
+			else
+			{
+				if (this.type == "employee_sedentary") 
+					this.persoSprite.x += 15 ; 
+				this.persoSprite.animations.add("go");
+				this.persoSprite.animations.play("go",30,false);
+				spriteX = this.sprite.x
+				spriteY = this.sprite.y
+				this.persoSprite.animations.getAnimation("go").onComplete.add(function () {
+					this.bordelSprite = game.add.sprite(spriteX-45,spriteY-100,"bordel",0)
+					this.bordelSprite.animations.add("tombe");
+					this.bordelSprite.animations.play("tombe",14,false);
+				})
+			}
 		};
 		totalAttributes = 0
 
@@ -76,7 +93,7 @@ Employee.prototype.update = function(game) {
 			totalAttributes += this[attribute];
 			this["jauge_"+attribute].scale.x = this[attribute]/game.config.maxCaract;
 		};
-	if (totalAttributes <= 100)
+	if (totalAttributes <= 50)
 		this.levelStress = 1;
 	if (totalAttributes > 100) 
 		this.levelStress = 2;
@@ -84,7 +101,8 @@ Employee.prototype.update = function(game) {
 		this.levelStress = 3;
 	if (totalAttributes > 200)
 		this.levelStress = 4;
-
+	if (totalAttributes > 250) 
+		this.levelStress = 5;
 	
 
 
@@ -92,7 +110,7 @@ Employee.prototype.update = function(game) {
 
 	for (var i = game.taches.length - 1; i >= 0; i--) {
 		if (game.taches[i].sprite.input.isDragged == false) {
-			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite)) {
+			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite) && this.levelStress < 5) {
 					switch(this.type){
 					case "employee_trainee":
 						if (game.taches[i].type == "ordinateur") 
@@ -114,17 +132,24 @@ Employee.prototype.update = function(game) {
 					this.penalty *= 1;
 				else
 					this.penalty *= 3;
-					for(effect in game.taches[i].effects)
-					{
-							this[effect] += game.taches[i].effects[effect]*this.penalty;
-						
-						if (this[effect] > game.config.maxCaract)
-							this[effect] = game.config.maxCaract;
-						else if (this[effect] < 0)
-							this[effect] = 0;
-					}
-					this.penalty = 1;
-					game.taches[i].die(game,1);
+		
+				if ((game.taches[i].type.substr(6) == "musique" && this.type == "employee_trainee")
+				 || (game.taches[i].type.substr(6) == "lipStick" && this.type == "employee_secretary") 
+				 || (game.taches[i].type.substr(6) == "sudoku" && this.type == "employee_seden"))
+					this.resistance = game.taches[i].resistance;
+
+				for(effect in game.taches[i].effects)
+				{
+					this[effect] += game.taches[i].effects[effect]*this.penalty*this.resistance;
+					if (this[effect] > game.config.maxCaract)
+						this[effect] = game.config.maxCaract;
+					else if (this[effect] < 0)
+						this[effect] = 0;
+				}
+				if (this.resistance < 1) 
+					this.resistance+=0.1;
+				this.penalty = 1;
+				game.taches[i].die(game,1);
 			};
 		};
 	};

@@ -1,5 +1,4 @@
 function Bonus (game,position,type) {
-	// this.color = color;
 	this.type = "bonus_"+type;
 	this.sprite = game.add.sprite(position[0],position[1],this.type);
 	this.sprite.bringToTop();
@@ -14,10 +13,16 @@ function Bonus (game,position,type) {
 	this.savePos={};
 	this.savePos.x = this.sprite.x;
 	this.savePos.y = this.sprite.y
+	this.resistance = 1
 
 
-	for(var attribute in game.config.bonus[type]) 
-		this[attribute] = game.config.bonus[type][attribute];
+	if (type !== "musique" && type !== "lipStick" && type !== "sudoku") {
+		for(var attribute in game.config.bonus[type]) 
+			this[attribute] = game.config.bonus[type][attribute];
+	}
+	else
+		for(var attribute in game.config.superBonus[type]) 
+			this[attribute] = game.config.superBonus[type][attribute];
 }
 Bonus.prototype.update = function(game) {
 	if (this.sprite.input.isDragged == false){

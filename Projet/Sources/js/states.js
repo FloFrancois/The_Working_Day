@@ -54,6 +54,9 @@ WD_begin.prototype = {
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
+		game.load.image('bonus_sudoku', 'Projet/Sources/assets/sudoku_power_up.png');
+		game.load.image('bonus_musique', 'Projet/Sources/assets/music_power_up.png');
+		game.load.image('bonus_lipStick', 'Projet/Sources/assets/rouge_a_levre_power_up.png');
 				
 		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
 		
@@ -76,42 +79,53 @@ WD_begin.prototype = {
 		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
 		game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');
 		game.load.image('employee_secretary4', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
+		game.load.image('employee_secretary5', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
 		game.load.image('employee_secretaryOverlay', 'Projet/Sources/assets/employee_secretary/overlay_bureau0001.png');
 		game.load.image('employee_secretaryFront1', 'Projet/Sources/assets/employee_secretary/premier_plan0001.png');
 		game.load.image('employee_secretaryFront2', 'Projet/Sources/assets/employee_secretary/premier_plan0002.png');
 		game.load.image('employee_secretaryFront3', 'Projet/Sources/assets/employee_secretary/premier_plan0003.png');
 		game.load.image('employee_secretaryFront4', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
+		game.load.image('employee_secretaryFront5', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
 		game.load.spritesheet('employee_secretaryPerso1', 'Projet/Sources/assets/employee_secretary/Fille/fille1.png',136,249,24,0,3);
 		game.load.spritesheet('employee_secretaryPerso2', 'Projet/Sources/assets/employee_secretary/Fille/fille2.png',136,249,24,0,3);
 		game.load.spritesheet('employee_secretaryPerso3', 'Projet/Sources/assets/employee_secretary/Fille/fille3.png',136,249,9,0,3);
 		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',136,249,8,0,3);
+		game.load.spritesheet('employee_secretaryPerso5', 'Projet/Sources/assets/employee_secretary/Fille/fillemort.png',136,249,54,0,3);
 
 		game.load.image('employee_trainee1', 'Projet/Sources/assets/employee_trainee/jaune0001.png');
 		game.load.image('employee_trainee2', 'Projet/Sources/assets/employee_trainee/jaune0002.png');
 		game.load.image('employee_trainee3', 'Projet/Sources/assets/employee_trainee/jaune0003.png');
 		game.load.image('employee_trainee4', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
+		game.load.image('employee_trainee5', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
 		game.load.image('employee_traineeOverlay', 'Projet/Sources/assets/employee_trainee/cachepied.png');
 		game.load.image('employee_traineeFront1', 'Projet/Sources/assets/employee_trainee/premierplan0001.png');
 		game.load.image('employee_traineeFront2', 'Projet/Sources/assets/employee_trainee/premierplan0002.png');
 		game.load.image('employee_traineeFront3', 'Projet/Sources/assets/employee_trainee/premierplan0003.png');
 		game.load.image('employee_traineeFront4', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
+		game.load.image('employee_traineeFront5', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
 		game.load.spritesheet('employee_traineePerso1', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire1.png',160,238,28);
 		game.load.spritesheet('employee_traineePerso2', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire2.png',160,239,28,0,-1);
 		game.load.spritesheet('employee_traineePerso3', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire3.png',160,239,19,0,-1);
 		game.load.spritesheet('employee_traineePerso4', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire4.png',160,239,59,0,-1);
+		game.load.spritesheet('employee_traineePerso5', 'Projet/Sources/assets/employee_trainee/trainee/stagiairemort.png',160,243,60,0,-1);
 
 		game.load.image('employee_sedentary1', 'Projet/Sources/assets/employee_sedentary/blue0001.png');
 		game.load.image('employee_sedentary2', 'Projet/Sources/assets/employee_sedentary/blue0002.png');
 		game.load.image('employee_sedentary3', 'Projet/Sources/assets/employee_sedentary/blue0003.png');
 		game.load.image('employee_sedentary4', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
+		game.load.image('employee_sedentary5', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
 		game.load.image('employee_sedentaryFront1', 'Projet/Sources/assets/employee_sedentary/overlay0001.png');
 		game.load.image('employee_sedentaryFront2', 'Projet/Sources/assets/employee_sedentary/overlay0002.png');
 		game.load.image('employee_sedentaryFront3', 'Projet/Sources/assets/employee_sedentary/overlay0003.png');
 		game.load.image('employee_sedentaryFront4', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
+		game.load.image('employee_sedentaryFront5', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
 		game.load.spritesheet('employee_sedentaryPerso1', 'Projet/Sources/assets/employee_sedentary/stress/stress1.png',175,258,28,0,4);
 		game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
 		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
 		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
+		game.load.spritesheet('employee_sedentaryPerso5', 'Projet/Sources/assets/employee_sedentary/stress/stressmort.png',201,260,48,0,3);
+
+		game.load.spritesheet('bordel', 'Projet/Sources/assets/rideau.png',454,508,18,0,3);
 		
 		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
 		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
