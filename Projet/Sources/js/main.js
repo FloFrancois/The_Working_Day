@@ -239,7 +239,9 @@ WD_game.prototype = {
 			game.mainTheme.stop();
 			game.state.start('jeu');
 		}
-		console.log(typeof gameOver)
+		if (game.gameOverSprite) {
+			game.gameOverSprite.bringToTop();
+		};
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________

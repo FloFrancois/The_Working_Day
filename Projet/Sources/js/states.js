@@ -4,19 +4,16 @@ WD_begin.prototype = {
 	preload : function(game) {
 		game.stage.backgroundColor = '#222';
 
-		game.load.audio('m1', [ 'Projet/Sources/sounds/musique.ogg']);
-		game.load.audio('m2', [ 'Projet/Sources/sounds/musique2.ogg']);
-		game.load.audio('m3', [ 'Projet/Sources/sounds/musique3.ogg']);
-		game.load.audio('m4', [ 'Projet/Sources/sounds/musique4.ogg']);
-		game.load.audio('m5', 'Projet/Sources/sounds/Clavier.mp3');
-		game.load.audio('m6', 'Projet/Sources/sounds/CAFE.mp3');
-		game.load.audio('m7', 'Projet/Sources/sounds/PILLULE.mp3');
-		game.load.audio('m8', 'Projet/Sources/sounds/Baillement fille.mp3');
-		game.load.audio('m9', 'Projet/Sources/sounds/Baillement homme.mp3');
+		game.load.audio('m1','Projet/Sources/sounds/musique.ogg');
+		game.load.audio('m2','Projet/Sources/sounds/musique2.ogg');
+		game.load.audio('m3','Projet/Sources/sounds/musique3.ogg');
+		game.load.audio('m4','Projet/Sources/sounds/musique4.ogg');
 
-		game.load.image('arriere_plan', 'Projet/Sources/assets/Fond.png');
-		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/Fond_bureau.png');
-		game.load.image('gameOver', 'Projet/Sources/assets/Fond_blanc.png');
+		game.load.image('isart', 'Projet/Sources/assets/logoIsart.png');
+
+		game.load.image('arriere_plan', 'Projet/Sources/assets/fond.png');
+		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/fond_bureau.png');
+		game.load.image('gameOver', 'Projet/Sources/assets/fond_blanc.png');
 
 		game.load.image('calendrier', 'Projet/Sources/assets/calendrier.png');
 		game.load.image('croix', 'Projet/Sources/assets/calendrier_croix.png');
@@ -139,6 +136,12 @@ WD_begin.prototype = {
 		game.load.image('nom_nicolas', 'Projet/Sources/assets/nicolas.png');
 		game.load.image('nom_florian', 'Projet/Sources/assets/florian.png');
 		game.load.image('nom_theo', 'Projet/Sources/assets/theo.png');
+
+		game.load.image('pic_charlotte', 'Projet/Sources/assets/pic_cha.png');
+		game.load.image('pic_maureen', 'Projet/Sources/assets/pic_maureen.png');
+		game.load.image('pic_nicolas', 'Projet/Sources/assets/pic_nico.png');
+		game.load.image('pic_florian', 'Projet/Sources/assets/pic_flo.png');
+		game.load.image('pic_theo', 'Projet/Sources/assets/pic_theo.png');
 
 		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
 		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
@@ -379,38 +382,36 @@ WD_credits.prototype = {
 	create: function(game) {
 		fond = game.add.sprite(0, 0, 'menu_fond');
 
-		picto_charlotte = game.add.sprite(game.width *0.55 + 175, game.height *0.15, 'picto_trainee');
-		charlotte = game.add.sprite(game.width *0.55 - 100, game.height *0.15, 'nom_charlotte');
+		logoIsart = game.add.sprite(game.width *0.5, game.height *0.9, 'isart');
+		logoIsart.anchor.setTo(0.5, 0.5);
+
+		picto_charlotte = game.add.sprite(game.width *0.55 + 135, game.height *0.15, 'pic_charlotte');
+		charlotte = game.add.sprite(game.width *0.555, game.height *0.15, 'nom_charlotte');
 		picto_charlotte.anchor.setTo(0.5, 0.5);
-		picto_charlotte.scale.setTo(0.5, 0.5);
 		charlotte.anchor.setTo(0.5, 0.5);
 		charlotte.scale.setTo(0.7, 0.7);
 
-		picto_maureen = game.add.sprite(game.width *0.45 - 175, game.height *0.3, 'picto_trainee');
-		maureen = game.add.sprite(game.width *0.55 + 100, game.height *0.3, 'nom_maureen');
+		picto_maureen = game.add.sprite(game.width *0.55 + 135, game.height *0.45, 'pic_maureen');
+		maureen = game.add.sprite(game.width *0.565, game.height *0.45, 'nom_maureen');
 		picto_maureen.anchor.setTo(0.5, 0.5);
-		picto_maureen.scale.setTo(0.5, 0.5);
 		maureen.anchor.setTo(0.5, 0.5);
 		maureen.scale.setTo(0.7, 0.7);
 
-		picto_nicolas = game.add.sprite(game.width *0.55 + 175, game.height *0.45, 'picto_trainee');
-		nicolas = game.add.sprite(game.width *0.55 - 100, game.height *0.45, 'nom_nicolas');
+		picto_nicolas = game.add.sprite(game.width *0.55 + 135, game.height *0.75, 'pic_nicolas');
+		nicolas = game.add.sprite(game.width *0.575, game.height *0.75, 'nom_nicolas');
 		picto_nicolas.anchor.setTo(0.5, 0.5);
-		picto_nicolas.scale.setTo(0.5, 0.5);
 		nicolas.anchor.setTo(0.5, 0.5);
 		nicolas.scale.setTo(0.7, 0.7);
 
-		picto_florian = game.add.sprite(game.width *0.45 - 175, game.height *0.6, 'picto_trainee');
-		florian = game.add.sprite(game.width *0.55 + 100, game.height *0.6, 'nom_florian');
+		picto_florian = game.add.sprite(game.width *0.45 - 175, game.height *0.3, 'pic_florian');
+		florian = game.add.sprite(game.width *0.585, game.height *0.3, 'nom_florian');
 		picto_florian.anchor.setTo(0.5, 0.5);
-		picto_florian.scale.setTo(0.5, 0.5);
 		florian.anchor.setTo(0.5, 0.5);
 		florian.scale.setTo(0.7, 0.7);
 
-		picto_theo = game.add.sprite(game.width *0.55 + 175, game.height *0.75, 'picto_trainee');
-		theo = game.add.sprite(game.width *0.55 - 100, game.height *0.75, 'nom_theo');
+		picto_theo = game.add.sprite(game.width *0.45 - 175, game.height *0.6, 'pic_theo');
+		theo = game.add.sprite(game.width *0.585, game.height *0.6, 'nom_theo');
 		picto_theo.anchor.setTo(0.5, 0.5);
-		picto_theo.scale.setTo(0.5, 0.5);
 		theo.anchor.setTo(0.5, 0.5);
 		theo.scale.setTo(0.7, 0.7);
 
@@ -422,7 +423,8 @@ WD_credits.prototype = {
 	update: function(game){
 		if(this.retour){
 			this.retour = 0;
-			window.close();
+			window.open('', '_self', ''); 
+			window.close(); 
 		}
 	},
 
