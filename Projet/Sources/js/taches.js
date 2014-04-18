@@ -13,8 +13,8 @@ function Tache (game,position,type,color) {
 
 	this.savePos={};
 	this.savePos.x = this.sprite.x;
-	this.savePos.y = this.sprite.y
-	this.resistance = 1
+	this.savePos.y = this.sprite.y;
+	this.resistance = 1;
 
 
 	for(var attribute in game.config.taches[type]) 
@@ -32,8 +32,6 @@ Tache.prototype.update = function(game) {
 			this.savePos.y = this.sprite.y;
 		}
 		else {
-			if (this.sprite.x > 1100) 
-				this.die(game,"hehe t'es mort salope biatch");
 			this.sprite.x += game.speed;
 			this.sprite.y = this.savePos.y;
 		}	

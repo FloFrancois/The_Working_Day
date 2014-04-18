@@ -49,23 +49,19 @@ WD_begin.prototype = {
 		game.load.image('picto_sommeil', 'Projet/Sources/assets/conteneur_dodo_03.png');
 		game.load.image('picto_stress', 'Projet/Sources/assets/conteneur_stress_03.png');
 
-		game.load.image('picto_secretary', 'Projet/Sources/assets/picto_secretaire.png');
-		game.load.image('picto_trainee', 'Projet/Sources/assets/picto_stagiaire.png');
-		game.load.image('picto_sedentary', 'Projet/Sources/assets/picto_quadra.png');
+		game.load.spritesheet('picto_secretary', 'Projet/Sources/assets/Anim_Medal/anim_medal_fille.png',385, 387, 24);
+		game.load.spritesheet('picto_trainee', 'Projet/Sources/assets/Anim_Medal/anim_medal_stagiaire.png',385, 396, 24);
+		game.load.spritesheet('picto_sedentary', 'Projet/Sources/assets/Anim_Medal/anim_medal_quadra.png',385, 390, 24);
 		
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
 		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
-<<<<<<< HEAD
+
 		game.load.image('bonus_sudoku', 'Projet/Sources/assets/sudoku_power_up.png');
 		game.load.image('bonus_musique', 'Projet/Sources/assets/music_power_up.png');
 		game.load.image('bonus_lipStick', 'Projet/Sources/assets/rouge_a_levre_power_up.png');
-				
-		game.load.image('employee_trainee', 'Projet/Sources/assets/employee_trainee.png');
-		
-=======
 
->>>>>>> 4886297621f3a0d6aa028d786d253b7b18e889e0
+
 		game.load.image('jauge_secretary_concentration', 'Projet/Sources/assets/jauge_fille_focus_01.png');
 		game.load.image('jauge_secretary_sommeil', 'Projet/Sources/assets/jauge_fille_dodo_02.png');
 		game.load.image('jauge_secretary_stress', 'Projet/Sources/assets/jauge_fille_stress_03.png');
@@ -85,15 +81,18 @@ WD_begin.prototype = {
 		game.load.image('employee_trainee2', 'Projet/Sources/assets/employee_trainee/jaune0002.png');
 		game.load.image('employee_trainee3', 'Projet/Sources/assets/employee_trainee/jaune0003.png');
 		game.load.image('employee_trainee4', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
+		game.load.image('employee_trainee5', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
 		game.load.image('employee_traineeOverlay', 'Projet/Sources/assets/employee_trainee/cachepied.png');
 		game.load.image('employee_traineeFront1', 'Projet/Sources/assets/employee_trainee/premierplan0001.png');
 		game.load.image('employee_traineeFront2', 'Projet/Sources/assets/employee_trainee/premierplan0002.png');
 		game.load.image('employee_traineeFront3', 'Projet/Sources/assets/employee_trainee/premierplan0003.png');
 		game.load.image('employee_traineeFront4', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
+		game.load.image('employee_traineeFront5', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
 		game.load.spritesheet('employee_traineePerso1', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire1.png',160,238,28);
 		game.load.spritesheet('employee_traineePerso2', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire2.png',160,239,28,0,-1);
 		game.load.spritesheet('employee_traineePerso3', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire3.png',160,239,19,0,-1);
 		game.load.spritesheet('employee_traineePerso4', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire4.png',160,239,59,0,-1);
+		game.load.spritesheet('employee_traineePerso5', 'Projet/Sources/assets/employee_trainee/trainee/stagiairemort.png',160,243,60,0,-1);
 
 		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
 		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
@@ -112,26 +111,6 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',136,249,8,0,3);
 		game.load.spritesheet('employee_secretaryPerso5', 'Projet/Sources/assets/employee_secretary/Fille/fillemort.png',136,249,54,0,3);
 
-<<<<<<< HEAD
-		game.load.image('employee_trainee1', 'Projet/Sources/assets/employee_trainee/jaune0001.png');
-		game.load.image('employee_trainee2', 'Projet/Sources/assets/employee_trainee/jaune0002.png');
-		game.load.image('employee_trainee3', 'Projet/Sources/assets/employee_trainee/jaune0003.png');
-		game.load.image('employee_trainee4', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
-		game.load.image('employee_trainee5', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
-		game.load.image('employee_traineeOverlay', 'Projet/Sources/assets/employee_trainee/cachepied.png');
-		game.load.image('employee_traineeFront1', 'Projet/Sources/assets/employee_trainee/premierplan0001.png');
-		game.load.image('employee_traineeFront2', 'Projet/Sources/assets/employee_trainee/premierplan0002.png');
-		game.load.image('employee_traineeFront3', 'Projet/Sources/assets/employee_trainee/premierplan0003.png');
-		game.load.image('employee_traineeFront4', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
-		game.load.image('employee_traineeFront5', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
-		game.load.spritesheet('employee_traineePerso1', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire1.png',160,238,28);
-		game.load.spritesheet('employee_traineePerso2', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire2.png',160,239,28,0,-1);
-		game.load.spritesheet('employee_traineePerso3', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire3.png',160,239,19,0,-1);
-		game.load.spritesheet('employee_traineePerso4', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire4.png',160,239,59,0,-1);
-		game.load.spritesheet('employee_traineePerso5', 'Projet/Sources/assets/employee_trainee/trainee/stagiairemort.png',160,243,60,0,-1);
-
-=======
->>>>>>> 4886297621f3a0d6aa028d786d253b7b18e889e0
 		game.load.image('employee_sedentary1', 'Projet/Sources/assets/employee_sedentary/blue0001.png');
 		game.load.image('employee_sedentary2', 'Projet/Sources/assets/employee_sedentary/blue0002.png');
 		game.load.image('employee_sedentary3', 'Projet/Sources/assets/employee_sedentary/blue0003.png');
@@ -146,19 +125,21 @@ WD_begin.prototype = {
 		game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
 		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
 		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
-<<<<<<< HEAD
 		game.load.spritesheet('employee_sedentaryPerso5', 'Projet/Sources/assets/employee_sedentary/stress/stressmort.png',201,260,48,0,3);
 
-		game.load.spritesheet('bordel', 'Projet/Sources/assets/rideau.png',454,508,18,0,3);
-		
-=======
+		game.load.spritesheet('bordel', 'Projet/Sources/assets/rideau.png',455,508,18,0,3);
 
 		game.load.image('fin1', 'Projet/Sources/assets/the_end_1.png');
 		game.load.image('fin2', 'Projet/Sources/assets/the_end_2.png');
 		game.load.image('fin3', 'Projet/Sources/assets/the_end_3.png');
 		game.load.image('fin4', 'Projet/Sources/assets/the_end_4.png');
 
->>>>>>> 4886297621f3a0d6aa028d786d253b7b18e889e0
+		game.load.image('nom_charlotte', 'Projet/Sources/assets/charlotte.png');
+		game.load.image('nom_maureen', 'Projet/Sources/assets/maureen.png');
+		game.load.image('nom_nicolas', 'Projet/Sources/assets/nicolas.png');
+		game.load.image('nom_florian', 'Projet/Sources/assets/florian.png');
+		game.load.image('nom_theo', 'Projet/Sources/assets/theo.png');
+
 		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
 		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
 		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
@@ -233,24 +214,24 @@ WD_menu.prototype = {
 	update: function(game){
 		if(this.ouvert){
 			this.ouvert = 0;
+			game.state.start('jeu');
 			this.boutonJouer.kill();
 			this.boutonCredits.kill();
 			this.boutonTuto.kill();
-			game.state.start('jeu');
 		}
 		if(this.merci){
 			this.merci = 0;
+			game.state.start('credits');
 			this.boutonJouer.kill();
 			this.boutonCredits.kill();
 			this.boutonTuto.kill();
-			game.state.start('credits');
 		}
 		if(this.learn){
 			this.learn = 0;
+			game.state.start('tuto');
 			this.boutonJouer.kill();
 			this.boutonCredits.kill();
 			this.boutonTuto.kill();
-			game.state.start('tuto');
 		}
 	},
 
@@ -274,17 +255,18 @@ WD_tuto.prototype = {
 		
 		page = game.add.sprite(0,0,'tuto_01');
 
-		this.boutonDroite = this.add.button(game.width *0.925, game.height *0.9,
+		this.boutonDroite = this.add.button(game.width *0.935, game.height *0.9,
 			'flecheD', this.tutoPlus, this, 2, 0, 1);
 		this.boutonDroite.anchor.setTo(0.5, 0.5);
+		this.boutonDroite.scale.setTo(1.2, 1.2);
 	},
 
 	update: function(game){
 		if(this.retour){
 			this.retour = 0;
 			this.pages = 1;
-			this.boutonMenu.kill();
 			game.state.start('menu');
+			this.boutonMenu.kill();
 		}
 
 		if(this.chang){
@@ -299,41 +281,46 @@ WD_tuto.prototype = {
 				page.kill();
 				this.boutonDroite.kill();
 				page = game.add.sprite(0,0,'tuto_02');
-				this.boutonDroite = this.add.button(game.width *0.925, game.height *0.9,
+				this.boutonDroite = this.add.button(game.width *0.935, game.height *0.9,
 					'flecheD', this.tutoPlus, this, 2, 0, 1);
 				this.boutonDroite.anchor.setTo(0.5, 0.5);
+				this.boutonDroite.scale.setTo(1.2, 1.2);
 			break;
 			case 3:
 				page.kill();
 				this.boutonDroite.kill();
 				page = game.add.sprite(0,0,'tuto_03');
-				this.boutonDroite = this.add.button(game.width *0.925, game.height *0.9,
+				this.boutonDroite = this.add.button(game.width *0.935, game.height *0.9,
 					'flecheD', this.tutoPlus, this, 2, 0, 1);
 				this.boutonDroite.anchor.setTo(0.5, 0.5);
+				this.boutonDroite.scale.setTo(1.2, 1.2);
 			break;
 			case 4:
 				page.kill();
 				this.boutonDroite.kill();
 				page = game.add.sprite(0,0,'tuto_04');
-				this.boutonDroite = this.add.button(game.width *0.925, game.height *0.9,
+				this.boutonDroite = this.add.button(game.width *0.935, game.height *0.9,
 					'flecheD', this.tutoPlus, this, 2, 0, 1);
 				this.boutonDroite.anchor.setTo(0.5, 0.5);
+				this.boutonDroite.scale.setTo(1.2, 1.2);
 			break;
 			case 5:
 				page.kill();
 				this.boutonDroite.kill();
 				page = game.add.sprite(0,0,'tuto_05');
-				this.boutonDroite = this.add.button(game.width *0.925, game.height *0.9,
+				this.boutonDroite = this.add.button(game.width *0.935, game.height *0.9,
 					'flecheD', this.tutoPlus, this, 2, 0, 1);
 				this.boutonDroite.anchor.setTo(0.5, 0.5);
+				this.boutonDroite.scale.setTo(1.2, 1.2);
 			break;
 			case 6:
 				page.kill();
 				this.boutonDroite.kill();
 				page = game.add.sprite(0,0,'tuto_06');
-				this.boutonMenu = this.add.button(game.width *0.925, game.height *0.9,
+				this.boutonMenu = this.add.button(game.width *0.935, game.height *0.9,
 					'sortie', this.goMenu, this, 2, 0, 1);
 				this.boutonMenu.anchor.setTo(0.5, 0.5);
+				this.boutonMenu.scale.setTo(1.2, 1.2);
 			break;
 		}
 	},
@@ -354,18 +341,18 @@ WD_end.prototype = {
 	create: function(game) {
 		if (typeof gameOver !== "undefined") 
 			gameOver = undefined;
-		// if(/* VARIABLE SCORE*/){
+		if(game.days <= 3){
 			fond = game.add.sprite(0, 0, 'fin4');
-		// },
-		// else if(/* VARIABLE SCORE*/){
-		// 	fond = game.add.sprite(0, 0, 'fin3');
-		// },
-		// else if(/* VARIABLE SCORE*/){
-		// 	fond = game.add.sprite(0, 0, 'fin2');
-		// },
-		// else if(/* VARIABLE SCORE*/){
-		// 	fond = game.add.sprite(0, 0, 'fin1');
-		// }
+		}
+		else if(game.days >= 4 && game.days <= 5){
+			fond = game.add.sprite(0, 0, 'fin3');
+		}
+		else if(game.days >= 6 && game.days <= 9){
+			fond = game.add.sprite(0, 0, 'fin2');
+		}
+		else if(game.days >= 10){
+			fond = game.add.sprite(0, 0, 'fin1');
+		}
 
 		this.boutonJouer = this.add.button(game.width *0.925, game.height *0.9,
 			'sortie', this.goMenu, this, 2, 0, 1);
@@ -375,9 +362,9 @@ WD_end.prototype = {
 	update: function(game){
 		if(this.retour){
 			this.retour = 0;
+			game.state.start('menu');
 			fond.kill();
 			this.boutonJouer.kill();
-			game.state.start('menu');
 		}
 	},
 
@@ -392,23 +379,38 @@ WD_credits.prototype = {
 	create: function(game) {
 		fond = game.add.sprite(0, 0, 'menu_fond');
 
-		charlotte = game.add.sprite(game.width *0.55 - 100, game.height *0.15, 'menu_titre');
+		picto_charlotte = game.add.sprite(game.width *0.55 + 175, game.height *0.15, 'picto_trainee');
+		charlotte = game.add.sprite(game.width *0.55 - 100, game.height *0.15, 'nom_charlotte');
+		picto_charlotte.anchor.setTo(0.5, 0.5);
+		picto_charlotte.scale.setTo(0.5, 0.5);
 		charlotte.anchor.setTo(0.5, 0.5);
 		charlotte.scale.setTo(0.7, 0.7);
 
-		maureen = game.add.sprite(game.width *0.55 + 100, game.height *0.3, 'menu_titre');
+		picto_maureen = game.add.sprite(game.width *0.45 - 175, game.height *0.3, 'picto_trainee');
+		maureen = game.add.sprite(game.width *0.55 + 100, game.height *0.3, 'nom_maureen');
+		picto_maureen.anchor.setTo(0.5, 0.5);
+		picto_maureen.scale.setTo(0.5, 0.5);
 		maureen.anchor.setTo(0.5, 0.5);
 		maureen.scale.setTo(0.7, 0.7);
 
-		nicolas = game.add.sprite(game.width *0.55 - 100, game.height *0.45, 'menu_titre');
+		picto_nicolas = game.add.sprite(game.width *0.55 + 175, game.height *0.45, 'picto_trainee');
+		nicolas = game.add.sprite(game.width *0.55 - 100, game.height *0.45, 'nom_nicolas');
+		picto_nicolas.anchor.setTo(0.5, 0.5);
+		picto_nicolas.scale.setTo(0.5, 0.5);
 		nicolas.anchor.setTo(0.5, 0.5);
 		nicolas.scale.setTo(0.7, 0.7);
 
-		florian = game.add.sprite(game.width *0.55 + 100, game.height *0.6, 'menu_titre');
+		picto_florian = game.add.sprite(game.width *0.45 - 175, game.height *0.6, 'picto_trainee');
+		florian = game.add.sprite(game.width *0.55 + 100, game.height *0.6, 'nom_florian');
+		picto_florian.anchor.setTo(0.5, 0.5);
+		picto_florian.scale.setTo(0.5, 0.5);
 		florian.anchor.setTo(0.5, 0.5);
 		florian.scale.setTo(0.7, 0.7);
 
-		theo = game.add.sprite(game.width *0.55 - 100, game.height *0.75, 'menu_titre');
+		picto_theo = game.add.sprite(game.width *0.55 + 175, game.height *0.75, 'picto_trainee');
+		theo = game.add.sprite(game.width *0.55 - 100, game.height *0.75, 'nom_theo');
+		picto_theo.anchor.setTo(0.5, 0.5);
+		picto_theo.scale.setTo(0.5, 0.5);
 		theo.anchor.setTo(0.5, 0.5);
 		theo.scale.setTo(0.7, 0.7);
 
@@ -420,14 +422,7 @@ WD_credits.prototype = {
 	update: function(game){
 		if(this.retour){
 			this.retour = 0;
-			fond.kill();
-			charlotte.kill();
-			maureen.kill();
-			nicolas.kill();
-			florian.kill();
-			theo.kill();
-			this.boutonSortie.kill();
-			game.state.start('menu');
+			window.close();
 		}
 	},
 

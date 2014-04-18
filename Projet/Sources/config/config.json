@@ -103,6 +103,6 @@
 	},
 	"maxCaract":100,
 	"maxDevJauge":1000,
-	"valeurTache":1000
+	"valeurTache":100
 
 }

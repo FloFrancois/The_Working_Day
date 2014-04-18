@@ -29,7 +29,6 @@ WD_game.prototype = {
 	create : function (game) {
 
 		game.add.sprite(0, 0, "arriere_plan");
-
 		game.Theme1 = game.add.audio('m1');
 		game.Theme2 = game.add.audio('m2');
 		game.Theme3 = game.add.audio('m3');
@@ -39,7 +38,7 @@ WD_game.prototype = {
 		game.pillule = game.add.audio('m7');
 		game.baillementF = game.add.audio('m8');
 		game.baillementM = game.add.audio('m9');
-		
+		game.mecMort = 0;
 		game.mainTheme = game.Theme1;
 		game.mainTheme.play('', 0, 1, true);
 		game.add.sprite(0,0,"arriere_plan_bureau").scale.setTo(0.970,1);
@@ -71,8 +70,11 @@ WD_game.prototype = {
 		game.boutonSortie.anchor.setTo(0.5, 0.5);
 		game.boutonSortie.scale.setTo(0.8,0.8);
 
+
 		// ################################### CONFIG ########################################
 		game.config = httpGetData('Projet/Sources/config/config.json');
+		game.valeurTache = game.config.valeurTache;
+
 		game.taches = [];
 		game.bonus = [];
 		game.employees = [];
@@ -123,14 +125,18 @@ WD_game.prototype = {
 				game.add.tween(game.crosses[i].scale).to({x:1,y:1},500,Phaser.Easing.Exponential.In(),true,100*i)
 			};
 			game.time.events.remove(game.timerTache);
-			game.timerTache = game.time.events.loop(2000/(game.days), popTache, this, game);
+			if (game.days < 15) 
+				game.timerMinus = game.days;
+			game.timerTache = game.time.events.loop(2000-(100*game.timerMinus), popTache, this, game);
 			game.saveDays = game.days;
 			game.speed+= 0.5;
 		};
 
-		game.devJauge = game.tachesDone * game.config.valeurTache;
+		game.devJauge = game.tachesDone * game.valeurTache;
 		if (game.devJauge >= game.config.maxDevJauge){
 			game.days++;
+			if (game.valeurTache > 50) 
+				game.valeurTache -= 10;
 			game.tachesDone = 0
 		}
 		
@@ -142,12 +148,12 @@ WD_game.prototype = {
 		};
 
 		for (var i = game.taches.length - 1; i >= 0; i--) {
-			if (game.taches[i])
-				game.taches[i].update(game)
+			if(game.taches[i])
+			game.taches[i].update(game)
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
-			if (game.employees[i])
-				game.employees[i].update(game)
+			if(game.employees[i])
+			game.employees[i].update(game)
 		};
 
 		if(this.ecoute && game.mainTheme.isPlaying){
@@ -216,7 +222,7 @@ WD_game.prototype = {
 				}
 			});
 		}
-		else if(game.totalStress >= 800 && !game.gameOverSprite){
+		if(game.mecMort >= 3 && !game.gameOverSprite){
 			game.gameOverSprite = game.add.sprite(0,0,'gameOver')
 			game.gameOverSprite.alpha = 0;
 			game.gameOverSprite.bringToTop();
@@ -233,6 +239,7 @@ WD_game.prototype = {
 			game.mainTheme.stop();
 			game.state.start('jeu');
 		}
+		console.log(typeof gameOver)
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________

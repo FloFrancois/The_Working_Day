@@ -14,6 +14,11 @@ function Employee (game,pos,type,color) {
 	this.frontSprite.bringToTop();
 	this.persoSprite.animations.add("go");
 	this.persoSprite.animations.play("go",20,true);
+
+	this.picto = game.add.sprite(this.sprite.x+this.sprite.width*0.16,430,'picto_'+type,0);
+	this.picto.scale.setTo(0.2, 0.2);
+	this.picto.bringToTop();
+	this.picto.animations.add('tourne');
 	
 	this.jauge_concentration = game.add.sprite(-1000, 440, "jauge_"+type+"_concentration");
 	this.jauge_fatigue = game.add.sprite(-1000, 459, "jauge_"+type+"_sommeil");
@@ -74,14 +79,16 @@ Employee.prototype.update = function(game) {
 			this.overlaySprite.x = this.sprite.x;
 			this.overlaySprite.y = this.sprite.y;
 		}
+		this.picto.x = this.sprite.x+this.sprite.width*0.14;
 		this.frontSprite.x = this.sprite.x-4;
 		this.frontSprite.y = this.sprite.y-34;
-		this.jauge_concentration.x = this.sprite.x+this.sprite.width*0.25 ;
-		this.jauge_fatigue.x = this.sprite.x+this.sprite.width*0.25;
-		this.jauge_stress.x = this.sprite.x+this.sprite.width*0.25;		
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 440, "picto_concentration");
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 459, "picto_sommeil");
-		game.add.sprite(this.sprite.x+this.sprite.width*0.19, 478, "picto_stress");
+		this.jauge_concentration.x = this.sprite.x+this.sprite.width*0.38;
+		this.jauge_fatigue.x = this.sprite.x+this.sprite.width*0.38;
+		this.jauge_stress.x = this.sprite.x+this.sprite.width*0.38;		
+		game.add.sprite(this.sprite.x+this.sprite.width*0.32, 440, "picto_concentration");
+		game.add.sprite(this.sprite.x+this.sprite.width*0.32, 459, "picto_sommeil");
+		game.add.sprite(this.sprite.x+this.sprite.width*0.32, 478, "picto_stress");
+
 		this.jauge_concentration.bringToTop();
 		this.jauge_fatigue.bringToTop();
 		this.jauge_stress.bringToTop();
@@ -103,7 +110,13 @@ Employee.prototype.update = function(game) {
 		this.levelStress = 4;
 	if (totalAttributes > 250) 
 		this.levelStress = 5;
-	
+
+
+	if(this.levelStress == 5 && !this.animEnd){
+		this.picto.animations.play('tourne', 23, false);
+		this.animEnd = true;
+		game.mecMort++;
+	}
 
 
 
@@ -132,7 +145,6 @@ Employee.prototype.update = function(game) {
 					this.penalty *= 1;
 				else
 					this.penalty *= 3;
-		
 				if ((game.taches[i].type.substr(6) == "musique" && this.type == "employee_trainee")
 				 || (game.taches[i].type.substr(6) == "lipStick" && this.type == "employee_secretary") 
 				 || (game.taches[i].type.substr(6) == "sudoku" && this.type == "employee_seden"))
@@ -150,6 +162,7 @@ Employee.prototype.update = function(game) {
 					this.resistance+=0.1;
 				this.penalty = 1;
 				game.taches[i].die(game,1);
+
 			};
 		};
 	};
