@@ -59,11 +59,6 @@ Employee.prototype.update = function(game) {
 				this.persoSprite.animations.play("go",30,false);
 				spriteX = this.sprite.x
 				spriteY = this.sprite.y
-				anim = this.persoSprite.animations.getAnimation("go")
-				that = this
-				anim.onComplete.add(function () {
-					that.persoSprite.kill();
-				})
 			}
 		};
 
