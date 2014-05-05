@@ -11,7 +11,6 @@ WD_begin.prototype = {
   	 	game.load.onFileComplete.add(fileComplete, this);
   		game.load.onLoadComplete.add(loadComplete, this);	
   				game.load.start();
-
   	},
   	update : function (game) { 	}
   	
@@ -201,7 +200,7 @@ WD_load.prototype = {
 	create: function (game) {
   		setTimeout(function () {
 			game.state.start('menu');
-		},100);
+		},1000);
 	}
 }
 
