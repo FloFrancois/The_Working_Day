@@ -8,11 +8,6 @@ WD_begin.prototype = {
 		game.load.audio('m2', [ 'Projet/Sources/sounds/musique2.ogg']);
 		game.load.audio('m3', [ 'Projet/Sources/sounds/musique3.ogg']);
 		game.load.audio('m4', [ 'Projet/Sources/sounds/musique4.ogg']);
-		game.load.audio('m5', 'Projet/Sources/sounds/Clavier.mp3');
-		game.load.audio('m6', 'Projet/Sources/sounds/CAFE.mp3');
-		game.load.audio('m7', 'Projet/Sources/sounds/PILLULE.mp3');
-		game.load.audio('m8', 'Projet/Sources/sounds/Baillement fille.mp3');
-		game.load.audio('m9', 'Projet/Sources/sounds/Baillement homme.mp3');
 
 		game.load.image('arriere_plan', 'Projet/Sources/assets/Fond.png');
 		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/Fond_bureau.png');
@@ -194,7 +189,7 @@ WD_load.prototype = {
 	create: function (game) {
   		setTimeout(function () {
 			game.state.start('menu');
-		},100);
+		},1000);
 	}
 }
 

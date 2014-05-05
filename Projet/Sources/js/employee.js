@@ -56,11 +56,14 @@ Employee.prototype.update = function(game) {
 				this.persoSprite.animations.play("go",30,false);
 				spriteX = this.sprite.x
 				spriteY = this.sprite.y
-				this.persoSprite.animations.getAnimation("go").onComplete.add(function () {
-					this.bordelSprite = game.add.sprite(spriteX-45,spriteY-100,"bordel",0)
-					this.bordelSprite.animations.add("tombe");
-					this.bordelSprite.animations.play("tombe",14,false);
-				})
+				this.persoSprite.kill();
+				// this.sprite.kill();
+				this.frontSprite.kill();
+			// 	this.persoSprite.animations.getAnimation("go").onComplete.add(function () {
+			// 		this.bordelSprite = game.add.sprite(spriteX-45,spriteY-100,"bordel",0)
+			// 		this.bordelSprite.animations.add("tombe");
+			// 		this.bordelSprite.animations.play("tombe",14,false);
+			// 	})
 			}
 		};
 		totalAttributes = 0
