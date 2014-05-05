@@ -52,11 +52,11 @@ WD_game.prototype = {
 		game.jaugeBossProd = game.add.sprite(50, 10, "jauge_boss_production");
 		game.jaugeBossStress = game.add.sprite(50, 40, "jauge_boss_stress");
 
-		game.add.sprite(1185, 220, "horloge").anchor.setTo(0.5, 0.5);
-		game.petiteAiguille = game.add.sprite(1185, 220, "horloge_petite_aiguille");
+		game.add.sprite(1185, 200, "horloge").anchor.setTo(0.5, 0.5);
+		game.petiteAiguille = game.add.sprite(1185, 200, "horloge_petite_aiguille");
 		game.petiteAiguille.anchor.setTo(0.5, 0.5);
 
-		game.grandeAiguille = game.add.sprite(1185, 220, "horloge_grande_aiguille");
+		game.grandeAiguille = game.add.sprite(1185, 200, "horloge_grande_aiguille");
 		game.grandeAiguille.anchor.setTo(0.5, 0.5);
 
 		game.add.sprite(1105, 300, "calendrier");
@@ -83,10 +83,9 @@ WD_game.prototype = {
 
 		game.timerTache = game.time.events.loop(2000, popTache, this, game);
 		game.time.events.loop(7500, popBonus, this, game);
-		game.time.events.loop(100, reduceCaract, this, game);
+		game.time.events.loop(1000, reduceCaract, this, game);
 		game.time.events.loop(100, addSec, this, game);
 		game.time.events.loop(10, addMin, this, game);
-//		game.time.events.loop(5000, function(){console.log(game)}, this, game);
 
 
 		nbEmployees = Object.keys(game.config.employees);
@@ -106,14 +105,12 @@ WD_game.prototype = {
 		game.speed = 1;
 		game.days = 0;
 		game.saveDays = 0;
-		game.cadreSprite = game.add.sprite(1100,0,"cadre",7)
-		game.cadreSprite.scale.setTo(0.5,0.5)
-
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
 
 	update : function (game) {
+
 		if (game.days != game.saveDays) {
 			game.crosses.push(game.add.sprite(1113+(game.crosses[game.crosses.length-1].width*( game.crosses.length % 6)+2), 320+(game.crosses[game.crosses.length-1].height*Math.floor(game.crosses.length/6)), "croix"))
 			for (var i = game.crosses.length - 1; i >= 0; i--) {
@@ -144,21 +141,17 @@ WD_game.prototype = {
 			game.tachesDone = 0
 		}
 		
-		for (var i = game.employees.length - 1; i >= 0; i--) {
-			for(caract in game.config.employees.trainee){
-				if (game.employees[i][caract] < 0) 
-					game.employees[i][caract] = 0;
-			}
-		};
-
 		for (var i = game.taches.length - 1; i >= 0; i--) {
 			if(game.taches[i])
-			game.taches[i].update(game)
+				game.taches[i].update(game)
 		};
 		for (var i = game.employees.length - 1; i >= 0; i--) {
 			if(game.employees[i])
-			game.employees[i].update(game)
+				game.employees[i].update(game)
 		};
+		if (game.input.activePointer.isUp) {
+			game.isDragging = false
+		}
 
 		if(this.ecoute && game.mainTheme.isPlaying){
 			game.mainTheme.stop();
@@ -246,6 +239,7 @@ WD_game.prototype = {
 		if (game.gameOverSprite) {
 			game.gameOverSprite.bringToTop();
 		};
+
 	},
 
 	//__________________________________________RENDER____________________________________________________________________________________
@@ -288,7 +282,8 @@ function reduceCaract (game) {
 	for (var i = game.employees.length - 1; i >= 0; i--) {
 		if (game.employees[i].levelStress < 5) {
 			for(caract in game.config.employees.trainee){
-				game.employees[i][caract]-=0.1;
+				game.employees[i][caract]-=1;
+				game.employees[i]["jauge_"+caract].scale.x = game.employees[i][caract]/game.config.maxCaract
 				if (game.employees[i][caract] < 0) 
 					game.employees[i][caract] = 0;
 			}

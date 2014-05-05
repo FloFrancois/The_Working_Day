@@ -37,6 +37,8 @@ Tache.prototype.update = function(game) {
 		}	
 	}
 	else {
+		if (!game.isDragging)
+			game.isDragging = true;
 		this.savePos.x += game.speed;
 	}
 }

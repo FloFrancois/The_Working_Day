@@ -27,8 +27,11 @@ function Employee (game,pos,type,color) {
 	this.jauge_concentration.scale.y = 0.94;
 	this.jauge_fatigue.scale.y = 0.94;
 	this.jauge_stress.scale.y = 0.94;
-	for(var attribute in game.config.employees[type]) 
+	this.totalAttributes = 0
+	for(var attribute in game.config.employees[type]){
 		this[attribute] = game.config.employees[type][attribute];
+		this.totalAttributes +=  game.config.employees[type][attribute];
+	} 
 	
 	game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	this.penalty = 1;
@@ -56,14 +59,13 @@ Employee.prototype.update = function(game) {
 				this.persoSprite.animations.play("go",30,false);
 				spriteX = this.sprite.x
 				spriteY = this.sprite.y
-				this.persoSprite.animations.getAnimation("go").onComplete.add(function () {
-					this.bordelSprite = game.add.sprite(spriteX-45,spriteY-100,"bordel",0)
-					this.bordelSprite.animations.add("tombe");
-					this.bordelSprite.animations.play("tombe",14,false);
+				anim = this.persoSprite.animations.getAnimation("go")
+				that = this
+				anim.onComplete.add(function () {
+					that.persoSprite.kill();
 				})
 			}
 		};
-		totalAttributes = 0
 
 	if (!this.sucetteALaViande) { // EASTER EGG !
 		this.sucetteALaViande = true;
@@ -93,23 +95,16 @@ Employee.prototype.update = function(game) {
 		this.jauge_fatigue.bringToTop();
 		this.jauge_stress.bringToTop();
 	}
-
-	for(attribute in game.config.employees[this.type.substr(9)]){
-		if (this[attribute] > game.config.maxCaract)
-			this[attribute] = game.config.maxCaract
-			totalAttributes += this[attribute];
-			this["jauge_"+attribute].scale.x = this[attribute]/game.config.maxCaract;
-		};
-	if (totalAttributes <= 50)
-		this.levelStress = 1;
-	if (totalAttributes > 100) 
-		this.levelStress = 2;
-	if (totalAttributes > 150) 
-		this.levelStress = 3;
-	if (totalAttributes > 200)
-		this.levelStress = 4;
-	if (totalAttributes > 250) 
+	if (this.totalAttributes > 250) 
 		this.levelStress = 5;
+	else if (this.totalAttributes > 200)
+		this.levelStress = 4;
+	else if (this.totalAttributes > 150) 
+		this.levelStress = 3;
+	else if (this.totalAttributes > 100) 
+		this.levelStress = 2;
+	else if (this.totalAttributes <= 50)
+		this.levelStress = 1;
 
 
 	if(this.levelStress == 5 && !this.animEnd){
@@ -120,50 +115,39 @@ Employee.prototype.update = function(game) {
 
 
 
+	if (game.isDragging) {
+		for (var i = game.taches.length - 1; i >= 0; i--) {
+			if (game.taches[i].sprite.input.isDragged == false) {
+				if (game.physics.arcade.intersects(game.taches[i].sprite.body,this.sprite.body) && this.levelStress < 5) {
+					game.isDragging = false;
+					if (game.taches[i].color == this.color) 
+						this.penalty *= 1;
+					else
+						this.penalty *= 3;
+					if ((game.taches[i].type.substr(6) == "musique" && this.type == "employee_trainee")
+					 || (game.taches[i].type.substr(6) == "lipStick" && this.type == "employee_secretary") 
+					 || (game.taches[i].type.substr(6) == "sudoku" && this.type == "employee_sedentary"))
+						this.resistance = game.taches[i].resistance;
 
-	for (var i = game.taches.length - 1; i >= 0; i--) {
-		if (game.taches[i].sprite.input.isDragged == false) {
-			if (game.physics.arcade.overlap(game.taches[i].sprite,this.sprite) && this.levelStress < 5) {
-					switch(this.type){
-					case "employee_trainee":
-						if (game.taches[i].type == "ordinateur") 
-							this.penalty = 0.5;
-					break;
+					for(effect in game.taches[i].effects)
+					{
+						this.totalAttributes += game.taches[i].effects[effect]*this.penalty*this.resistance;
+						this[effect] += game.taches[i].effects[effect]*this.penalty*this.resistance;
+						if (this[effect] > game.config.maxCaract)
+							this[effect] = game.config.maxCaract;
+						else if (this[effect] < 0)
+							this[effect] = 0;
+						this["jauge_"+effect].scale.x = this[effect]/game.config.maxCaract;
 
-					case "employee_secretary":
-						if (game.taches[i].type == "telephone") 
-							this.penalty = 0.5;
-					break;
+					}
+					if (this.resistance < 1) 
+						this.resistance+=0.1;
+					this.penalty = 1;
+					game.taches[i].die(game,1);
 
-					case "employee_sedentary":
-						if (game.taches[i].type == "dossier") 
-							this.penalty = 0.5;
-					break;
-				}
-
-				if (game.taches[i].color == this.color) 
-					this.penalty *= 1;
-				else
-					this.penalty *= 3;
-				if ((game.taches[i].type.substr(6) == "musique" && this.type == "employee_trainee")
-				 || (game.taches[i].type.substr(6) == "lipStick" && this.type == "employee_secretary") 
-				 || (game.taches[i].type.substr(6) == "sudoku" && this.type == "employee_seden"))
-					this.resistance = game.taches[i].resistance;
-
-				for(effect in game.taches[i].effects)
-				{
-					this[effect] += game.taches[i].effects[effect]*this.penalty*this.resistance;
-					if (this[effect] > game.config.maxCaract)
-						this[effect] = game.config.maxCaract;
-					else if (this[effect] < 0)
-						this[effect] = 0;
-				}
-				if (this.resistance < 1) 
-					this.resistance+=0.1;
-				this.penalty = 1;
-				game.taches[i].die(game,1);
-
+				};
 			};
 		};
 	};
+
 }
