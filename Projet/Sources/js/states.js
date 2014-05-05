@@ -11,177 +11,178 @@ WD_begin.prototype = {
   	 	game.load.onFileComplete.add(fileComplete, this);
   		game.load.onLoadComplete.add(loadComplete, this);	
   				game.load.start();
+
   	},
   	update : function (game) { 	}
   	
 }
 function loadStart () {
-		game.load.audio('m1','Projet/Sources/sounds/musique.ogg');
-		game.load.audio('m2','Projet/Sources/sounds/musique2.ogg');
-		game.load.audio('m3','Projet/Sources/sounds/musique3.ogg');
-		game.load.audio('m4','Projet/Sources/sounds/musique4.ogg');
+		this.game.load.audio('m1','Projet/Sources/sounds/musique.ogg');
+		this.game.load.audio('m2','Projet/Sources/sounds/musique2.ogg');
+		this.game.load.audio('m3','Projet/Sources/sounds/musique3.ogg');
+		this.game.load.audio('m4','Projet/Sources/sounds/musique4.ogg');
 
-		game.load.image('isart', 'Projet/Sources/assets/logoIsart.png');
+		this.game.load.image('isart', 'Projet/Sources/assets/logoIsart.png');
 
-		game.load.image('arriere_plan', 'Projet/Sources/assets/fond.png');
-		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/fond_bureau.png');
-		game.load.image('gameOver', 'Projet/Sources/assets/fond_blanc.png');
+		this.game.load.image('arriere_plan', 'Projet/Sources/assets/fond.png');
+		this.game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/fond_bureau.png');
+		this.game.load.image('gameOver', 'Projet/Sources/assets/fond_blanc.png');
 
-		game.load.image('calendrier', 'Projet/Sources/assets/calendrier.png');
-		game.load.image('croix', 'Projet/Sources/assets/calendrier_croix.png');
+		this.game.load.image('calendrier', 'Projet/Sources/assets/calendrier.png');
+		this.game.load.image('croix', 'Projet/Sources/assets/calendrier_croix.png');
 
-		game.load.image('conteneur_boss_production', 'Projet/Sources/assets/conteneur_boss_production.png');
-		game.load.image('conteneur_boss_stress', 'Projet/Sources/assets/conteneur_boss_stress.png');
+		this.game.load.image('conteneur_boss_production', 'Projet/Sources/assets/conteneur_boss_production.png');
+		this.game.load.image('conteneur_boss_stress', 'Projet/Sources/assets/conteneur_boss_stress.png');
 
-		game.load.image('horloge', 'Projet/Sources/assets/horlorge.png');
-		game.load.image('horloge_grande_aiguille', 'Projet/Sources/assets/horlorge__aiguille_grande.png');
-		game.load.image('horloge_petite_aiguille', 'Projet/Sources/assets/horlorge__aiguille_petite.png');
+		this.game.load.image('horloge', 'Projet/Sources/assets/horlorge.png');
+		this.game.load.image('horloge_grande_aiguille', 'Projet/Sources/assets/horlorge__aiguille_grande.png');
+		this.game.load.image('horloge_petite_aiguille', 'Projet/Sources/assets/horlorge__aiguille_petite.png');
 
-		game.load.image('rail_power_up', 'Projet/Sources/assets/rail_power_up.png');
-		game.load.image('rail_concentration', 'Projet/Sources/assets/rail_concentration.png');
-		game.load.image('rail_sommeil', 'Projet/Sources/assets/rail_sommeil.png');
-		game.load.image('rail_stress', 'Projet/Sources/assets/rail_stress.png');
+		this.game.load.image('rail_power_up', 'Projet/Sources/assets/rail_power_up.png');
+		this.game.load.image('rail_concentration', 'Projet/Sources/assets/rail_concentration.png');
+		this.game.load.image('rail_sommeil', 'Projet/Sources/assets/rail_sommeil.png');
+		this.game.load.image('rail_stress', 'Projet/Sources/assets/rail_stress.png');
 
-		game.load.image('tache_ordinateur_red', 'Projet/Sources/assets/concentration_rouge.png');
-		game.load.image('tache_ordinateur_blue', 'Projet/Sources/assets/concentration_bleu.png');
-		game.load.image('tache_ordinateur_yellow', 'Projet/Sources/assets/concentration_jaune.png');
+		this.game.load.image('tache_ordinateur_red', 'Projet/Sources/assets/concentration_rouge.png');
+		this.game.load.image('tache_ordinateur_blue', 'Projet/Sources/assets/concentration_bleu.png');
+		this.game.load.image('tache_ordinateur_yellow', 'Projet/Sources/assets/concentration_jaune.png');
 
-		game.load.image('tache_dossier_red', 'Projet/Sources/assets/sommeil_rouge.png');
-		game.load.image('tache_dossier_blue', 'Projet/Sources/assets/sommeil_bleu.png');
-		game.load.image('tache_dossier_yellow', 'Projet/Sources/assets/sommeil_jaune.png');
+		this.game.load.image('tache_dossier_red', 'Projet/Sources/assets/sommeil_rouge.png');
+		this.game.load.image('tache_dossier_blue', 'Projet/Sources/assets/sommeil_bleu.png');
+		this.game.load.image('tache_dossier_yellow', 'Projet/Sources/assets/sommeil_jaune.png');
 
-		game.load.image('tache_telephone_red', 'Projet/Sources/assets/stress_rouge.png');
-		game.load.image('tache_telephone_blue', 'Projet/Sources/assets/stress_bleu.png');
-		game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
+		this.game.load.image('tache_telephone_red', 'Projet/Sources/assets/stress_rouge.png');
+		this.game.load.image('tache_telephone_blue', 'Projet/Sources/assets/stress_bleu.png');
+		this.game.load.image('tache_telephone_yellow', 'Projet/Sources/assets/stress_jaune.png');
 
-		game.load.image('picto_concentration', 'Projet/Sources/assets/conteneur_focus_01.png');
-		game.load.image('picto_sommeil', 'Projet/Sources/assets/conteneur_dodo_03.png');
-		game.load.image('picto_stress', 'Projet/Sources/assets/conteneur_stress_03.png');
+		this.game.load.image('picto_concentration', 'Projet/Sources/assets/conteneur_focus_01.png');
+		this.game.load.image('picto_sommeil', 'Projet/Sources/assets/conteneur_dodo_03.png');
+		this.game.load.image('picto_stress', 'Projet/Sources/assets/conteneur_stress_03.png');
 
-		game.load.spritesheet('picto_secretary', 'Projet/Sources/assets/Anim_Medal/anim_medal_fille.png',385, 387, 24);
-		game.load.spritesheet('picto_trainee', 'Projet/Sources/assets/Anim_Medal/anim_medal_stagiaire.png',385, 396, 24);
-		game.load.spritesheet('picto_sedentary', 'Projet/Sources/assets/Anim_Medal/anim_medal_quadra.png',385, 390, 24);
+		this.game.load.spritesheet('picto_secretary', 'Projet/Sources/assets/Anim_Medal/anim_medal_fille.png',385, 387, 24);
+		this.game.load.spritesheet('picto_trainee', 'Projet/Sources/assets/Anim_Medal/anim_medal_stagiaire.png',385, 396, 24);
+		this.game.load.spritesheet('picto_sedentary', 'Projet/Sources/assets/Anim_Medal/anim_medal_quadra.png',385, 390, 24);
 		
-		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
-		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
-		game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
+		this.game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
+		this.game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
+		this.game.load.image('bonus_pillule', 'Projet/Sources/assets/concentration_power_up.png');
 
-		game.load.image('bonus_sudoku', 'Projet/Sources/assets/sudoku_power_up.png');
-		game.load.image('bonus_musique', 'Projet/Sources/assets/music_power_up.png');
-		game.load.image('bonus_lipStick', 'Projet/Sources/assets/rouge_a_levre_power_up.png');
+		this.game.load.image('bonus_sudoku', 'Projet/Sources/assets/sudoku_power_up.png');
+		this.game.load.image('bonus_musique', 'Projet/Sources/assets/music_power_up.png');
+		this.game.load.image('bonus_lipStick', 'Projet/Sources/assets/rouge_a_levre_power_up.png');
 
 
-		game.load.image('jauge_secretary_concentration', 'Projet/Sources/assets/jauge_fille_focus_01.png');
-		game.load.image('jauge_secretary_sommeil', 'Projet/Sources/assets/jauge_fille_dodo_02.png');
-		game.load.image('jauge_secretary_stress', 'Projet/Sources/assets/jauge_fille_stress_03.png');
+		this.game.load.image('jauge_secretary_concentration', 'Projet/Sources/assets/jauge_fille_focus_01.png');
+		this.game.load.image('jauge_secretary_sommeil', 'Projet/Sources/assets/jauge_fille_dodo_02.png');
+		this.game.load.image('jauge_secretary_stress', 'Projet/Sources/assets/jauge_fille_stress_03.png');
 
-		game.load.image('jauge_trainee_concentration', 'Projet/Sources/assets/jauge_stagiaire_focus_01.png');
-		game.load.image('jauge_trainee_sommeil', 'Projet/Sources/assets/jauge_stagiaire_dodo_02.png');
-		game.load.image('jauge_trainee_stress', 'Projet/Sources/assets/jauge_stagiaire_stress_03.png');
+		this.game.load.image('jauge_trainee_concentration', 'Projet/Sources/assets/jauge_stagiaire_focus_01.png');
+		this.game.load.image('jauge_trainee_sommeil', 'Projet/Sources/assets/jauge_stagiaire_dodo_02.png');
+		this.game.load.image('jauge_trainee_stress', 'Projet/Sources/assets/jauge_stagiaire_stress_03.png');
 
-		game.load.image('jauge_sedentary_concentration', 'Projet/Sources/assets/jauge_quadra_focus_01.png');
-		game.load.image('jauge_sedentary_sommeil', 'Projet/Sources/assets/jauge_quadra_dodo_02.png');
-		game.load.image('jauge_sedentary_stress', 'Projet/Sources/assets/jauge_quadra_stress_03.png');
+		this.game.load.image('jauge_sedentary_concentration', 'Projet/Sources/assets/jauge_quadra_focus_01.png');
+		this.game.load.image('jauge_sedentary_sommeil', 'Projet/Sources/assets/jauge_quadra_dodo_02.png');
+		this.game.load.image('jauge_sedentary_stress', 'Projet/Sources/assets/jauge_quadra_stress_03.png');
 
-		game.load.image('jauge_boss_production', 'Projet/Sources/assets/jauge_boss_production.png');
-		game.load.image('jauge_boss_stress', 'Projet/Sources/assets/jauge_boss_stress.png');
+		this.game.load.image('jauge_boss_production', 'Projet/Sources/assets/jauge_boss_production.png');
+		this.game.load.image('jauge_boss_stress', 'Projet/Sources/assets/jauge_boss_stress.png');
 				
-		game.load.image('employee_trainee1', 'Projet/Sources/assets/employee_trainee/jaune0001.png');
-		game.load.image('employee_trainee2', 'Projet/Sources/assets/employee_trainee/jaune0002.png');
-		game.load.image('employee_trainee3', 'Projet/Sources/assets/employee_trainee/jaune0003.png');
-		game.load.image('employee_trainee4', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
-		game.load.image('employee_trainee5', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
-		game.load.image('employee_traineeOverlay', 'Projet/Sources/assets/employee_trainee/cachepied.png');
-		game.load.image('employee_traineeFront1', 'Projet/Sources/assets/employee_trainee/premierplan0001.png');
-		game.load.image('employee_traineeFront2', 'Projet/Sources/assets/employee_trainee/premierplan0002.png');
-		game.load.image('employee_traineeFront3', 'Projet/Sources/assets/employee_trainee/premierplan0003.png');
-		game.load.image('employee_traineeFront4', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
-		game.load.image('employee_traineeFront5', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
-		game.load.spritesheet('employee_traineePerso1', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire1.png',160,238,28);
-		game.load.spritesheet('employee_traineePerso2', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire2.png',160,239,28,0,-1);
-		game.load.spritesheet('employee_traineePerso3', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire3.png',160,239,19,0,-1);
-		game.load.spritesheet('employee_traineePerso4', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire4.png',160,239,59,0,-1);
-		game.load.spritesheet('employee_traineePerso5', 'Projet/Sources/assets/employee_trainee/trainee/stagiairemort.png',160,243,60,0,-1);
+		this.game.load.image('employee_trainee1', 'Projet/Sources/assets/employee_trainee/jaune0001.png');
+		this.game.load.image('employee_trainee2', 'Projet/Sources/assets/employee_trainee/jaune0002.png');
+		this.game.load.image('employee_trainee3', 'Projet/Sources/assets/employee_trainee/jaune0003.png');
+		this.game.load.image('employee_trainee4', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
+		this.game.load.image('employee_trainee5', 'Projet/Sources/assets/employee_trainee/jaune0004.png');
+		this.game.load.image('employee_traineeOverlay', 'Projet/Sources/assets/employee_trainee/cachepied.png');
+		this.game.load.image('employee_traineeFront1', 'Projet/Sources/assets/employee_trainee/premierplan0001.png');
+		this.game.load.image('employee_traineeFront2', 'Projet/Sources/assets/employee_trainee/premierplan0002.png');
+		this.game.load.image('employee_traineeFront3', 'Projet/Sources/assets/employee_trainee/premierplan0003.png');
+		this.game.load.image('employee_traineeFront4', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
+		this.game.load.image('employee_traineeFront5', 'Projet/Sources/assets/employee_trainee/premierplan0004.png');
+		this.game.load.spritesheet('employee_traineePerso1', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire1.png',160,238,28);
+		this.game.load.spritesheet('employee_traineePerso2', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire2.png',160,239,28,0,-1);
+		this.game.load.spritesheet('employee_traineePerso3', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire3.png',160,239,19,0,-1);
+		this.game.load.spritesheet('employee_traineePerso4', 'Projet/Sources/assets/employee_trainee/trainee/stagiaire4.png',160,239,59,0,-1);
+		this.game.load.spritesheet('employee_traineePerso5', 'Projet/Sources/assets/employee_trainee/trainee/stagiairemort.png',160,243,60,0,-1);
 
-		game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
-		game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
-		game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');
-		game.load.image('employee_secretary4', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
-		game.load.image('employee_secretary5', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
-		game.load.image('employee_secretaryOverlay', 'Projet/Sources/assets/employee_secretary/overlay_bureau0001.png');
-		game.load.image('employee_secretaryFront1', 'Projet/Sources/assets/employee_secretary/premier_plan0001.png');
-		game.load.image('employee_secretaryFront2', 'Projet/Sources/assets/employee_secretary/premier_plan0002.png');
-		game.load.image('employee_secretaryFront3', 'Projet/Sources/assets/employee_secretary/premier_plan0003.png');
-		game.load.image('employee_secretaryFront4', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
-		game.load.image('employee_secretaryFront5', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
-		game.load.spritesheet('employee_secretaryPerso1', 'Projet/Sources/assets/employee_secretary/Fille/fille1.png',136,249,24,0,3);
-		game.load.spritesheet('employee_secretaryPerso2', 'Projet/Sources/assets/employee_secretary/Fille/fille2.png',136,249,24,0,3);
-		game.load.spritesheet('employee_secretaryPerso3', 'Projet/Sources/assets/employee_secretary/Fille/fille3.png',136,249,9,0,3);
-		game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',136,249,8,0,3);
-		game.load.spritesheet('employee_secretaryPerso5', 'Projet/Sources/assets/employee_secretary/Fille/fillemort.png',136,249,54,0,3);
+		this.game.load.image('employee_secretary1', 'Projet/Sources/assets/employee_secretary/bureau_rouge0001.png');
+		this.game.load.image('employee_secretary2', 'Projet/Sources/assets/employee_secretary/bureau_rouge0002.png');
+		this.game.load.image('employee_secretary3', 'Projet/Sources/assets/employee_secretary/bureau_rouge0003.png');
+		this.game.load.image('employee_secretary4', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
+		this.game.load.image('employee_secretary5', 'Projet/Sources/assets/employee_secretary/bureau_rouge0004.png');
+		this.game.load.image('employee_secretaryOverlay', 'Projet/Sources/assets/employee_secretary/overlay_bureau0001.png');
+		this.game.load.image('employee_secretaryFront1', 'Projet/Sources/assets/employee_secretary/premier_plan0001.png');
+		this.game.load.image('employee_secretaryFront2', 'Projet/Sources/assets/employee_secretary/premier_plan0002.png');
+		this.game.load.image('employee_secretaryFront3', 'Projet/Sources/assets/employee_secretary/premier_plan0003.png');
+		this.game.load.image('employee_secretaryFront4', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
+		this.game.load.image('employee_secretaryFront5', 'Projet/Sources/assets/employee_secretary/premier_plan0004.png');
+		this.game.load.spritesheet('employee_secretaryPerso1', 'Projet/Sources/assets/employee_secretary/Fille/fille1.png',136,249,24,0,3);
+		this.game.load.spritesheet('employee_secretaryPerso2', 'Projet/Sources/assets/employee_secretary/Fille/fille2.png',136,249,24,0,3);
+		this.game.load.spritesheet('employee_secretaryPerso3', 'Projet/Sources/assets/employee_secretary/Fille/fille3.png',136,249,9,0,3);
+		this.game.load.spritesheet('employee_secretaryPerso4', 'Projet/Sources/assets/employee_secretary/Fille/fille4.png',136,249,8,0,3);
+		this.game.load.spritesheet('employee_secretaryPerso5', 'Projet/Sources/assets/employee_secretary/Fille/fillemort.png',136,249,54,0,3);
 
-		game.load.image('employee_sedentary1', 'Projet/Sources/assets/employee_sedentary/blue0001.png');
-		game.load.image('employee_sedentary2', 'Projet/Sources/assets/employee_sedentary/blue0002.png');
-		game.load.image('employee_sedentary3', 'Projet/Sources/assets/employee_sedentary/blue0003.png');
-		game.load.image('employee_sedentary4', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
-		game.load.image('employee_sedentary5', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
-		game.load.image('employee_sedentaryFront1', 'Projet/Sources/assets/employee_sedentary/overlay0001.png');
-		game.load.image('employee_sedentaryFront2', 'Projet/Sources/assets/employee_sedentary/overlay0002.png');
-		game.load.image('employee_sedentaryFront3', 'Projet/Sources/assets/employee_sedentary/overlay0003.png');
-		game.load.image('employee_sedentaryFront4', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
-		game.load.image('employee_sedentaryFront5', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
-		game.load.spritesheet('employee_sedentaryPerso1', 'Projet/Sources/assets/employee_sedentary/stress/stress1.png',175,258,28,0,4);
-		game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
-		game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
-		game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
-		game.load.spritesheet('employee_sedentaryPerso5', 'Projet/Sources/assets/employee_sedentary/stress/stressmort.png',201,260,48,0,3);
+		this.game.load.image('employee_sedentary1', 'Projet/Sources/assets/employee_sedentary/blue0001.png');
+		this.game.load.image('employee_sedentary2', 'Projet/Sources/assets/employee_sedentary/blue0002.png');
+		this.game.load.image('employee_sedentary3', 'Projet/Sources/assets/employee_sedentary/blue0003.png');
+		this.game.load.image('employee_sedentary4', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
+		this.game.load.image('employee_sedentary5', 'Projet/Sources/assets/employee_sedentary/blue0004.png');
+		this.game.load.image('employee_sedentaryFront1', 'Projet/Sources/assets/employee_sedentary/overlay0001.png');
+		this.game.load.image('employee_sedentaryFront2', 'Projet/Sources/assets/employee_sedentary/overlay0002.png');
+		this.game.load.image('employee_sedentaryFront3', 'Projet/Sources/assets/employee_sedentary/overlay0003.png');
+		this.game.load.image('employee_sedentaryFront4', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
+		this.game.load.image('employee_sedentaryFront5', 'Projet/Sources/assets/employee_sedentary/overlay0004.png');
+		this.game.load.spritesheet('employee_sedentaryPerso1', 'Projet/Sources/assets/employee_sedentary/stress/stress1.png',175,258,28,0,4);
+		this.game.load.spritesheet('employee_sedentaryPerso2', 'Projet/Sources/assets/employee_sedentary/stress/stress2.png',175,258,48,0,4);
+		this.game.load.spritesheet('employee_sedentaryPerso3', 'Projet/Sources/assets/employee_sedentary/stress/stress3.png',175,258,24,0,4);
+		this.game.load.spritesheet('employee_sedentaryPerso4', 'Projet/Sources/assets/employee_sedentary/stress/stress4.png',175,258,24,0,4);
+		this.game.load.spritesheet('employee_sedentaryPerso5', 'Projet/Sources/assets/employee_sedentary/stress/stressmort.png',201,260,48,0,3);
 
-		game.load.spritesheet('bordel', 'Projet/Sources/assets/rideau.png',452,512,18);
+		this.game.load.spritesheet('bordel', 'Projet/Sources/assets/rideau.png',452,512,18);
 
-		game.load.image('fin1', 'Projet/Sources/assets/the_end_1.png');
-		game.load.image('fin2', 'Projet/Sources/assets/the_end_2.png');
-		game.load.image('fin3', 'Projet/Sources/assets/the_end_3.png');
-		game.load.image('fin4', 'Projet/Sources/assets/the_end_4.png');
+		this.game.load.image('fin1', 'Projet/Sources/assets/the_end_1.png');
+		this.game.load.image('fin2', 'Projet/Sources/assets/the_end_2.png');
+		this.game.load.image('fin3', 'Projet/Sources/assets/the_end_3.png');
+		this.game.load.image('fin4', 'Projet/Sources/assets/the_end_4.png');
 
-		game.load.image('nom_charlotte', 'Projet/Sources/assets/charlotte.png');
-		game.load.image('nom_maureen', 'Projet/Sources/assets/maureen.png');
-		game.load.image('nom_nicolas', 'Projet/Sources/assets/nicolas.png');
-		game.load.image('nom_florian', 'Projet/Sources/assets/florian.png');
-		game.load.image('nom_theo', 'Projet/Sources/assets/theo.png');
+		this.game.load.image('nom_charlotte', 'Projet/Sources/assets/charlotte.png');
+		this.game.load.image('nom_maureen', 'Projet/Sources/assets/maureen.png');
+		this.game.load.image('nom_nicolas', 'Projet/Sources/assets/nicolas.png');
+		this.game.load.image('nom_florian', 'Projet/Sources/assets/florian.png');
+		this.game.load.image('nom_theo', 'Projet/Sources/assets/theo.png');
 
-		game.load.image('pic_charlotte', 'Projet/Sources/assets/pic_cha.png');
-		game.load.image('pic_maureen', 'Projet/Sources/assets/pic_maureen.png');
-		game.load.image('pic_nicolas', 'Projet/Sources/assets/pic_nico.png');
-		game.load.image('pic_florian', 'Projet/Sources/assets/pic_flo.png');
-		game.load.image('pic_theo', 'Projet/Sources/assets/pic_theo.png');
+		this.game.load.image('pic_charlotte', 'Projet/Sources/assets/pic_cha.png');
+		this.game.load.image('pic_maureen', 'Projet/Sources/assets/pic_maureen.png');
+		this.game.load.image('pic_nicolas', 'Projet/Sources/assets/pic_nico.png');
+		this.game.load.image('pic_florian', 'Projet/Sources/assets/pic_flo.png');
+		this.game.load.image('pic_theo', 'Projet/Sources/assets/pic_theo.png');
 
-		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
-		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
-		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
-		game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
-		game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
+		this.game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
+		this.game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
+		this.game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
+		this.game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
+		this.game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
 
-		game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
-		game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
-		game.load.image('tuto_03', 'Projet/Sources/assets/tuto/tuto_03.png');
-		game.load.image('tuto_04', 'Projet/Sources/assets/tuto/tuto_04.png');
-		game.load.image('tuto_05', 'Projet/Sources/assets/tuto/tuto_05.png');
-		game.load.image('tuto_06', 'Projet/Sources/assets/tuto/tuto_06.png');
+		this.game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
+		this.game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
+		this.game.load.image('tuto_03', 'Projet/Sources/assets/tuto/tuto_03.png');
+		this.game.load.image('tuto_04', 'Projet/Sources/assets/tuto/tuto_04.png');
+		this.game.load.image('tuto_05', 'Projet/Sources/assets/tuto/tuto_05.png');
+		this.game.load.image('tuto_06', 'Projet/Sources/assets/tuto/tuto_06.png');
 
-		game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
-		game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
-		game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);
-		game.load.spritesheet('reset', 'Projet/Sources/assets/reset_button.png',70,70);
-		game.load.spritesheet('sortie', 'Projet/Sources/assets/sortie_button.png',70,70);
-		game.load.spritesheet('flecheD', 'Projet/Sources/assets/tuto/fleche_droite.png',70,70);
-		game.load.spritesheet('flecheG', 'Projet/Sources/assets/tuto/fleche_gauche.png',70,70);
+		this.game.load.spritesheet('son_on', 'Projet/Sources/assets/sound_on_01.png',70,70);
+		this.game.load.spritesheet('son_off', 'Projet/Sources/assets/sound_off_01.png',70,70);
+		this.game.load.spritesheet('option', 'Projet/Sources/assets/option_button.png',70,70);
+		this.game.load.spritesheet('reset', 'Projet/Sources/assets/reset_button.png',70,70);
+		this.game.load.spritesheet('sortie', 'Projet/Sources/assets/sortie_button.png',70,70);
+		this.game.load.spritesheet('flecheD', 'Projet/Sources/assets/tuto/fleche_droite.png',70,70);
+		this.game.load.spritesheet('flecheG', 'Projet/Sources/assets/tuto/fleche_gauche.png',70,70);
 
   	}
   	function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-		game.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+		this.game.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 	}
   	function loadComplete () {
-  		game.state.start("menu");
+  		this.game.state.start("menu");
   	}
 var WD_load = function (game) {}
 WD_load.prototype = {
@@ -200,7 +201,7 @@ WD_load.prototype = {
 	create: function (game) {
   		setTimeout(function () {
 			game.state.start('menu');
-		},1000);
+		},100);
 	}
 }
 

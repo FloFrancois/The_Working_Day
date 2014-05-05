@@ -99,8 +99,8 @@ WD_game.prototype = {
 		game.speed = 1;
 		game.days = 0;
 		game.saveDays = 0;
-		game.cadreSprite = game.add.sprite(1100,0,"cadre",7)
-		game.cadreSprite.scale.setTo(0.5,0.5)
+		// game.cadreSprite = game.add.sprite(1100,0,"cadre",7)
+		// game.cadreSprite.scale.setTo(0.5,0.5)
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
