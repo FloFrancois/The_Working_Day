@@ -52,11 +52,11 @@ WD_game.prototype = {
 		game.jaugeBossProd = game.add.sprite(50, 10, "jauge_boss_production");
 		game.jaugeBossStress = game.add.sprite(50, 40, "jauge_boss_stress");
 
-		game.add.sprite(1185, 200, "horloge").anchor.setTo(0.5, 0.5);
-		game.petiteAiguille = game.add.sprite(1185, 200, "horloge_petite_aiguille");
+		game.add.sprite(1185, 220, "horloge").anchor.setTo(0.5, 0.5);
+		game.petiteAiguille = game.add.sprite(1185, 220, "horloge_petite_aiguille");
 		game.petiteAiguille.anchor.setTo(0.5, 0.5);
 
-		game.grandeAiguille = game.add.sprite(1185, 200, "horloge_grande_aiguille");
+		game.grandeAiguille = game.add.sprite(1185, 220, "horloge_grande_aiguille");
 		game.grandeAiguille.anchor.setTo(0.5, 0.5);
 
 		game.add.sprite(1105, 300, "calendrier");
@@ -86,6 +86,7 @@ WD_game.prototype = {
 		game.time.events.loop(100, reduceCaract, this, game);
 		game.time.events.loop(100, addSec, this, game);
 		game.time.events.loop(10, addMin, this, game);
+//		game.time.events.loop(5000, function(){console.log(game)}, this, game);
 
 
 		nbEmployees = Object.keys(game.config.employees);
@@ -105,6 +106,9 @@ WD_game.prototype = {
 		game.speed = 1;
 		game.days = 0;
 		game.saveDays = 0;
+		game.cadreSprite = game.add.sprite(1100,0,"cadre",7)
+		game.cadreSprite.scale.setTo(0.5,0.5)
+
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________

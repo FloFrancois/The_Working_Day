@@ -4,16 +4,19 @@ WD_begin.prototype = {
 	preload : function(game) {
 		game.stage.backgroundColor = '#222';
 
-		game.load.audio('m1','Projet/Sources/sounds/musique.ogg');
-		game.load.audio('m2','Projet/Sources/sounds/musique2.ogg');
-		game.load.audio('m3','Projet/Sources/sounds/musique3.ogg');
-		game.load.audio('m4','Projet/Sources/sounds/musique4.ogg');
+		game.load.audio('m1', [ 'Projet/Sources/sounds/musique.ogg']);
+		game.load.audio('m2', [ 'Projet/Sources/sounds/musique2.ogg']);
+		game.load.audio('m3', [ 'Projet/Sources/sounds/musique3.ogg']);
+		game.load.audio('m4', [ 'Projet/Sources/sounds/musique4.ogg']);
+		game.load.audio('m5', 'Projet/Sources/sounds/Clavier.mp3');
+		game.load.audio('m6', 'Projet/Sources/sounds/CAFE.mp3');
+		game.load.audio('m7', 'Projet/Sources/sounds/PILLULE.mp3');
+		game.load.audio('m8', 'Projet/Sources/sounds/Baillement fille.mp3');
+		game.load.audio('m9', 'Projet/Sources/sounds/Baillement homme.mp3');
 
-		game.load.image('isart', 'Projet/Sources/assets/logoIsart.png');
-
-		game.load.image('arriere_plan', 'Projet/Sources/assets/fond.png');
-		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/fond_bureau.png');
-		game.load.image('gameOver', 'Projet/Sources/assets/fond_blanc.png');
+		game.load.image('arriere_plan', 'Projet/Sources/assets/Fond.png');
+		game.load.image('arriere_plan_bureau', 'Projet/Sources/assets/Fond_bureau.png');
+		game.load.image('gameOver', 'Projet/Sources/assets/Fond_blanc.png');
 
 		game.load.image('calendrier', 'Projet/Sources/assets/calendrier.png');
 		game.load.image('croix', 'Projet/Sources/assets/calendrier_croix.png');
@@ -49,6 +52,7 @@ WD_begin.prototype = {
 		game.load.spritesheet('picto_secretary', 'Projet/Sources/assets/Anim_Medal/anim_medal_fille.png',385, 387, 24);
 		game.load.spritesheet('picto_trainee', 'Projet/Sources/assets/Anim_Medal/anim_medal_stagiaire.png',385, 396, 24);
 		game.load.spritesheet('picto_sedentary', 'Projet/Sources/assets/Anim_Medal/anim_medal_quadra.png',385, 390, 24);
+		game.load.spritesheet('cadre', 'Projet/Sources/assets/cadre/cadre_blink_01.png',300, 300, 8);
 		
 		game.load.image('bonus_cafe', 'Projet/Sources/assets/sommeil_power_up.png');
 		game.load.image('bonus_clope', 'Projet/Sources/assets/stress_power_up.png');
@@ -130,6 +134,7 @@ WD_begin.prototype = {
 		game.load.image('fin2', 'Projet/Sources/assets/the_end_2.png');
 		game.load.image('fin3', 'Projet/Sources/assets/the_end_3.png');
 		game.load.image('fin4', 'Projet/Sources/assets/the_end_4.png');
+		game.load.image('isart', 'Projet/Sources/assets/logoIsart.png');
 
 		game.load.image('nom_charlotte', 'Projet/Sources/assets/charlotte.png');
 		game.load.image('nom_maureen', 'Projet/Sources/assets/maureen.png');
@@ -137,17 +142,17 @@ WD_begin.prototype = {
 		game.load.image('nom_florian', 'Projet/Sources/assets/florian.png');
 		game.load.image('nom_theo', 'Projet/Sources/assets/theo.png');
 
+		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
+		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
+		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
+		game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
+		game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
 		game.load.image('pic_charlotte', 'Projet/Sources/assets/pic_cha.png');
 		game.load.image('pic_maureen', 'Projet/Sources/assets/pic_maureen.png');
 		game.load.image('pic_nicolas', 'Projet/Sources/assets/pic_nico.png');
 		game.load.image('pic_florian', 'Projet/Sources/assets/pic_flo.png');
 		game.load.image('pic_theo', 'Projet/Sources/assets/pic_theo.png');
 
-		game.load.image('menu_titre', 'Projet/Sources/assets/titre.png');
-		game.load.image('menu_fond', 'Projet/Sources/assets/menu_1.png');
-		game.load.image('exit', 'Projet/Sources/assets/post_it_exit.png');
-		game.load.image('play', 'Projet/Sources/assets/post_it_play.png');
-		game.load.image('stylo', 'Projet/Sources/assets/stylo_tuto.png');
 
 		game.load.image('tuto_01', 'Projet/Sources/assets/tuto/tuto_01.png');
 		game.load.image('tuto_02', 'Projet/Sources/assets/tuto/tuto_02.png');
@@ -382,7 +387,7 @@ WD_credits.prototype = {
 	create: function(game) {
 		fond = game.add.sprite(0, 0, 'menu_fond');
 
-		logoIsart = game.add.sprite(game.width *0.5, game.height *0.9, 'isart');
+				logoIsart = game.add.sprite(game.width *0.5, game.height *0.9, 'isart');
 		logoIsart.anchor.setTo(0.5, 0.5);
 
 		picto_charlotte = game.add.sprite(game.width *0.55 + 135, game.height *0.15, 'pic_charlotte');
@@ -414,6 +419,7 @@ WD_credits.prototype = {
 		picto_theo.anchor.setTo(0.5, 0.5);
 		theo.anchor.setTo(0.5, 0.5);
 		theo.scale.setTo(0.7, 0.7);
+
 
 		this.boutonSortie = this.add.button(game.width *0.925, game.height *0.9,
 			'sortie', this.goMenu, this, 2, 0, 1);
