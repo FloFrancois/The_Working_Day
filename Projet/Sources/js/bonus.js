@@ -40,6 +40,8 @@ Bonus.prototype.update = function(game) {
 		}	
 	}
 	else {
+		if (!game.isDragging)
+			game.isDragging = true;
 		this.savePos.x += 1;
 	}
 		
@@ -48,5 +50,5 @@ Bonus.prototype.update = function(game) {
 }
 Bonus.prototype.die = function(game) {
 	this.sprite.kill();
-	game.bonus.splice(game.bonus.indexOf(this),1);
+	game.taches.splice(game.taches.indexOf(this),1);
 }

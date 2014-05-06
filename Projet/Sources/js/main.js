@@ -2,8 +2,9 @@ window.addEventListener("load",init);
 
 
 function init(){
-	if (!game) {
-		var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
+	// if (!game) {
+	// 	var 
+		game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'gameContainer');
 		game.state.add('debut' , WD_begin);
 		game.state.add('charger' , WD_load);
 		game.state.add('menu' , WD_menu);
@@ -12,7 +13,7 @@ function init(){
 		game.state.add('fin' , WD_end);
 		game.state.add('credits' , WD_credits);
 		game.state.start('debut');
-	};
+	// };
 }
 
 
@@ -32,6 +33,11 @@ WD_game.prototype = {
 		game.Theme2 = game.add.audio('m2');
 		game.Theme3 = game.add.audio('m3');
 		game.Theme4 = game.add.audio('m4');
+		game.clavier = game.add.audio('m5');
+		game.cafe = game.add.audio('m6');
+		game.pillule = game.add.audio('m7');
+		game.baillementF = game.add.audio('m8');
+		game.baillementM = game.add.audio('m9');
 		game.mecMort = 0;
 		game.mainTheme = game.Theme1;
 		game.mainTheme.play('', 0, 1, true);
@@ -99,8 +105,6 @@ WD_game.prototype = {
 		game.speed = 1;
 		game.days = 0;
 		game.saveDays = 0;
-		// game.cadreSprite = game.add.sprite(1100,0,"cadre",7)
-		// game.cadreSprite.scale.setTo(0.5,0.5)
 	},
 
 	//__________________________________________UPDATE____________________________________________________________________________________
@@ -223,6 +227,7 @@ WD_game.prototype = {
 			game.dying = true;
 		}
 		if (typeof gameOver !== "undefined") {
+			game.gameOverSprite = null;
 			game.dying = false;
 			game.mainTheme.stop();
 			game.state.start('fin');
@@ -279,6 +284,8 @@ function reduceCaract (game) {
 		if (game.employees[i].levelStress < 5) {
 			for(caract in game.config.employees.trainee){
 				game.employees[i][caract]-=1;
+				if (game.employees[i].totalAttributes > 0)
+					game.employees[i].totalAttributes -= 1;
 				game.employees[i]["jauge_"+caract].scale.x = game.employees[i][caract]/game.config.maxCaract
 				if (game.employees[i][caract] < 0) 
 					game.employees[i][caract] = 0;
